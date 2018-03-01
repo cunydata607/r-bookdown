@@ -1,6 +1,8 @@
 Let's start planning the structure of the book here...  My idea is to organize chapters by Packages and then have subchapters for each function within the package.  Although we may want to structure based more on a workflow, but I think that's harder to plan.  We can always start with this plan and then reorgnize later.
 
-Here's some info from the (Tidyverse website)[https://www.tidyverse.org/packages/] to get us started...  I suggest we add functions under each and put our name next to the ones we want to work on.  For example, I started with the stringr package below...
+Here's some info from the [Tidyverse website](https://www.tidyverse.org/packages/) to get us started...  I suggest we add functions under each and put our name next to the ones we want to work on.  For example, I started with the stringr package below...
+
+I also created a project (click the projects tab above)  When you are working on something you can create a card and drag it to "in progress"...  
 
 ## Core tidyverse
 The core tidyverse includes the packages that you're likely to use in everyday data analyses. As of tidyverse 1.2.0, the following packages are included in the core tidyverse:
