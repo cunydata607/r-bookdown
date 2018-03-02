@@ -1,0 +1,13 @@
+[
+["index.html", "tidyverse Book 1 Preface", " tidyverse Book CUNY SPS DATA 607 Spring 2018 2018-03-02 1 Preface Testing the bibliography below… To create an inline reference use square brackets and @R- followed by the package name. For example: (Wickham and Henry 2018) The reference will show at the bottom of the page and also at the end in the references chapter. References "],
+["intro.html", "2 Introduction 2.1 Core tidyverse", " 2 Introduction 2.1 Core tidyverse "],
+["ggplot2.html", "3 ggplot2", " 3 ggplot2 "],
+["dplyr.html", "4 dplyr", " 4 dplyr "],
+["tidyr.html", "5 tidyr", " 5 tidyr "],
+["readr.html", "6 readr", " 6 readr "],
+["purrr.html", "7 purrr", " 7 purrr "],
+["tibble.html", "8 tibble", " 8 tibble "],
+["stringr.html", "9 stringr", " 9 stringr "],
+["forcats.html", "10 forcats", " 10 forcats "],
+["references.html", "References", " References "]
+]
