@@ -1,0 +1,34 @@
+---
+title: "tidyverse Book"
+author: "CUNY SPS DATA 607 Spring 2018"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: cunydata607/r-bookdown
+description: "This file should contain a description of the project only.  Each chapter must be in a separate file in the same R Project in order to 'build' the book using bookdown."
+---
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'ggplot2', 'dplyr', 'tidyr', 'readr', 'purrr', 'tibble', 'stringr'
+), 'packages.bib')
+
+# in order to create a  reference, must put in this format:
+#[@R-bookdown] 
+#[@xie2015]
+# Still not really sure how this works! ?write_bib 
+```
+
+# Preface
+
+Testing the bibliography below... To create an inline reference use square brackets and \@R- followed by the package name. 
+
+For example: 
+[@R-tidyr]
+
+The reference will show at the bottom of the page and also at the end in the references chapter.
