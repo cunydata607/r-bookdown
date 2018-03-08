@@ -16,6 +16,20 @@ The student body as a whole will be responsible for the organization and content
 
 ### Working with Bookdown Files
 
+The formatting and structure of the book are created in the index.Rmd file. The filename must remain exactly as index.Rmd or it will not be recognized by bookdown as the index file. The index file should contain setup code and a description of the project only.  Each chapter must be in a separate file in the same R Project in order to 'build' the book using bookdown.  I have already created a file for each chapter.  They must be numbered sequentially (or alphabetically) in order to build in the correct order.  
+
+I have also added code to create a biblilogrpahy in the index file that I copied out of a sample bookdown project.  
+
+To create an inline reference use square brackets and \@R- followed by the package name. The package name must also be added to the bibliography code in the index.Rmd file (if it isn't already there).
+
+For example: 
+[@R-tidyr]
+
+The reference will show at the bottom of the page and also at the end in the references chapter.
+
+To learn more about how to work with bookdown you can check out this book written by the package author.  
+<https://bookdown.org/yihui/bookdown/>
+
 ### Kanban Board (Projects)
 
 ### Forking to the Repository
