@@ -12,6 +12,14 @@ Each class member is expected to contribute an example to the final project, whi
 
 The student body as a whole will be responsible for the organization and content of the project, collaborating in an unsupervised manner to self-determine the best presentation of the final product.
 
+## Project Planning
+
+Please check out the "[Projects](https://github.com/cunydata607/r-bookdown/projects)" tab in GitHub and click on the "[tidyverse r-bookdown project](https://github.com/cunydata607/r-bookdown/projects/1)" and **create a new card to let the group know what you are working on**.  
+
+Also please **add items to the [Book_Structure.md file](https://github.com/cunydata607/r-bookdown/blob/master/Book_Structure.md)** as you choose tidyverse functions that you want to work on.
+
+**Questions and issues** should be added to the [Issues](https://github.com/cunydata607/r-bookdown/issues) tab.
+
 ## Working in Github
 
 ### Working with Bookdown Files
