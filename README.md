@@ -1,4 +1,4 @@
-** [Github fork and pull request video tutorial:](https://www.youtube.com/watch?v=yr6IzOGoMsQ) **
+> [Github fork and pull request video tutorial:](https://www.youtube.com/watch?v=yr6IzOGoMsQ) 
 
 # r-bookdown
 
