@@ -1,3 +1,5 @@
+** [Github fork and pull request video tutorial:](https://www.youtube.com/watch?v=yr6IzOGoMsQ) **
+
 # r-bookdown
 
 CUNY Data 607 Spring 2018 Project
