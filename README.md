@@ -22,6 +22,13 @@ Also please **add items to the [Book_Structure.md file](https://github.com/cunyd
 
 ## Working in Github
 
+Github is a web based graphical interface based off of Git: a command line tool for version control. If you're new to Github, learn more through the links below!
+
+For beginners, start here: <https://www.howtogeek.com/180167/htg-explains-what-is-github-and-what-do-geeks-use-it-for/>
+And then here: <https://guides.github.com/activities/hello-world/>
+
+If you're already acquainted with the basics, Github provides tons of training videos on advanced topis here: <https://www.youtube.com/user/GitHubGuides/videos>.
+
 ### Working with Bookdown Files
 
 The formatting and structure of the book are created in the index.Rmd file. The filename must remain exactly as index.Rmd or it will not be recognized by bookdown as the index file. The index file should contain setup code and a description of the project only.  Each chapter must be in a separate file in the same R Project in order to 'build' the book using bookdown.  I have already created a file for each chapter.  They must be numbered sequentially (or alphabetically) in order to build in the correct order.  
