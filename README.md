@@ -25,7 +25,7 @@ Github is a web based graphical interface based off of Git: a command line tool 
 For beginners, start here: <https://www.howtogeek.com/180167/htg-explains-what-is-github-and-what-do-geeks-use-it-for/>
 And then here: <https://guides.github.com/activities/hello-world/>
 
-> [Github fork and pull request video tutorial](https://www.youtube.com/watch?v=yr6IzOGoMsQ) https://www.youtube.com/watch?v=yr6IzOGoMsQ
+> [Github fork and pull request video tutorial:](https://www.youtube.com/watch?v=yr6IzOGoMsQ) https://www.youtube.com/watch?v=yr6IzOGoMsQ
 
 If you're already acquainted with the basics, Github provides tons of training videos on advanced topis here: <https://www.youtube.com/user/GitHubGuides/videos>.
 
