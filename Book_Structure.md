@@ -1,12 +1,11 @@
 Let's start planning the structure of the book here...  My idea is to organize chapters by Packages and then have subchapters for each function within the package.  Although we may want to structure based more on a workflow, but I think that's harder to plan.  We can always start with this plan and then reorgnize later.
 
-Here's some info from the [Tidyverse website](https://www.tidyverse.org/packages/) to get us started...  I suggest we add functions under each and put our name next to the ones we want to work on.  For example, I started with the stringr package below...
+Here's some info from the [Tidyverse website](https://www.tidyverse.org/packages/) to get us started...  **I suggest we add functions under each and put our name next to the ones we want to work on**.  For example, I started with the tidyr and stringr packages below...
 
 I also created a project (click the projects tab above)  When you are working on something you can create a card and drag it to "in progress"...  
 
 ## Core tidyverse
 The core tidyverse includes the packages that you're likely to use in everyday data analyses. As of tidyverse 1.2.0, the following packages are included in the core tidyverse:
-
 
 ### ggplot2
 ggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details. Learn more ...
@@ -18,6 +17,42 @@ dplyr provides a grammar of data manipulation, providing a consistent set of ver
 
 ### tidyr
 tidyr provides a set of functions that help you get to tidy data. Tidy data is data with a consistent form: in brief, every variable goes in a column, and every column is a variable. Learn more ...
+
+#### gather 
+
+#### spread
+
+#### separate
+
+#### unite
+
+#### complete
+
+#### drop_na
+
+#### expand
+
+#### extract
+
+#### fill
+
+#### full_seq
+
+#### nest
+
+#### replace_na
+
+#### separate_rows
+
+#### smiths
+
+#### table1
+
+#### uncount
+
+#### unnest
+
+#### who
 
 
 ### readr
@@ -36,32 +71,59 @@ tibble is a modern re-imagining of the data frame, keeping what time has proven 
 stringr provides a cohesive set of functions designed to make working with strings as easy as possible. It is built on top of stringi, which uses the ICU C library to provide fast, correct implementations of common string manipulations. Learn more ...
 
 (I just copied this list out of the stringr documentation)  They could be reordered to something that makes more logical sense rather than alphabetical...
+
 #### 	case 
+
 #### 	invert_match 
+
 #### 	modifiers 
+
 #### 	stringr-data 
+
 #### 	str_c 
+
 #### 	str_conv 
+
 #### 	str_count 
+
 #### 	str_detect 
+
 #### 	str_dup 
+
 #### 	str_extract 
+
 #### 	str_flatten 
+
 #### 	str_glue 
+
 #### 	str_length 
+
 #### 	str_locate 
+
 #### 	str_match 
+
 #### 	str_order 
+
 #### 	str_pad 
+
 #### 	str_remove 
+
 #### 	str_replace 
+
 #### 	str_replace_na 
+
 #### 	str_split 
+
 #### 	str_sub 
+
 #### 	str_subset 
+
 #### 	str_trim 
+
 #### 	str_trunc 
+
 #### 	str_view 
+
 #### 	str_wrap 
 
 ### forcats
