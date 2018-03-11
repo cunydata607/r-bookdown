@@ -1,3 +1,42 @@
 # Introduction {#intro}
 
 ## Core tidyverse
+
+Some quotes and concepts [from Hadley Wickham](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) that we may want to include in the intro...
+
+#### Data semantics
+
+> A dataset is a collection of values, usually either numbers (if quantitative) or strings (if qualitative). Values are organised in two ways. Every value belongs to a variable and an observation. A variable contains all values that measure the same underlying attribute (like height, temperature, duration) across units. An observation contains all values measured on the same unit (like a person, or a day, or a race) across attributes.
+
+> The experimental design also determines whether or not missing values can be safely dropped. In this experiment, the missing value represents an observation that should have been made, but wasn’t, so it’s important to keep it. Structural missing values, which represent measurements that can’t be made (e.g., the count of pregnant males) can be safely removed.
+
+> A general rule of thumb is that it is easier to describe functional relationships between variables (e.g., z is a linear combination of x and y, density is the ratio of weight to volume) than between rows, and it is easier to make comparisons between groups of observations (e.g., average of group a vs. average of group b) than between groups of columns.
+
+#### Tidy data
+
+> Tidy data is a standard way of mapping the meaning of a dataset to its structure. A dataset is messy or tidy depending on how rows, columns and tables are matched up with observations, variables and types. In tidy data:
+> 1. Each variable forms a column.
+> 2. Each observation forms a row.
+> 3. Each type of observational unit forms a table.
+> 
+> This is Codd’s 3rd normal form, but with the constraints framed in statistical language, and the focus put on a single dataset rather than the many connected datasets common in relational databases. Messy data is any other arrangement of the data.
+
+>> Alternate Definition [from Garrett Grolemund](http://garrettgman.github.io/tidying/)
+>> 
+>> R follows a set of conventions that makes one layout of tabular data much easier to work with than others. Your data will be easier to work with in R if it follows three rules
+>> 1. Each variable in the data set is placed in its own column
+>> 2. Each observation is placed in its own row
+>> 3. Each value is placed in its own cell*
+>> 
+>> Data that satisfies these rules is known as tidy data. 
+
+> five most common problems with messy datasets...:
+> 1. Column headers are values, not variable names.
+> 2. Multiple variables are stored in one column.
+> 3. Variables are stored in both rows and columns.
+> 4. Multiple types of observational units are stored in the same table.
+> 5. A single observational unit is stored in multiple tables.
+
+#### Normalization
+
+> Normalisation is useful for tidying and eliminating inconsistencies. However, there are few data analysis tools that work directly with relational data, so analysis usually also requires denormalisation or the merging the datasets back into one table.
