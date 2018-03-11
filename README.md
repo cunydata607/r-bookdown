@@ -14,7 +14,7 @@ The student body as a whole will be responsible for the organization and content
 
 Please check out the "[Projects](https://github.com/cunydata607/r-bookdown/projects)" tab in GitHub and click on the "[tidyverse r-bookdown project](https://github.com/cunydata607/r-bookdown/projects/1)" and **create a new card to let the group know what you are working on**.  
 
-Also please **add items to the [Book_Structure.md file](https://github.com/cunydata607/r-bookdown/blob/master/Book_Structure.md)** as you choose tidyverse functions that you want to work on.
+Also please **add items to the [Book_Structure.md file](https://github.com/cunydata607/r-bookdown/blob/master/Book_Structure.md) and add your name next to items you want to workj on**.
 
 **Questions and issues** should be added to the [Issues](https://github.com/cunydata607/r-bookdown/issues) tab.
 
@@ -22,15 +22,17 @@ Also please **add items to the [Book_Structure.md file](https://github.com/cunyd
 
 Github is a web based graphical interface based off of Git: a command line tool for version control. If you're new to Github, learn more through the links below!
 
-For beginners, start here: <https://www.howtogeek.com/180167/htg-explains-what-is-github-and-what-do-geeks-use-it-for/>
-And then here: <https://guides.github.com/activities/hello-world/>
+For beginners, start here: [Good explanation of what GitHub is for](https://www.howtogeek.com/180167/htg-explains-what-is-github-and-what-do-geeks-use-it-for/)
 
-Another source for beginners :http://happygitwithr.com/  and video from GitHub https://resources.github.com/webcasts/GitHub-for-beginners/?utm_source=announcement&utm_medium=email&utm_campaign=gh-for-beginners-follow-up&elqTrackId=5e3f26814be04d1f81c4865816946a24&elq=384f5c0a35964e25a0108bbfbd78b5b3&elqaid=424&elqat=1&elqCampaignId=165
+And then here: [Basic GitHub Website Instructions](https://guides.github.com/activities/hello-world/)
 
+Here is a great [Github fork and pull request video tutorial](https://www.youtube.com/watch?v=yr6IzOGoMsQ) https://www.youtube.com/watch?v=yr6IzOGoMsQ that goes through a basic workflow in GitHub.
 
-> [Github fork and pull request video tutorial:](https://www.youtube.com/watch?v=yr6IzOGoMsQ) https://www.youtube.com/watch?v=yr6IzOGoMsQ
+Another source for beginners: [Happy Git and GitHub for the useR](http://happygitwithr.com/)
 
-If you're already acquainted with the basics, Github provides tons of training videos on advanced topis here: <https://www.youtube.com/user/GitHubGuides/videos>.
+Video from GitHub: [GitHub for Beginners](https://resources.github.com/webcasts/GitHub-for-beginners/?utm_source=announcement&utm_medium=email&utm_campaign=gh-for-beginners-follow-up&elqTrackId=5e3f26814be04d1f81c4865816946a24&elq=384f5c0a35964e25a0108bbfbd78b5b3&elqaid=424&elqat=1&elqCampaignId=165)
+
+If you're already acquainted with the basics, [Github provides tons of training videos on advanced topis on YouTube](https://www.youtube.com/user/GitHubGuides/videos).
 
 ### Working with Bookdown Files
 
@@ -50,7 +52,7 @@ To learn more about how to work with bookdown you can check out this book writte
 
 ### Kanban Board (Projects)
 
-### Forking to the Repository
+I have created a Kanban Board project on the "[Projects](https://github.com/cunydata607/r-bookdown/projects)" tab in GitHub named "[tidyverse r-bookdown project](https://github.com/cunydata607/r-bookdown/projects/1)" that I suggest we use to help organize the distribution of tasks and keep track of who is working on what.  There are basic instructions about how to use the project board in the project itself on the left side, so check it out! **Please create a new card to let the group know what you are working on**.  
 
 ### Adding Contributions to the Repository
 
