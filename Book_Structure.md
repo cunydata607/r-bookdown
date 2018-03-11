@@ -14,6 +14,29 @@ ggplot2 is a system for declaratively creating graphics, based on The Grammar of
 ### dplyr
 dplyr provides a grammar of data manipulation, providing a consistent set of verbs that solve the most common data manipulation challenges. Learn more ...
 
+#### filter() 
+
+to select cases based on their values.
+
+#### arrange() 
+
+to reorder the cases.
+
+#### select() and rename() 
+
+to select variables based on their names.
+
+#### mutate() and transmute() 
+
+to add new variables that are functions of existing variables.
+
+#### summarise() 
+
+to condense multiple values to a single value.
+
+#### sample_n() and sample_frac() 
+
+to take random samples.
 
 ### tidyr
 tidyr provides a set of functions that help you get to tidy data. Tidy data is data with a consistent form: in brief, every variable goes in a column, and every column is a variable. Learn more ...
