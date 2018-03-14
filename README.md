@@ -4,7 +4,7 @@ CUNY Data 607 Spring 2018 Project
 
 ## Project Outline
 
-Using data from the [fivethirtyeight](http://fivethirtyeight.com/), our class will develop tutorials to demonstrate the capabilities of the functions in the [tidyverse package](https://www.tidyverse.org/) using R. These tutorials will be compiled in a book using [bookdown R package](https://cran.rstudio.com/web/packages/bookdown/index.html). The [short book](https://bookdown.org/yihui/bookdown/)introduces how to use bookdown R package in writing books.
+Using data from the [fivethirtyeight](http://fivethirtyeight.com/) website, our class will develop tutorials to demonstrate the capabilities of the functions in the [tidyverse package](https://www.tidyverse.org/) using R. These tutorials will be compiled in a book using [bookdown R package](https://cran.rstudio.com/web/packages/bookdown/index.html). The [short book](https://bookdown.org/yihui/bookdown/) introduces how to use bookdown R package in writing books.
 
 1. Each class member is expected to contribute an example tutorial to the final project.  
 2. Although each student is expected to prepare a tutorial for a specific function, collaboration on the overall project is encouraged and allowed.
@@ -18,7 +18,7 @@ Also please **add items to the [Book_Structure.md file](https://github.com/cunyd
 
 **Questions and issues** should be added to the [Issues](https://github.com/cunydata607/r-bookdown/issues) tab.
 
-# Tidy data 
+## Tidy data 
 [Hadley Wickham's Tidy Data](http://vita.had.co.nz/papers/tidy-data.pdf) framework  suggests tidy data must have three properties:
 * Each variable forms a column.  
 * Each observation forms a row.  
@@ -42,7 +42,7 @@ This tutorial: [Try Git](https://try.github.io/levels/1/challenges/1) gives a go
 
 If you're already acquainted with the basics, [Github provides tons of training videos on advanced topis on YouTube](https://www.youtube.com/user/GitHubGuides/videos).
 
-### Working with Bookdown Files
+## Working with Bookdown Files
 
 The formatting and structure of the book are created in the index.Rmd file. The filename must remain exactly as index.Rmd or it will not be recognized by bookdown as the index file. The index file should contain setup code and a description of the project only.  Each chapter must be in a separate file in the same R Project in order to 'build' the book using bookdown.  I have already created a file for each chapter.  They must be numbered sequentially (or alphabetically) in order to build in the correct order.  
 
@@ -58,11 +58,11 @@ The reference will show at the bottom of the page and also at the end in the ref
 To learn more about how to work with bookdown you can check out this book written by the package author.  
 <https://bookdown.org/yihui/bookdown/>
 
-### Kanban Board (Projects)
+## Kanban Board (Projects)
 
 I have created a Kanban Board project on the "[Projects](https://github.com/cunydata607/r-bookdown/projects)" tab in GitHub named "[tidyverse r-bookdown project](https://github.com/cunydata607/r-bookdown/projects/1)" that I suggest we use to help organize the distribution of tasks and keep track of who is working on what.  There are basic instructions about how to use the project board in the project itself on the left side, so check it out! **Please create a new card to let the group know what you are working on**.  
 
-### Adding Contributions to the Repository
+## Adding Contributions to the Repository
 
 There are basically two wasy to contribute to the repository.
 
