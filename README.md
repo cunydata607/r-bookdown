@@ -4,7 +4,7 @@ CUNY Data 607 Spring 2018 Project
 
 ## Project Outline
 
-Using data from the fivethirtyeight Web site (http://fivethirtyeight.com/), our class will develop tutorials to demonstrate the capabilities of the functions in the [tidyverse package](https://www.tidyverse.org/) using R. These tutorials will be compiled in a book using [bookdown R package](https://cran.rstudio.com/web/packages/bookdown/index.html). The [short book](https://bookdown.org/yihui/bookdown/)introduces how to use bookdown R package in writing books.
+Using data from the [fivethirtyeight](http://fivethirtyeight.com/), our class will develop tutorials to demonstrate the capabilities of the functions in the [tidyverse package](https://www.tidyverse.org/) using R. These tutorials will be compiled in a book using [bookdown R package](https://cran.rstudio.com/web/packages/bookdown/index.html). The [short book](https://bookdown.org/yihui/bookdown/)introduces how to use bookdown R package in writing books.
 
 1. Each class member is expected to contribute an example tutorial to the final project.  
 2. Although each student is expected to prepare a tutorial for a specific function, collaboration on the overall project is encouraged and allowed.
