@@ -18,6 +18,12 @@ Also please **add items to the [Book_Structure.md file](https://github.com/cunyd
 
 **Questions and issues** should be added to the [Issues](https://github.com/cunydata607/r-bookdown/issues) tab.
 
+# Tidy data 
+[Hadley Wickham's Tidy Data](http://vita.had.co.nz/papers/tidy-data.pdf) framework  suggests tidy data must have three properties:
+* Each variable forms a column.  
+* Each observation forms a row.  
+* Each type of observational unit forms a table  
+
 ## Working in Github
 
 Github is a web based graphical interface based off of Git: a command line tool for version control. If you're new to Github, learn more through the links below!
