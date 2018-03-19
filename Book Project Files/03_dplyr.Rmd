@@ -1,1 +1,88 @@
+```{r, include=FALSE}
+library(tidyverse)
+library(knitr)
+```
+
 # dplyr {#dplyr}
+
+dplyr provides a grammar of data manipulation, providing a consistent set of verbs that solve the most common data manipulation challenges. 
+
+## filter()
+
+The filter function allows a user to subset a data frame based on the values in a given column.
+
+```{r, warning=FALSE, message=FALSE}
+avengers.data <- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/avengers/avengers.csv') %>%
+  select(2:6)
+avengers.data %>% head() %>% kable()
+```
+
+Perhaps the user would like to work only with the female avengers.
+
+```{r}
+avengers.data %>%
+  filter(Gender == 'FEMALE') %>%
+  head() %>%
+  kable()
+```
+
+Perhaps the user would like to work only with female avengers with more than 500 appearances.
+
+```{r}
+avengers.data %>%
+  filter(Gender == 'FEMALE' & Appearances > 500) %>%
+  head() %>%
+  kable()
+```
+
+There are numerous comparison options that can be used with filter. These include: ```==, >, >=, <, <=, !=```
+The use of a single ampersand ```&``` is used to indicate 'and' while a single pipe ```|``` is used to indicate 'or'. 
+The exclamation point ```!``` is used to indicate 'nor' (see next example) and ```xor()``` is the exclusive or.
+
+Filtering can also be based on whether an element is NA.
+
+```{r}
+avengers.data %>%
+  filter(!is.na(`Probationary Introl`)) %>%
+  head() %>%
+  kable()
+```
+
+Between can be used to filter between a range of values.
+
+```{r}
+avengers.data %>%
+  filter(between(Appearances, 500, 1000)) %>%
+  head() %>%
+  kable()
+```
+
+Finally, near can be used to select a range of values within a certain range of a central value.
+
+```{r}
+avengers.data %>%
+  filter(near(Appearances, 612, tol=20)) %>%
+  head() %>%
+  kable()
+```
+
+Of course, all of these can be combined with 'and' ```&``` and 'or' ```|``` logical operators.
+
+There are three related functions ```filter_if()```, ```filter_all()```, and ```filter_at()```. See scoped operations.
+
+## arrange()
+
+
+## select() and rename()
+
+
+## mutate() and transmute()
+
+
+## summarise()
+
+
+## sample_n() and sample_frac()
+
+
+## scored operations
