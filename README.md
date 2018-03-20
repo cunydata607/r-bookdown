@@ -58,9 +58,9 @@ I have created a Kanban Board project on the "[Projects](https://github.com/cuny
 
 ## Adding Contributions to the Repository
 
-There are basically two wasy to contribute to the repository.
+There are basically two ways to contribute to the repository.
 
-1. If you are an admin, you can make changes and comit them directly to the cunydata607/r-bookdown repo. 
+1. If you are an admin, you can make changes and commit them directly to the cunydata607/r-bookdown repo. 
 2. If you are not an admin, you can fork the repo, make changes to your forked version and submit a pull request that one of the admins will need to approve and merge with the master branch of the cunydata607/r-bookdown repo.  
 
 If you are not fimiliar with how to use GitHub please see the links above for lots of great tutorials and info.  I particularly recommend [this video](https://www.youtube.com/watch?v=yr6IzOGoMsQ) to understand a basic GitHub workflow.
