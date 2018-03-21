@@ -75,7 +75,23 @@ alcohol.data %>%
 
 Select also has the ability to rename columns, however, it will drop all columns not mentioned. In order to rename columns but to keep all columns (regardless of whether their names have been changed) it is best to use ```rename()```. See rename().
 
+```{r}
+alcohol.data %>%
+  select(location=country, everything()) %>%
+  head() %>%
+  kable()
+```
+
 ## rename()
+
+The rename function is used to alter the names of columns. Any columns not specified will not be changed. If you wish to drop unnamed columns at the same time, use ```select()``` See select().
+
+```{r}
+alcohol.data %>%
+  rename(beer=beer_servings, spirit=spirit_servings, wine=wine_servings) %>% 
+  head() %>%
+  kable()
+```
 
 ## filter()
 
