@@ -7,6 +7,76 @@ library(knitr)
 
 dplyr provides a grammar of data manipulation, providing a consistent set of verbs that solve the most common data manipulation challenges. 
 
+## select()
+
+The select function provides options for selecting only certain columns of data to work with.
+
+```{r, warning=FALSE, message=FALSE}
+alcohol.data <- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv') 
+alcohol.data %>% head() %>% kable()
+```
+
+At it's most basic, select allows for the manual selection of columns
+
+```{r}
+alcohol.data %>%
+  select(country, total_litres_of_pure_alcohol) %>%
+  head() %>%
+  kable()
+```
+
+```{r}
+alcohol.data %>%
+  select(c(1, 3)) %>%
+  head() %>%
+  kable()
+```
+
+```{r}
+alcohol.data %>%
+  select(1:4) %>%
+  head() %>%
+  kable()
+```
+
+There are a number of additional functions that can be used to select columns based on specific criteria. These include:
+
+* ```starts_with()``` which selects all columns that begin with the given text
+* ```ends_with()``` which selects all columns that end with the given text
+* ```contains()``` which selects all columns that contain the given text anywhere
+* ```matches()``` which selects all columns that match the given regular expression. See regular expressions for more details.
+
+Finally, a dash (-) may be added to the beginning of any of these functions to select all columns that do NOT match.
+
+```{r}
+alcohol.data %>%
+  select(-ends_with('servings')) %>%
+  head() %>%
+  kable()
+```
+
+The select function can also be used to rearrange the columns in a data frame. 
+
+```{r}
+alcohol.data %>%
+  select(1, 5, 2:4) %>%
+  head() %>%
+  kable()
+```
+
+A special function ```everything()``` will select all remaining columns in order. This is best used when you wish to move a single column to a new position but do not care to rearrange the remaining columns.
+
+```{r}
+alcohol.data %>%
+  select(1, 5, everything()) %>%
+  head() %>%
+  kable()
+```
+
+Select also has the ability to rename columns, however, it will drop all columns not mentioned. In order to rename columns but to keep all columns (regardless of whether their names have been changed) it is best to use ```rename()```. See rename().
+
+## rename()
+
 ## filter()
 
 The filter function allows a user to subset a data frame based on the values in a given column.
@@ -71,9 +141,6 @@ Of course, all of these can be combined with 'and' ```&``` and 'or' ```|``` logi
 There are three related functions ```filter_if()```, ```filter_all()```, and ```filter_at()```. See scoped operations.
 
 ## arrange()
-
-
-## select() and rename()
 
 
 ## mutate() and transmute()

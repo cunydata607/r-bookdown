@@ -124,6 +124,362 @@ $(document).ready(function () {
 <div id="dplyr" class="section level1">
 <h1>dplyr</h1>
 <p>dplyr provides a grammar of data manipulation, providing a consistent set of verbs that solve the most common data manipulation challenges.</p>
+<div id="select-and-rename" class="section level2">
+<h2>select() and rename()</h2>
+<p>The select and rename functions provides options for selecting only certain columns of data to work with.</p>
+<pre class="r"><code>alcohol.data &lt;- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv') 
+alcohol.data %&gt;% head() %&gt;% kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">beer_servings</th>
+<th align="right">spirit_servings</th>
+<th align="right">wine_servings</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">89</td>
+<td align="right">132</td>
+<td align="right">54</td>
+<td align="right">4.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="right">14</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">245</td>
+<td align="right">138</td>
+<td align="right">312</td>
+<td align="right">12.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">217</td>
+<td align="right">57</td>
+<td align="right">45</td>
+<td align="right">5.9</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">102</td>
+<td align="right">128</td>
+<td align="right">45</td>
+<td align="right">4.9</td>
+</tr>
+</tbody>
+</table>
+<p>At it’s most basic, select allows for the manual selection of columns</p>
+<pre class="r"><code>alcohol.data %&gt;%
+  select(country, total_litres_of_pure_alcohol) %&gt;%
+  head() %&gt;%
+  kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">4.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">12.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">5.9</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">4.9</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>alcohol.data %&gt;%
+  select(c(1, 3)) %&gt;%
+  head() %&gt;%
+  kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">spirit_servings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">132</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">138</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">57</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">128</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>alcohol.data %&gt;%
+  select(1:4) %&gt;%
+  head() %&gt;%
+  kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">beer_servings</th>
+<th align="right">spirit_servings</th>
+<th align="right">wine_servings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">89</td>
+<td align="right">132</td>
+<td align="right">54</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">245</td>
+<td align="right">138</td>
+<td align="right">312</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">217</td>
+<td align="right">57</td>
+<td align="right">45</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">102</td>
+<td align="right">128</td>
+<td align="right">45</td>
+</tr>
+</tbody>
+</table>
+<p>There are a number of additional functions that can be used to select columns based on specific criteria. These include:</p>
+<ul>
+<li><code>starts_with()</code> which selects all columns that begin with the given text</li>
+<li><code>ends_with()</code> which selects all columns that end with the given text</li>
+<li><code>contains()</code> which selects all columns that contain the given text anywhere</li>
+<li><code>matches()</code> which selects all columns that match the given regular expression. See regular expressions for more details.</li>
+</ul>
+<p>Finally, a dash (-) may be added to the beginning of any of these functions to select all columns that do NOT match.</p>
+<pre class="r"><code>alcohol.data %&gt;%
+  select(-ends_with('servings')) %&gt;%
+  head() %&gt;%
+  kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">4.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">12.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">5.9</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">4.9</td>
+</tr>
+</tbody>
+</table>
+<p>The select function can also be used to rearrange the columns in a data frame.</p>
+<pre class="r"><code>alcohol.data %&gt;%
+  select(1, 5, 2:4) %&gt;%
+  head() %&gt;%
+  kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+<th align="right">beer_servings</th>
+<th align="right">spirit_servings</th>
+<th align="right">wine_servings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">4.9</td>
+<td align="right">89</td>
+<td align="right">132</td>
+<td align="right">54</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">0.7</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">12.4</td>
+<td align="right">245</td>
+<td align="right">138</td>
+<td align="right">312</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">5.9</td>
+<td align="right">217</td>
+<td align="right">57</td>
+<td align="right">45</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">4.9</td>
+<td align="right">102</td>
+<td align="right">128</td>
+<td align="right">45</td>
+</tr>
+</tbody>
+</table>
+<p>A special function <code>everything()</code> will select all remaining columns in order. This is best used when you wish to move a single column to a new position but do not care to rearrange the remaining columns.</p>
+<pre class="r"><code>alcohol.data %&gt;%
+  select(1, 5, everything()) %&gt;%
+  head() %&gt;%
+  kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+<th align="right">beer_servings</th>
+<th align="right">spirit_servings</th>
+<th align="right">wine_servings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">4.9</td>
+<td align="right">89</td>
+<td align="right">132</td>
+<td align="right">54</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">0.7</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">12.4</td>
+<td align="right">245</td>
+<td align="right">138</td>
+<td align="right">312</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">5.9</td>
+<td align="right">217</td>
+<td align="right">57</td>
+<td align="right">45</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">4.9</td>
+<td align="right">102</td>
+<td align="right">128</td>
+<td align="right">45</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div id="filter" class="section level2">
 <h2>filter()</h2>
 <p>The filter function allows a user to subset a data frame based on the values in a given column.</p>
@@ -463,9 +819,6 @@ avengers.data %&gt;% head() %&gt;% kable()</code></pre>
 </div>
 <div id="arrange" class="section level2">
 <h2>arrange()</h2>
-</div>
-<div id="select-and-rename" class="section level2">
-<h2>select() and rename()</h2>
 </div>
 <div id="mutate-and-transmute" class="section level2">
 <h2>mutate() and transmute()</h2>
