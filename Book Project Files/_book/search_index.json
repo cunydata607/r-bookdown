@@ -1,13 +1,3 @@
 [
-["index.html", "tidyverse Book 1 Preface", " tidyverse Book CUNY SPS DATA 607 Spring 2018 2018-03-02 1 Preface Testing the bibliography below… To create an inline reference use square brackets and @R- followed by the package name. For example: (Wickham and Henry 2018) The reference will show at the bottom of the page and also at the end in the references chapter. References "],
-["intro.html", "2 Introduction 2.1 Core tidyverse", " 2 Introduction 2.1 Core tidyverse "],
-["ggplot2.html", "3 ggplot2", " 3 ggplot2 "],
-["dplyr.html", "4 dplyr", " 4 dplyr "],
-["tidyr.html", "5 tidyr", " 5 tidyr "],
-["readr.html", "6 readr", " 6 readr "],
-["purrr.html", "7 purrr", " 7 purrr "],
-["tibble.html", "8 tibble", " 8 tibble "],
-["stringr.html", "9 stringr", " 9 stringr "],
-["forcats.html", "10 forcats", " 10 forcats "],
-["references.html", "References", " References "]
+["purrr.html", "7 purrr 7.1 Overview 7.2 Map Family", " 7 purrr 7.1 Overview purrr enhances R’s functional programming (FP) toolkit by providing a complete and consistent set of tools for working with functions and vectors. If you’ve never heard of FP before, the best place to start is the family of map() functions which allow you to replace many for loops with code that is both more succinct and easier to read. 7.2 Map Family The complete list of functions within the map family are: map(.x, .f, ...) map_lgl(.x, .f, ...) map_chr(.x, .f, ...) map_int(.x, .f, ...) map_dbl(.x, .f, ...) map_dfr(.x, .f, ..., .id = NULL) map_dfc(.x, .f, ...) walk(.x, .f, ...) Arguments .x: A list or atomic vector .f: A function, formula, or atomic vector If .f is a function, it is used as is If .f is a formula, e.g. ~ .x + 2, it is converted to a function. There are three ways to refer to the arguments: For a single argument function, use . For a two argument function, use .x and .y For more arguments, use ..1, ..2, ..3, etc… 7.2.1 map The map function transforms the input, returning a vector of the same length as the input. map, along with reduce, appear to draw their inspiration from JavaScript. In R, map can be very useful when the programmers wants to use the same function on a list. dplyr has mutate for working with data frames, while purrr specializes in lists. "]
 ]
