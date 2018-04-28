@@ -1,1 +1,47 @@
+```{r, include=FALSE}
+library(tidyverse)
+```
 # tibble {#tibble}
+
+Tibbles are a modern take on data frames. They keep the features that have stood the test of time, and drop the features that used to be convenient but are now frustrating (i.e. converting character vectors to factors).
+
+## How to create tibble?
+### as_tibble()
+You can coerce a data frame to tibble.
+```{r}
+as_tibble(nycflights13::airlines)
+```
+
+### tibble()
+You can create a new tibble from individual vectors with tibble().
+```{r}
+tibble(
+  a = 1:15, 
+  b = a * 2, 
+  c = a ^ 2 + b
+)
+```
+
+### tribble()
+Another way to create a tibble is with tribble(), short for `transposed tibble`. tribble() is customised for data entry in code: column headings are defined by formulas (i.e. they start with ~), and entries are separated by commas. This makes it possible to lay out small amounts of data in easy to read form.
+```{r}
+tribble(
+  ~x, ~y, ~z,
+  #--|--|----
+  "a", 2, 3.6,
+  "b", 1, 8.5
+)
+```
+
+It’s possible for a tibble to have column names that are not valid R variable names, aka non-syntactic names. 
+```{r}
+tb <- tibble(
+  `:-)` = "smile", 
+  ` ` = "space",
+  `5000` = "number"
+)
+```
+
+Reference  
+[Cran R Blog](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html)  
+[R for Data Science](http://r4ds.had.co.nz/)
