@@ -41,3 +41,7 @@ tb <- tibble(
   `5000` = "number"
 )
 ```
+
+Reference  
+[Cran R Blog](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html)  
+[R for Data Science](http://r4ds.had.co.nz/)
