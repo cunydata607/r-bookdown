@@ -157,6 +157,8 @@ Of course, all of these can be combined with 'and' ```&``` and 'or' ```|``` logi
 There are three related functions ```filter_if()```, ```filter_all()```, and ```filter_at()```. See scoped operations.
 
 ## arrange()
+arrange changes the natural column order of the data frame. It takes data frame
+name and the column name(s) as input and re arranges the columns based on input.
 
 
 ## mutate() and transmute()
