@@ -1,1 +1,37 @@
 # tidyr {#tidyr}
+
+## complete ()
+
+## drop_na ()
+
+## expand ()
+
+## extract ()
+
+## fill ()
+
+## full_seq ()
+
+## gather ()
+
+## nest ()
+
+## replace_na ()
+
+## separate ()
+
+## separate_rows ()
+
+## smiths ()
+
+## spread ()
+
+## table1 ()
+
+## uncount ()
+
+## unite ()
+
+## unnest ()
+
+## who ()
