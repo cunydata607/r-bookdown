@@ -181,6 +181,7 @@ filter(Gender == "MALE" & Appearances < 200)
 
 high_appearance_females_or_low_appearance_males <- avengers.data %>%
 filter((Gender == "FEMALE" & Appearances > 500) | (Gender == "MALE" & Appearances < 200))
+```
 
 You can run nrow function (or the tidyverse equivalent) and see that there are 10 high appearance females and 65 low appearance males. Thus, the fact that we get 75 results for the query using OR operator makes sense, and confirms that we set it up correctly.
 
