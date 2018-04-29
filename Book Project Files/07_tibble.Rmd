@@ -45,3 +45,28 @@ tb <- tibble(
 Reference  
 [Cran R Blog](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html)  
 [R for Data Science](http://r4ds.had.co.nz/)
+
+
+## tibble-package ()
+
+## add_column ()
+
+## add_row ()
+
+## enframe ()
+
+## frame_matrix ()
+
+## glimpse ()
+
+## is_tibble ()
+
+## new_tibble ()
+
+## rownames ()
+
+## set_tidy_names ()
+
+## tbl_sum ()
+
+## tibble-options ()
