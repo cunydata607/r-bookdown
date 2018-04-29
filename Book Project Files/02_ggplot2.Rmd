@@ -1,2 +1,225 @@
 # ggplot2 {#ggplot2}
 
+## +.gg ()
+
+## aes ()
+
+## aes_ ()
+
+## aes_colour_fill_alpha ()
+
+## aes_group_order ()
+
+## aes_linetype_size_shape ()
+
+## aes_position ()
+
+## annotate ()
+
+## annotation_custom ()
+
+## annotation_logticks ()
+
+## annotation_map ()
+
+## annotation_raster ()
+
+## autoplot ()
+
+## borders ()
+
+## coord_cartesian ()
+
+## coord_fixed ()
+
+## coord_flip ()
+
+## coord_map ()
+
+## coord_polar ()
+
+## coord_trans ()
+
+## cut_interval ()
+
+## diamonds ()
+
+## economics ()
+
+## expand_limits ()
+
+## facet_grid ()
+
+## facet_wrap ()
+
+## faithfuld ()
+
+## fortify ()
+
+## geom_abline ()
+
+## geom_bar ()
+
+## geom_bin2d ()
+
+## geom_blank ()
+
+## geom_boxplot ()
+
+## geom_contour ()
+
+## geom_count ()
+
+## geom_crossbar ()
+
+## geom_density ()
+
+## geom_density_2d ()
+
+## geom_dotplot ()
+
+## geom_errorbarh ()
+
+## geom_freqpoly ()
+
+## geom_hex ()
+
+## geom_jitter ()
+
+## geom_label ()
+
+## geom_map ()
+
+## geom_path ()
+
+## geom_point ()
+
+## geom_polygon ()
+
+## geom_qq ()
+
+## geom_quantile ()
+
+## geom_raster ()
+
+## geom_ribbon ()
+
+## geom_rug ()
+
+## geom_segment ()
+
+## geom_smooth ()
+
+## geom_spoke ()
+
+## geom_violin ()
+
+## ggplot ()
+
+## ggproto ()
+
+## ggsave ()
+
+## ggtheme ()
+
+## guides ()
+
+## guide_colourbar ()
+
+## guide_legend ()
+
+## hmisc ()
+
+## labeller ()
+
+## labellers ()
+
+## label_bquote ()
+
+## labs ()
+
+## lims ()
+
+## luv_colours ()
+
+## margin ()
+
+## mean_se ()
+
+## midwest ()
+
+## mpg ()
+
+## msleep ()
+
+## position_dodge ()
+
+## position_identity ()
+
+## position_jitter ()
+
+## position_jitterdodge ()
+
+## position_nudge ()
+
+## position_stack ()
+
+## presidential ()
+
+## print.ggplot ()
+
+## print.ggproto ()
+
+## qplot ()
+
+## resolution ()
+
+## scale_alpha ()
+
+## scale_colour_brewer ()
+
+## scale_colour_gradient ()
+
+## scale_colour_grey ()
+
+## scale_colour_hue ()
+
+## scale_continuous ()
+
+## scale_date ()
+
+## scale_identity ()
+
+## scale_linetype ()
+
+## scale_manual ()
+
+## scale_shape ()
+
+## scale_size ()
+
+## scale_x_discrete ()
+
+## seals ()
+
+## sec_axis ()
+
+## stat_ecdf ()
+
+## stat_ellipse ()
+
+## stat_function ()
+
+## stat_identity ()
+
+## stat_summary_2d ()
+
+## stat_summary_bin ()
+
+## stat_unique ()
+
+## theme ()
+
+## theme_get ()
+
+## txhousing ()
