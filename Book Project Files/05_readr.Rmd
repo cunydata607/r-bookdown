@@ -1,1 +1,47 @@
 # readr {#readr}
+
+## cols ()
+
+## cols_condense ()
+
+## col_skip ()
+
+## count_fields ()
+
+## date_names ()
+
+## format_delim ()
+
+## guess_encoding ()
+
+## locale ()
+
+## parse_atomic ()
+
+## parse_datetime ()
+
+## parse_factor ()
+
+## parse_guess ()
+
+## parse_number ()
+
+## problems ()
+
+## read_delim ()
+
+## read_file ()
+
+## read_fwf ()
+
+## read_lines ()
+
+## read_log ()
+
+## read_table ()
+
+## spec_delim ()
+
+## type_convert ()
+
+## write_delim ()
