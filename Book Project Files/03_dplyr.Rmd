@@ -127,6 +127,14 @@ The exclamation point ```!``` is used to indicate 'nor' (see next example) and `
 
 Filtering can also be based on whether an element is NA.
 
+#Heather Geiger comment - I am not sure this is the best example, since there actually no NAs in this column (missing values are listed as empty strings). Maybe you could convert the empty strings to NAs first, like so?
+
+#avengers.data_incl_NAs <- avengers.data
+#avengers.data_incl_NAs[,"Probationary Introl"] <- plyr::mapvalues(avengers.data_incl_NAs[,"Probationary Introl"],
+  #from = "",to=NA)
+
+#Then if you run your same command to filter out NAs on avengers.data_incl_NAs instead of plain avengers.data, it will give just the rows that have a date in column "Probationary Introl". I think this better shows the function in action.
+
 ```{r}
 avengers.data %>%
   filter(!is.na(`Probationary Introl`)) %>%
@@ -153,6 +161,19 @@ avengers.data %>%
 ```
 
 Of course, all of these can be combined with 'and' ```&``` and 'or' ```|``` logical operators.
+
+#Heather Geiger comment - maybe it would be good to have one last really complex example? I was thinking something like this, to look for EITHER females that have appeared more than 500 times, or males that have appeared less than 200 times.
+
+#high_appearance_females <- avengers.data %>%
+filter(Gender == "FEMALE" & Appearances > 500)
+
+#low_appearance_males <- avengers.data %>%
+filter(Gender == "MALE" & Appearances < 200)
+
+#high_appearance_females_or_low_appearance_males <- avengers.data %>%
+filter((Gender == "FEMALE" & Appearances > 500) | (Gender == "MALE" & Appearances < 200))
+
+#You can run nrow function (or the tidyverse equivalent) and see that there are 10 high appearance females and 65 low appearance males. Thus, the fact that we get 75 results for the query using OR operator makes sense, and confirms that we set it up correctly.
 
 There are three related functions ```filter_if()```, ```filter_all()```, and ```filter_at()```. See scoped operations.
 
