@@ -127,11 +127,21 @@ The exclamation point ```!``` is used to indicate 'nor' (see next example) and `
 
 Filtering can also be based on whether an element is NA.
 
+This data set does not have any NAs, but rather has empty strings in cases where the variable does not apply. 
+
+To demonstrate the technique of filtering out NAs, let's convert these empty strings to NAs.
+
+Then, use the filter function to select cases where the variable is non-NA.
+
 ```{r}
-avengers.data %>%
-  filter(!is.na(`Probationary Introl`)) %>%
-  head() %>%
-  kable()
+avengers.data_incl_NAs <- avengers.data
+var <- "Probationary Introl"
+avengers.data_incl_NAs[,var] <- plyr::mapvalues(avengers.data_incl_NAs[,var],
+  from = "",to=NA)
+
+avengers.data_incl_NAs %>%
+filter(!is.na(`Probationary Introl`)) %>%
+kable()
 ```
 
 Between can be used to filter between a range of values.
@@ -155,6 +165,25 @@ avengers.data %>%
 Of course, all of these can be combined with 'and' ```&``` and 'or' ```|``` logical operators.
 
 There are three related functions ```filter_if()```, ```filter_all()```, and ```filter_at()```. See scoped operations.
+
+For a last example, let's combine the and operator with the or operator to choose results meeting two mutually exclusive criteria, each based on two different conditions.
+
+```{r}
+high_appearance_females <- avengers.data %>%
+filter(Gender == "FEMALE" & Appearances > 500)
+
+low_appearance_males <- avengers.data %>%
+filter(Gender == "MALE" & Appearances < 200)
+
+high_appearance_females_or_low_appearance_males <- avengers.data %>%
+filter((Gender == "FEMALE" & Appearances > 500) | (Gender == "MALE" & Appearances < 200))
+
+nrow(high_appearance_females)
+nrow(low_appearance_males)
+nrow(high_appearance_females_or_low_appearance_males)
+```
+
+There are 10 high appearance females and 65 low appearance males. Thus, the fact that we get 75 results for the query using OR operator makes sense, as the criteria we looked for using the OR operator are mutually exclusive.
 
 ## arrange()
 arrange changes the natural column order of the data frame. It takes data frame
