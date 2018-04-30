@@ -194,6 +194,105 @@
 
 ## scale_manual ()
 
+Read in a CSV file with survey data about Thanksgiving. 
+
+More info available here: 
+
+https://github.com/fivethirtyeight/data/tree/master/thanksgiving-2015
+
+```{r}
+csv_link <- "https://raw.githubusercontent.com/fivethirtyeight/data/master/thanksgiving-2015/thanksgiving-2015-poll-data.csv"
+thanksgiving <- read.csv(csv_link,header=TRUE,stringsAsFactors=FALSE)
+```
+
+Filter only for individuals that celebrate Thanksgiving, after cleaning up some column names.
+
+```{r}
+colnames(thanksgiving)[2] <- "Celebrates_Thanksgiving"
+colnames(thanksgiving)[c(25,38,50)] <- c("Which of these side dishes aretypically served at your Thanksgiving dinner? Please select all that apply. - Other (please specify again)",
+"Which type of pie is typically served at your Thanksgiving dinner? Please select all that apply. - Other (please specify again)",
+"Which of these desserts do you typically have at Thanksgiving dinner? Please select all that apply.   - Other (please specify again)")
+thanksgiving <- thanksgiving %>% filter(Celebrates_Thanksgiving == "Yes")
+```
+
+Select columns corresponding to side dishes, minus "Other".
+
+Then, count number of people who selected each side.
+
+```{r}
+side_dish_columns <- grep('Which of these side dishes aretypically served at your Thanksgiving dinner?',colnames(thanksgiving),value=TRUE)
+side_dish_columns <- side_dish_columns[grep('Other',side_dish_columns,invert=TRUE)]
+
+side_dish_frequency <- data.frame(Side = rep(NA,times=length(side_dish_columns)),
+Frequency = rep(NA,times=length(side_dish_columns)))
+
+for(i in 1:length(side_dish_columns))
+{
+side_name <- str_replace_all(side_dish_columns[i],
+pattern='Which of these side dishes aretypically served at your Thanksgiving dinner\\? Please select all that apply\\. - ',
+replace='')
+
+side_dish_frequency[i,] <- c(side_name,length(which(thanksgiving[,side_dish_columns[i]] != "")))
+}
+
+side_dish_frequency$Frequency <- as.numeric(side_dish_frequency$Frequency)
+```
+
+Make a barplot of the frequency of different sides, minus "Other".
+
+```{r}
+ggplot(side_dish_frequency,aes(Side,Frequency)) + 
+geom_bar(stat="identity") + 
+theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+Now use scale_fill_manual to color each bar by a color appropriate to the food.
+
+Use colors here as a guide: http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
+
+Put in colors based on order sides appear in side_dish_frequency.
+
+Let's color fruit salad as red, since may have watermelon, strawberry, etc.
+
+```{r}
+ggplot(side_dish_frequency,aes(Side,Frequency,fill=Side)) + 
+geom_bar(stat="identity") + 
+theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+scale_fill_manual(values = c("darkgreen","darkorange","floralwhite","gold","gold","firebrick1","darkgreen","gold","floralwhite","floralwhite","darkorange","darkgreen","darkorange"))
+```
+
+Sort by frequency, then adjust the order of the color vector accordingly.
+
+```{r}
+color_per_side <- c("darkgreen","darkorange","floralwhite","gold","gold","firebrick1","darkgreen","gold","floralwhite","floralwhite","darkorange","darkgreen","darkorange")
+color_per_side <- color_per_side[order(side_dish_frequency$Frequency)]
+
+side_dish_frequency$Side <- factor(side_dish_frequency$Side,
+levels=side_dish_frequency$Side[order(side_dish_frequency$Frequency)])
+
+ggplot(side_dish_frequency,
+aes(Side,Frequency,fill=Side)) + 
+geom_bar(stat="identity") + 
+theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+scale_fill_manual(values = color_per_side)
+```
+
+We find that the two most popular Thanksgiving sides are both white.
+
+What if we use shape_colour_manual instead, and specify color by side instead of fill by side?
+
+```{r}
+ggplot(side_dish_frequency,
+aes(Side,Frequency,colour=Side)) +
+geom_bar(stat="identity",fill="lightgrey") + 
+theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+scale_colour_manual(values = color_per_side)
+```
+
+Now the color of the border of the bars will change based on the colors we have specified.
+
+Using "colour" instead of "fill" probably isn't what we want for a barplot. But it might be useful for other types of plots (like scatterplots with a hollow dot for the points).
+
 ## scale_shape ()
 
 ## scale_size ()
