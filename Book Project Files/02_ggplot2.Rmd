@@ -194,6 +194,12 @@
 
 ## scale_manual ()
 
+This recipe is available including rendered plots as an Rpubs here:
+
+http://rpubs.com/hmgeiger/384663
+
+This Github contains just the code for now, not including rendered plots.
+
 Read in a CSV file with survey data about Thanksgiving. 
 
 More info available here: 
