@@ -202,7 +202,7 @@ https://github.com/fivethirtyeight/data/tree/master/thanksgiving-2015
 
 ```{r}
 csv_link <- "https://raw.githubusercontent.com/fivethirtyeight/data/master/thanksgiving-2015/thanksgiving-2015-poll-data.csv"
-thanksgiving <- read.csv(csv_link,header=TRUE,stringsAsFactors=FALSE)
+thanksgiving <- read.csv(csv_link,header=TRUE,stringsAsFactors=FALSE,check.names=FALSE)
 ```
 
 Filter only for individuals that celebrate Thanksgiving, after cleaning up some column names.
