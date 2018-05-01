@@ -156,3 +156,58 @@ str_extract_all(x, "<.*?>")
 
 
 ```
+## case ()
+
+## invert_match ()
+
+## modifiers ()
+
+## stringr-data ()
+
+## str_c ()
+
+## str_conv ()
+
+## str_count ()
+
+## str_detect ()
+
+## str_dup ()
+
+## str_extract ()
+
+## str_flatten ()
+
+## str_glue ()
+
+## str_length ()
+
+## str_locate ()
+
+## str_match ()
+
+## str_order ()
+
+## str_pad ()
+
+## str_remove ()
+
+## str_replace ()
+
+## str_replace_na ()
+
+## str_split ()
+
+## str_sub ()
+
+## str_subset ()
+
+## str_trim ()
+
+## str_trunc ()
+
+## str_view ()
+
+## str_wrap ()
+
+## word ()
