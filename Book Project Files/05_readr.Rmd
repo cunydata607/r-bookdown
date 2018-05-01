@@ -6,13 +6,13 @@ library(hms)
 ```
 ## read_csv()
 
-    * read_csv() - Reads comma-delimited files
+    ** read_csv() - Reads comma-delimited files
 
-    * read_csv2() - Reads semicolon-separated files
+    ** read_csv2() - Reads semicolon-separated files
 
-    * read_tsv() - Reads tab-delimited files
+    ** read_tsv() - Reads tab-delimited files
 
-    * read_delim() - Reads in files with any delimiter
+    ** read_delim() - Reads in files with any delimiter
 
 Read file will print out a column specification that gives the name and type of each column:
 
@@ -23,6 +23,7 @@ data <- read_csv("data/example.csv")
 `read_csv()` uses the first line of the data for the column names, the following examples will show how to tweak this behavior:
 
     * Using skip = n (n is the number of lines to skip)
+
     ```{r}
     read_csv("This the first line
     This is the second line
@@ -31,6 +32,7 @@ data <- read_csv("data/example.csv")
     ```
 
     * Using comment = "#" to skip all lines that starts with "#"
+
     ```{r}
     read_csv("# This is a comment line
     a,b,c
@@ -38,13 +40,14 @@ data <- read_csv("data/example.csv")
     ```
 
     * If there's no column names, using col_names = FALSE
+
     ```{r}
     read_csv("1,2,3
     4,5,6", col_names = FALSE)
     ```
 
     * If there's column names
-    ```{r}
+
     ```{r}
     read_csv("1,2,3
     4,5,6", col_names = c("a", "b", "c"))
@@ -74,11 +77,11 @@ guess_encoding(charToRaw("Data Analytics"))
 
 The goal of readr’s locales is to encapsulate common options that vary between languages and localities. This includes:
 
-    * The names of months and days, used when parsing dates.
-    * The default time zone, used when parsing datetimes.
-    * The character encoding, used when reading non-ASCII strings.
-    * Default date format, used when guessing column types.
-    * The decimal and grouping marks, used when reading numbers.
+    - The names of months and days, used when parsing dates.
+    - The default time zone, used when parsing datetimes.
+    - The character encoding, used when reading non-ASCII strings.
+    - Default date format, used when guessing column types.
+    - The decimal and grouping marks, used when reading numbers.
 
 ## parse_atomic ()
 
