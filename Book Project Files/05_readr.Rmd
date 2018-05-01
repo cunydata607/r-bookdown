@@ -1,5 +1,55 @@
 # readr {#readr}
 
+```{r}
+library(tidyverse)
+library(hms)
+```
+## read_csv()
+
+    * read_csv() - Reads comma-delimited files
+
+    * read_csv2() - Reads semicolon-separated files
+
+    * read_tsv() - Reads tab-delimited files
+
+    * read_delim() - Reads in files with any delimiter
+
+Read file will print out a column specification that gives the name and type of each column:
+
+```{r}
+data <- read_csv("data/example.csv")
+```
+
+`read_csv()` uses the first line of the data for the column names, the following examples will show how to tweak this behavior:
+
+    * Using skip = n (n is the number of lines to skip)
+    ```{r}
+    read_csv("This the first line
+    This is the second line
+    a,b,c
+    1,2,3", skip = 2)
+    ```
+
+    * Using comment = "#" to skip all lines that starts with "#"
+    ```{r}
+    read_csv("# This is a comment line
+    a,b,c
+    1,2,3", comment = "#")
+    ```
+
+    * If there's no column names, using col_names = FALSE
+    ```{r}
+    read_csv("1,2,3
+    4,5,6", col_names = FALSE)
+    ```
+
+    * If there's column names
+    ```{r}
+    ```{r}
+    read_csv("1,2,3
+    4,5,6", col_names = c("a", "b", "c"))
+    ```
+
 ## cols ()
 
 ## cols_condense ()
@@ -14,17 +64,73 @@
 
 ## guess_encoding ()
 
+To find the types of encoding:
+
+```{r}
+guess_encoding(charToRaw("Data Analytics"))
+```
+
 ## locale ()
+
+The goal of readr’s locales is to encapsulate common options that vary between languages and localities. This includes:
+
+    * The names of months and days, used when parsing dates.
+    * The default time zone, used when parsing datetimes.
+    * The character encoding, used when reading non-ASCII strings.
+    * Default date format, used when guessing column types.
+    * The decimal and grouping marks, used when reading numbers.
 
 ## parse_atomic ()
 
-## parse_datetime ()
+## parse_datetime (), parse_date() and parse_time()
+
+Allow to parse varoious date and time specifications.
+
+```{r}
+str(parse_date(c("2018-05-01", "2018-04-30")))
+```
+
+```{r}
+parse_time(c("6:43 pm"))
+```
 
 ## parse_factor ()
 
-## parse_guess ()
+Creates factors, the data structure that R uses to represent categorical variables with fixed and known values.
 
-## parse_number ()
+```{r}
+parse_factor(c("a", "b", "c"), levels = c("a", "b"))
+```
+
+## parse_logical(), parse_number(), parse_double() and parse_integer()
+
+Parse logicals, numbers, doubles and integers respectively.
+
+```{r}
+str(parse_logical(c("TRUE", "FALSE", "NA")))
+```
+
+```{r}
+parse_number("$112,33")
+parse_number("$12.33.21", locale = locale(grouping_mark = "."))
+```
+
+```{r}
+parse_double("12.33")
+parse_double("12,33", locale = locale(decimal_mark = ","))
+```
+
+```{r}
+str(parse_integer(c("1", "2", "3")))
+```
+
+## parse_character()
+
+```{r}
+parse_character("Data analytics", locale = locale(encoding = "Latin1"))
+```
+
+## parse_guess ()
 
 ## problems ()
 
