@@ -22,36 +22,36 @@ data <- read_csv("data/example.csv")
 
 `read_csv()` uses the first line of the data for the column names, the following examples will show how to tweak this behavior:
 
-    * Using skip = n (n is the number of lines to skip)
+    ** Using skip = n (n is the number of lines to skip)
 
-    ```{r}
-    read_csv("This the first line
-    This is the second line
-    a,b,c
-    1,2,3", skip = 2)
-    ```
+```{r}
+read_csv("This the first line
+This is the second line
+a,b,c
+1,2,3", skip = 2)
+```
 
-    * Using comment = "#" to skip all lines that starts with "#"
+    ** Using comment = "#" to skip all lines that starts with "#"
 
-    ```{r}
-    read_csv("# This is a comment line
-    a,b,c
-    1,2,3", comment = "#")
-    ```
+```{r}
+read_csv("# This is a comment line
+a,b,c
+1,2,3", comment = "#")
+```
 
-    * If there's no column names, using col_names = FALSE
+    ** If there's no column names, using col_names = FALSE
 
-    ```{r}
-    read_csv("1,2,3
-    4,5,6", col_names = FALSE)
-    ```
+```{r}
+read_csv("1,2,3
+4,5,6", col_names = FALSE)
+```
 
-    * If there's column names
+    ** If there's column names
 
-    ```{r}
-    read_csv("1,2,3
-    4,5,6", col_names = c("a", "b", "c"))
-    ```
+```{r}
+read_csv("1,2,3
+4,5,6", col_names = c("a", "b", "c"))
+```
 
 ## cols ()
 
