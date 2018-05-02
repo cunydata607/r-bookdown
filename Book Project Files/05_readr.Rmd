@@ -6,13 +6,13 @@ library(hms)
 ```
 ## read_csv()
 
-    **read_csv()** - Reads comma-delimited files
+**read_csv()** - Reads comma-delimited files
 
-    **read_csv2()** - Reads semicolon-separated files
+**read_csv2()** - Reads semicolon-separated files
 
-    **read_tsv()** - Reads tab-delimited files
+**read_tsv()** - Reads tab-delimited files
 
-    **read_delim()** - Reads in files with any delimiter
+**read_delim()** - Reads in files with any delimiter
 
 Read file will print out a column specification that gives the name and type of each column:
 
@@ -22,7 +22,7 @@ data <- read_csv("data/example.csv")
 
 `read_csv()` uses the first line of the data for the column names, the following examples will show how to tweak this behavior:
 
-    __Using skip = n (n is the number of lines to skip)__
+__Using skip = n (n is the number of lines to skip)__
 
 ```{r}
 read_csv("This the first line
@@ -31,7 +31,7 @@ a,b,c
 1,2,3", skip = 2)
 ```
 
-    __Using comment = "#" to skip all lines that starts with "#"__
+__Using comment = "#" to skip all lines that starts with "#"__
 
 ```{r}
 read_csv("# This is a comment line
@@ -39,14 +39,14 @@ a,b,c
 1,2,3", comment = "#")
 ```
 
-    __If there's no column names, using col_names = FALSE__
+__If there's no column names, using col_names = FALSE__
 
 ```{r}
 read_csv("1,2,3
 4,5,6", col_names = FALSE)
 ```
 
-    __If there's column names__
+__If there's column names__
 
 ```{r}
 read_csv("1,2,3
