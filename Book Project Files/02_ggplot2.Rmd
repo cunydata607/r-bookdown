@@ -379,4 +379,4 @@ ggexample <- ggplot(vehicles, aes(factor(vehicles$year), vehicles$hwy, color = h
 ggiraph(code = print(ggexample))
 ```
 As you can see in the example above, the boxs change color on when the users mouse hovers over the item.
-More information can be found here: http://rpubs.com/nschettini/386363 
+More information can be found here: http://rpubs.com/nschettini/386363  
