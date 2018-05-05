@@ -328,3 +328,55 @@ Using "colour" instead of "fill" probably isn't what we want for a barplot. But 
 ## theme_get ()
 
 ## txhousing ()
+
+-----
+There is a complement to the ggplot2 function - ggiraph. Ggiraph allows the user to turn their normal ggplot graphs into interactive graphics.
+
+Some usage of the ggiraph functions are:
+
+geom_bar_interactive
+geom_boxplot_interactive
+geom_histogram_interactive
+geom_line_interactive
+geom_map_interactive
+geom_path_interactive
+geom_point_interactive
+geom_polygon_interactive
+geom_rect_interactive
+geom_segment_interactive
+geom_text_interactive
+geom_tile_interactive
+
+The ggiraph package lets you add  more aesthetics to your ggplot graph.
+
+tooltip: column of dataset that contains tooltips to be displayed when mouse is over elements.
+data_id: column of dataset that contains id to be associated with elements
+
+The ggiraph function is called using library(ggiraph).
+
+Tooltips Tooltips can be created using the following example:
+
+```{r}
+library(tidyverse)
+library(ggiraph)
+library(fueleconomy)
+```
+```{r}
+ggexample <- ggplot(vehicles, aes(factor(vehicles$year), vehicles$hwy)) +
+  geom_boxplot_interactive(aes(tooltip = year))
+  
+ggiraph(code = print(ggexample))
+```
+When the users mouse hovers over an item, the tooltip will be displayed - in this case "Year".
+
+
+Hover effects can be created using the following example:
+
+```{r}
+ggexample <- ggplot(vehicles, aes(factor(vehicles$year), vehicles$hwy, color = hwy)) +
+  geom_boxplot_interactive(aes(tooltip = year, data_id = year))
+  
+ggiraph(code = print(ggexample))
+```
+As you can see in the example above, the boxs change color on when the users mouse hovers over the item.
+More information can be found here: http://rpubs.com/nschettini/386363 
