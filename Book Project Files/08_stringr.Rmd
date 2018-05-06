@@ -156,9 +156,31 @@ str_extract_all(x, "<.*?>")
 
 
 ```
-## case ()
+### str_to_upper ()
+str_to_upper (string)
+Convert case of a string.
+
+Example:
+```{r str_to_upper} 
+exstring <- "the example string"
+str_to_upper(exstring)
+```
 
 ## invert_match ()
+invert_match (string)
+
+Invert a matrix of match locations to match the opposite of what was previously matched.
+
+Example:
+```{r invert_match} 
+numbers <- "1 and 2 and 4 and 456"
+num_loc <- str_locate_all(numbers, "[0-9]+")[[1]]
+str_sub(numbers, num_loc[, "start"], num_loc[, "end"])
+
+text_loc <- invert_match(num_loc)
+str_sub(numbers, text_loc[, "start"], text_loc[, "end"])
+
+```
 
 ## modifiers ()
 
@@ -167,20 +189,94 @@ str_extract_all(x, "<.*?>")
 ## str_c ()
 
 ## str_conv ()
+str_conv(string, encoding)
+
+This is a convenient way to override the current encoding of a string.
+
+```{r str_conv}
+x <- rawToChar(as.raw(177))
+x
+str_conv(x, "ISO-8859-2")
+str_conv(x, "ISO-8859-1")
+```
 
 ## str_count ()
 
-## str_detect ()
+str_count(string, pattern = "")
+
+Count The Number Of Matches In A String.
+
+Example:-
+
+```{r str_count}
+fruit <- c("apple", "banana", "pear", "pineapple")
+str_count(fruit, "a")
+str_count(fruit, "p")
+str_count(fruit, "e")
+str_count(fruit, c("a", "b", "p", "p"))
+```
+
 
 ## str_dup ()
 
-## str_extract ()
+str_dup(string, times)
+
+Duplicate And Concatenate Strings Within A Character Vector.
+
+Example:-
+
+```{r str_dup}
+fruit <- c("apple", "pear", "banana")
+str_dup(fruit, 2)
+str_dup(fruit, 1:3)
+str_c("ba", str_dup("na", 0:5))
+```
+
 
 ## str_flatten ()
 
+str_flatten(string, collapse = "")
+
+Flatten a string
+
+Example:-
+
+```{r str_flatten}
+str_flatten(letters)
+str_flatten(letters, "-")
+```
+
+
 ## str_glue ()
 
+str_glue(..., .sep = "", .envir = parent.frame())
+
+These functions are wrappers around glue::glue() and glue::glue_data(), which provide a powerful and elegant syntax for interpolating strings. These wrappers provide a small set of the full options. Use the functions directly from glue for more control.
+
+Example:-
+
+```{r str_glue}
+name <- "Fred"
+age <- 50
+anniversary <- as.Date("1991-10-12")
+str_glue(
+  "My name is {name}, ",
+  "my age next year is {age + 1}, ",
+  "and my anniversary is {format(anniversary, '%A, %B %d, %Y')}."
+)
+```
 ## str_length ()
+
+str_length(string)
+
+Returns The Length Of A String.
+
+Example:-
+
+```{r str_length}
+str_length(c("i", "like", "Ice Cream", NA))
+```
+
 
 ## str_locate ()
 
