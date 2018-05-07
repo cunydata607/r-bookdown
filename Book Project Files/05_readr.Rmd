@@ -17,7 +17,7 @@ library(hms)
 Read file will print out a column specification that gives the name and type of each column:
 
 ```{r}
-data <- read_csv("data/example.csv")
+data <- read_csv("https://raw.githubusercontent.com/cunydata607/r-bookdown/master/Book%20Project%20Files/datasets/example.csv")
 ```
 
 `read_csv()` uses the first line of the data for the column names, the following examples will show how to tweak this behavior:
