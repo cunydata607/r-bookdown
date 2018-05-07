@@ -290,6 +290,23 @@ str_length(c("i", "like", "Ice Cream", NA))
 
 ### str_order ()
 
+str_order takes a character vector as input and returns an integer vector.  It can also sort digits numerically if `numeric = TRUE` is flagged (default is FALSE).
+Example:
+```{str_order}
+groceries <- c("Apples", "Oranges", "Bananas", "Watermelon", "Strawberry")
+
+# Return integer vector
+str_order(groceries)
+
+# How to sort
+groceries[str_order(groceries)]
+
+# Numerical sort
+numbers <- c("1000", "500000", "2ab", "117")
+numbers[str_order(numbers, numeric = TRUE)]
+numbers[str_order(numbers)]
+```
+
 ### str_pad ()
 
 ### str_remove ()
