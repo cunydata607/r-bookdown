@@ -24,12 +24,17 @@ knitr::write_bib(c(
 # Still not really sure how this works! ?write_bib 
 ```
 
-```{r}
-library(tidyverse)
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(tidy = TRUE)
+knitr::opts_chunk$set(warning = FALSE)
+
+libs <- c("tidyverse", "magrittr", "knitr", "kableExtra")
+lapply(libs, require, character.only = T)
 ```
 
 
-# Preface
+Preface
 
 Testing the bibliography below... To create an inline reference use square brackets and \@R- followed by the package name. 
 

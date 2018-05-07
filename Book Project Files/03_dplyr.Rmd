@@ -1,8 +1,3 @@
-```{r, include=FALSE}
-library(tidyverse)
-library(knitr)
-```
-
 # dplyr {#dplyr}
 
 dplyr provides a grammar of data manipulation, providing a consistent set of verbs that solve the most common data manipulation challenges. 
@@ -12,6 +7,9 @@ dplyr provides a grammar of data manipulation, providing a consistent set of ver
 The select function provides options for selecting only certain columns of data to work with.
 
 ```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(knitr)
+library(kableExtra)
 alcohol.data <- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv') 
 alcohol.data %>% head() %>% kable()
 ```
@@ -45,6 +43,8 @@ There are a number of additional functions that can be used to select columns ba
 * ```ends_with()``` which selects all columns that end with the given text
 * ```contains()``` which selects all columns that contain the given text anywhere
 * ```matches()``` which selects all columns that match the given regular expression. See regular expressions for more details.
+* ```num_range("x", 1:5)``` which selects the variables named x01, x02, x03, x04 and x05
+* ```one_of(x)``` which selects every name that appears in x, which should be a character vector.
 
 Finally, a dash (-) may be added to the beginning of any of these functions to select all columns that do NOT match.
 
@@ -133,9 +133,8 @@ To demonstrate the technique of filtering out NAs, let's convert these empty str
 
 Then, use the filter function to select cases where the variable is non-NA.
 
-```{r eval=FALSE}
-# Need to debug and get rid of eval=FALSE above once working
-avengers.data_incl_NAs <- avengers.data
+```{r}
+avengers.data_incl_NAs <- data.frame(avengers.data,check.names=FALSE)
 var <- "Probationary Introl"
 avengers.data_incl_NAs[,var] <- plyr::mapvalues(avengers.data_incl_NAs[,var],
   from = "",to=NA)
@@ -187,17 +186,68 @@ nrow(high_appearance_females_or_low_appearance_males)
 There are 10 high appearance females and 65 low appearance males. Thus, the fact that we get 75 results for the query using OR operator makes sense, as the criteria we looked for using the OR operator are mutually exclusive.
 
 ## arrange()
+
 arrange changes the natural column order of the data frame. It takes data frame
 name and the column name(s) as input and re arranges the columns based on input.
 
 
 ## mutate() and transmute()
 
+The mutate function creates new columns which can be added to a copy of the dataset.  You can also add new columns to your existing dataset by overwriting it like this:
+
+```{r}
+alcohol.data <- mutate(alcohol.data, total_servings = beer_servings + spirit_servings + wine_servings)
+```
+
+You can use any mathematical operator (+, -, *, /) as well as functions like:
+
+- log()
+- lead(), lag()
+- dense_rank(), min_rank(), percent_rank(), row_number(), cume_dist(), ntile()
+- cumsum(), cummean(), cummin(), cummax(), cumany(), cumall()
+- na_if(), coalesce()
+- if_else(), recode(), case_when()
+
+```{r}
+# Rank into 5 "buckets" by displacement
+mtcars <- mutate(mtcars, rank = ntile(disp, 5))
+```
+
+Transmute does the same thing as mutate, but drops all the other columns not specified in your function arguments.
+
+```{r}
+transmute(alcohol.data, country, total_servings = beer_servings + spirit_servings + wine_servings)
+```
 
 ## summarise()
 
+The summarise function returns a table of summary statistics that you specify by runnning functions on your data.  You name each statistic and then specify what function to use and separate additional statistics with commas like this:
+
+```{r}
+summarise(mtcars, avg_disp = mean(disp), max_disp = max(disp), min_disp = min(disp), median_disp = median(disp))
+```
+
+In addtion to all the usual summary statistic functions in R, summarise comes with some addtional functions that you can use:
+
+* ```first()```  - returns the first value
+* ```last``` - returns the last value
+* ```nth``` - returns the nth value
+* ```n``` - returns the number of rows
+* ```n_distinct``` - returns the number of unique values
+
+```{r}
+summarise(mtcars, first = first(disp), last = last(disp), fifth = nth(disp, 5), n = n(), unique = n_distinct(disp))
+```
 
 ## sample_n() and sample_frac()
 
+`sample_n` and `sample_frac` return random samples from your data.  `sample_n` wil select the number of rows you specify in the second argument at random. `sample_frac` returns a random sample fraction of rows.  You specify the fraction of rows you want returned in your second function argument with a decimal number from 0 to 1.  Both functions can be set to sample with or without replacement using the `replace = TRUE/FALSE` argument.  
 
-## scored operations
+```{r}
+sample_n(mtcars, 5, replace = TRUE)
+```
+
+```{r}
+sample_frac(mtcars, 0.25, replace = FALSE)
+```
+

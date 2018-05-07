@@ -25,7 +25,7 @@
 <meta name="author" content="CUNY SPS DATA 607 Spring 2018">
 
 
-<meta name="date" content="2018-03-02">
+<meta name="date" content="2018-05-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -49,6 +49,71 @@
 
 
 
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 </head>
 
@@ -62,18 +127,271 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#core-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Core tidyverse</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#core-tidyverse"><i class="fa fa-check"></i><b>1.1</b> Core tidyverse</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>3</b> ggplot2</a></li>
-<li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> dplyr</a></li>
-<li class="chapter" data-level="5" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>5</b> tidyr</a></li>
-<li class="chapter" data-level="6" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>6</b> readr</a></li>
-<li class="chapter" data-level="7" data-path="purrr.html"><a href="purrr.html"><i class="fa fa-check"></i><b>7</b> purrr</a></li>
-<li class="chapter" data-level="8" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>8</b> tibble</a></li>
-<li class="chapter" data-level="9" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>9</b> stringr</a></li>
-<li class="chapter" data-level="10" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>10</b> forcats</a></li>
+<li class="chapter" data-level="2" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>2</b> ggplot2</a><ul>
+<li class="chapter" data-level="2.1" data-path="ggplot2.html"><a href="ggplot2.html#gg"><i class="fa fa-check"></i><b>2.1</b> +.gg ()</a></li>
+<li class="chapter" data-level="2.2" data-path="ggplot2.html"><a href="ggplot2.html#aes"><i class="fa fa-check"></i><b>2.2</b> aes ()</a></li>
+<li class="chapter" data-level="2.3" data-path="ggplot2.html"><a href="ggplot2.html#aes_"><i class="fa fa-check"></i><b>2.3</b> aes_ ()</a></li>
+<li class="chapter" data-level="2.4" data-path="ggplot2.html"><a href="ggplot2.html#aes_colour_fill_alpha"><i class="fa fa-check"></i><b>2.4</b> aes_colour_fill_alpha ()</a></li>
+<li class="chapter" data-level="2.5" data-path="ggplot2.html"><a href="ggplot2.html#aes_group_order"><i class="fa fa-check"></i><b>2.5</b> aes_group_order ()</a></li>
+<li class="chapter" data-level="2.6" data-path="ggplot2.html"><a href="ggplot2.html#aes_linetype_size_shape"><i class="fa fa-check"></i><b>2.6</b> aes_linetype_size_shape ()</a></li>
+<li class="chapter" data-level="2.7" data-path="ggplot2.html"><a href="ggplot2.html#aes_position"><i class="fa fa-check"></i><b>2.7</b> aes_position ()</a></li>
+<li class="chapter" data-level="2.8" data-path="ggplot2.html"><a href="ggplot2.html#annotate"><i class="fa fa-check"></i><b>2.8</b> annotate ()</a></li>
+<li class="chapter" data-level="2.9" data-path="ggplot2.html"><a href="ggplot2.html#annotation_custom"><i class="fa fa-check"></i><b>2.9</b> annotation_custom ()</a></li>
+<li class="chapter" data-level="2.10" data-path="ggplot2.html"><a href="ggplot2.html#annotation_logticks"><i class="fa fa-check"></i><b>2.10</b> annotation_logticks ()</a></li>
+<li class="chapter" data-level="2.11" data-path="ggplot2.html"><a href="ggplot2.html#annotation_map"><i class="fa fa-check"></i><b>2.11</b> annotation_map ()</a></li>
+<li class="chapter" data-level="2.12" data-path="ggplot2.html"><a href="ggplot2.html#annotation_raster"><i class="fa fa-check"></i><b>2.12</b> annotation_raster ()</a></li>
+<li class="chapter" data-level="2.13" data-path="ggplot2.html"><a href="ggplot2.html#autoplot"><i class="fa fa-check"></i><b>2.13</b> autoplot ()</a></li>
+<li class="chapter" data-level="2.14" data-path="ggplot2.html"><a href="ggplot2.html#borders"><i class="fa fa-check"></i><b>2.14</b> borders ()</a></li>
+<li class="chapter" data-level="2.15" data-path="ggplot2.html"><a href="ggplot2.html#coord_cartesian"><i class="fa fa-check"></i><b>2.15</b> coord_cartesian ()</a></li>
+<li class="chapter" data-level="2.16" data-path="ggplot2.html"><a href="ggplot2.html#coord_fixed"><i class="fa fa-check"></i><b>2.16</b> coord_fixed ()</a></li>
+<li class="chapter" data-level="2.17" data-path="ggplot2.html"><a href="ggplot2.html#coord_flip"><i class="fa fa-check"></i><b>2.17</b> coord_flip ()</a></li>
+<li class="chapter" data-level="2.18" data-path="ggplot2.html"><a href="ggplot2.html#coord_map"><i class="fa fa-check"></i><b>2.18</b> coord_map ()</a></li>
+<li class="chapter" data-level="2.19" data-path="ggplot2.html"><a href="ggplot2.html#coord_polar"><i class="fa fa-check"></i><b>2.19</b> coord_polar ()</a></li>
+<li class="chapter" data-level="2.20" data-path="ggplot2.html"><a href="ggplot2.html#coord_trans"><i class="fa fa-check"></i><b>2.20</b> coord_trans ()</a></li>
+<li class="chapter" data-level="2.21" data-path="ggplot2.html"><a href="ggplot2.html#cut_interval"><i class="fa fa-check"></i><b>2.21</b> cut_interval ()</a></li>
+<li class="chapter" data-level="2.22" data-path="ggplot2.html"><a href="ggplot2.html#diamonds"><i class="fa fa-check"></i><b>2.22</b> diamonds ()</a></li>
+<li class="chapter" data-level="2.23" data-path="ggplot2.html"><a href="ggplot2.html#economics"><i class="fa fa-check"></i><b>2.23</b> economics ()</a></li>
+<li class="chapter" data-level="2.24" data-path="ggplot2.html"><a href="ggplot2.html#expand_limits"><i class="fa fa-check"></i><b>2.24</b> expand_limits ()</a></li>
+<li class="chapter" data-level="2.25" data-path="ggplot2.html"><a href="ggplot2.html#facet_grid"><i class="fa fa-check"></i><b>2.25</b> facet_grid ()</a></li>
+<li class="chapter" data-level="2.26" data-path="ggplot2.html"><a href="ggplot2.html#facet_wrap"><i class="fa fa-check"></i><b>2.26</b> facet_wrap ()</a></li>
+<li class="chapter" data-level="2.27" data-path="ggplot2.html"><a href="ggplot2.html#faithfuld"><i class="fa fa-check"></i><b>2.27</b> faithfuld ()</a></li>
+<li class="chapter" data-level="2.28" data-path="ggplot2.html"><a href="ggplot2.html#fortify"><i class="fa fa-check"></i><b>2.28</b> fortify ()</a></li>
+<li class="chapter" data-level="2.29" data-path="ggplot2.html"><a href="ggplot2.html#geom_abline"><i class="fa fa-check"></i><b>2.29</b> geom_abline ()</a></li>
+<li class="chapter" data-level="2.30" data-path="ggplot2.html"><a href="ggplot2.html#geom_bar"><i class="fa fa-check"></i><b>2.30</b> geom_bar ()</a></li>
+<li class="chapter" data-level="2.31" data-path="ggplot2.html"><a href="ggplot2.html#geom_bin2d"><i class="fa fa-check"></i><b>2.31</b> geom_bin2d ()</a></li>
+<li class="chapter" data-level="2.32" data-path="ggplot2.html"><a href="ggplot2.html#geom_blank"><i class="fa fa-check"></i><b>2.32</b> geom_blank ()</a></li>
+<li class="chapter" data-level="2.33" data-path="ggplot2.html"><a href="ggplot2.html#geom_boxplot"><i class="fa fa-check"></i><b>2.33</b> geom_boxplot ()</a></li>
+<li class="chapter" data-level="2.34" data-path="ggplot2.html"><a href="ggplot2.html#geom_contour"><i class="fa fa-check"></i><b>2.34</b> geom_contour ()</a></li>
+<li class="chapter" data-level="2.35" data-path="ggplot2.html"><a href="ggplot2.html#geom_count"><i class="fa fa-check"></i><b>2.35</b> geom_count ()</a></li>
+<li class="chapter" data-level="2.36" data-path="ggplot2.html"><a href="ggplot2.html#geom_crossbar"><i class="fa fa-check"></i><b>2.36</b> geom_crossbar ()</a></li>
+<li class="chapter" data-level="2.37" data-path="ggplot2.html"><a href="ggplot2.html#geom_density"><i class="fa fa-check"></i><b>2.37</b> geom_density ()</a></li>
+<li class="chapter" data-level="2.38" data-path="ggplot2.html"><a href="ggplot2.html#geom_density_2d"><i class="fa fa-check"></i><b>2.38</b> geom_density_2d ()</a></li>
+<li class="chapter" data-level="2.39" data-path="ggplot2.html"><a href="ggplot2.html#geom_dotplot"><i class="fa fa-check"></i><b>2.39</b> geom_dotplot ()</a></li>
+<li class="chapter" data-level="2.40" data-path="ggplot2.html"><a href="ggplot2.html#geom_errorbarh"><i class="fa fa-check"></i><b>2.40</b> geom_errorbarh ()</a></li>
+<li class="chapter" data-level="2.41" data-path="ggplot2.html"><a href="ggplot2.html#geom_freqpoly"><i class="fa fa-check"></i><b>2.41</b> geom_freqpoly ()</a></li>
+<li class="chapter" data-level="2.42" data-path="ggplot2.html"><a href="ggplot2.html#geom_hex"><i class="fa fa-check"></i><b>2.42</b> geom_hex ()</a></li>
+<li class="chapter" data-level="2.43" data-path="ggplot2.html"><a href="ggplot2.html#geom_jitter"><i class="fa fa-check"></i><b>2.43</b> geom_jitter ()</a></li>
+<li class="chapter" data-level="2.44" data-path="ggplot2.html"><a href="ggplot2.html#geom_label"><i class="fa fa-check"></i><b>2.44</b> geom_label ()</a></li>
+<li class="chapter" data-level="2.45" data-path="ggplot2.html"><a href="ggplot2.html#geom_map"><i class="fa fa-check"></i><b>2.45</b> geom_map ()</a></li>
+<li class="chapter" data-level="2.46" data-path="ggplot2.html"><a href="ggplot2.html#geom_path"><i class="fa fa-check"></i><b>2.46</b> geom_path ()</a></li>
+<li class="chapter" data-level="2.47" data-path="ggplot2.html"><a href="ggplot2.html#geom_point"><i class="fa fa-check"></i><b>2.47</b> geom_point ()</a></li>
+<li class="chapter" data-level="2.48" data-path="ggplot2.html"><a href="ggplot2.html#geom_polygon"><i class="fa fa-check"></i><b>2.48</b> geom_polygon ()</a></li>
+<li class="chapter" data-level="2.49" data-path="ggplot2.html"><a href="ggplot2.html#geom_qq"><i class="fa fa-check"></i><b>2.49</b> geom_qq ()</a></li>
+<li class="chapter" data-level="2.50" data-path="ggplot2.html"><a href="ggplot2.html#geom_quantile"><i class="fa fa-check"></i><b>2.50</b> geom_quantile ()</a></li>
+<li class="chapter" data-level="2.51" data-path="ggplot2.html"><a href="ggplot2.html#geom_raster"><i class="fa fa-check"></i><b>2.51</b> geom_raster ()</a></li>
+<li class="chapter" data-level="2.52" data-path="ggplot2.html"><a href="ggplot2.html#geom_ribbon"><i class="fa fa-check"></i><b>2.52</b> geom_ribbon ()</a></li>
+<li class="chapter" data-level="2.53" data-path="ggplot2.html"><a href="ggplot2.html#geom_rug"><i class="fa fa-check"></i><b>2.53</b> geom_rug ()</a></li>
+<li class="chapter" data-level="2.54" data-path="ggplot2.html"><a href="ggplot2.html#geom_segment"><i class="fa fa-check"></i><b>2.54</b> geom_segment ()</a></li>
+<li class="chapter" data-level="2.55" data-path="ggplot2.html"><a href="ggplot2.html#geom_smooth"><i class="fa fa-check"></i><b>2.55</b> geom_smooth ()</a></li>
+<li class="chapter" data-level="2.56" data-path="ggplot2.html"><a href="ggplot2.html#geom_spoke"><i class="fa fa-check"></i><b>2.56</b> geom_spoke ()</a></li>
+<li class="chapter" data-level="2.57" data-path="ggplot2.html"><a href="ggplot2.html#geom_violin"><i class="fa fa-check"></i><b>2.57</b> geom_violin ()</a></li>
+<li class="chapter" data-level="2.58" data-path="ggplot2.html"><a href="ggplot2.html#ggplot"><i class="fa fa-check"></i><b>2.58</b> ggplot ()</a></li>
+<li class="chapter" data-level="2.59" data-path="ggplot2.html"><a href="ggplot2.html#ggproto"><i class="fa fa-check"></i><b>2.59</b> ggproto ()</a></li>
+<li class="chapter" data-level="2.60" data-path="ggplot2.html"><a href="ggplot2.html#ggsave"><i class="fa fa-check"></i><b>2.60</b> ggsave ()</a></li>
+<li class="chapter" data-level="2.61" data-path="ggplot2.html"><a href="ggplot2.html#ggtheme"><i class="fa fa-check"></i><b>2.61</b> ggtheme ()</a></li>
+<li class="chapter" data-level="2.62" data-path="ggplot2.html"><a href="ggplot2.html#guides"><i class="fa fa-check"></i><b>2.62</b> guides ()</a></li>
+<li class="chapter" data-level="2.63" data-path="ggplot2.html"><a href="ggplot2.html#guide_colourbar"><i class="fa fa-check"></i><b>2.63</b> guide_colourbar ()</a></li>
+<li class="chapter" data-level="2.64" data-path="ggplot2.html"><a href="ggplot2.html#guide_legend"><i class="fa fa-check"></i><b>2.64</b> guide_legend ()</a></li>
+<li class="chapter" data-level="2.65" data-path="ggplot2.html"><a href="ggplot2.html#hmisc"><i class="fa fa-check"></i><b>2.65</b> hmisc ()</a></li>
+<li class="chapter" data-level="2.66" data-path="ggplot2.html"><a href="ggplot2.html#labeller"><i class="fa fa-check"></i><b>2.66</b> labeller ()</a></li>
+<li class="chapter" data-level="2.67" data-path="ggplot2.html"><a href="ggplot2.html#labellers"><i class="fa fa-check"></i><b>2.67</b> labellers ()</a></li>
+<li class="chapter" data-level="2.68" data-path="ggplot2.html"><a href="ggplot2.html#label_bquote"><i class="fa fa-check"></i><b>2.68</b> label_bquote ()</a></li>
+<li class="chapter" data-level="2.69" data-path="ggplot2.html"><a href="ggplot2.html#labs"><i class="fa fa-check"></i><b>2.69</b> labs ()</a></li>
+<li class="chapter" data-level="2.70" data-path="ggplot2.html"><a href="ggplot2.html#lims"><i class="fa fa-check"></i><b>2.70</b> lims ()</a></li>
+<li class="chapter" data-level="2.71" data-path="ggplot2.html"><a href="ggplot2.html#luv_colours"><i class="fa fa-check"></i><b>2.71</b> luv_colours ()</a></li>
+<li class="chapter" data-level="2.72" data-path="ggplot2.html"><a href="ggplot2.html#margin"><i class="fa fa-check"></i><b>2.72</b> margin ()</a></li>
+<li class="chapter" data-level="2.73" data-path="ggplot2.html"><a href="ggplot2.html#mean_se"><i class="fa fa-check"></i><b>2.73</b> mean_se ()</a></li>
+<li class="chapter" data-level="2.74" data-path="ggplot2.html"><a href="ggplot2.html#midwest"><i class="fa fa-check"></i><b>2.74</b> midwest ()</a></li>
+<li class="chapter" data-level="2.75" data-path="ggplot2.html"><a href="ggplot2.html#mpg"><i class="fa fa-check"></i><b>2.75</b> mpg ()</a></li>
+<li class="chapter" data-level="2.76" data-path="ggplot2.html"><a href="ggplot2.html#msleep"><i class="fa fa-check"></i><b>2.76</b> msleep ()</a></li>
+<li class="chapter" data-level="2.77" data-path="ggplot2.html"><a href="ggplot2.html#position_dodge"><i class="fa fa-check"></i><b>2.77</b> position_dodge ()</a></li>
+<li class="chapter" data-level="2.78" data-path="ggplot2.html"><a href="ggplot2.html#position_identity"><i class="fa fa-check"></i><b>2.78</b> position_identity ()</a></li>
+<li class="chapter" data-level="2.79" data-path="ggplot2.html"><a href="ggplot2.html#position_jitter"><i class="fa fa-check"></i><b>2.79</b> position_jitter ()</a></li>
+<li class="chapter" data-level="2.80" data-path="ggplot2.html"><a href="ggplot2.html#position_jitterdodge"><i class="fa fa-check"></i><b>2.80</b> position_jitterdodge ()</a></li>
+<li class="chapter" data-level="2.81" data-path="ggplot2.html"><a href="ggplot2.html#position_nudge"><i class="fa fa-check"></i><b>2.81</b> position_nudge ()</a></li>
+<li class="chapter" data-level="2.82" data-path="ggplot2.html"><a href="ggplot2.html#position_stack"><i class="fa fa-check"></i><b>2.82</b> position_stack ()</a></li>
+<li class="chapter" data-level="2.83" data-path="ggplot2.html"><a href="ggplot2.html#presidential"><i class="fa fa-check"></i><b>2.83</b> presidential ()</a></li>
+<li class="chapter" data-level="2.84" data-path="ggplot2.html"><a href="ggplot2.html#print.ggplot"><i class="fa fa-check"></i><b>2.84</b> print.ggplot ()</a></li>
+<li class="chapter" data-level="2.85" data-path="ggplot2.html"><a href="ggplot2.html#print.ggproto"><i class="fa fa-check"></i><b>2.85</b> print.ggproto ()</a></li>
+<li class="chapter" data-level="2.86" data-path="ggplot2.html"><a href="ggplot2.html#qplot"><i class="fa fa-check"></i><b>2.86</b> qplot ()</a></li>
+<li class="chapter" data-level="2.87" data-path="ggplot2.html"><a href="ggplot2.html#resolution"><i class="fa fa-check"></i><b>2.87</b> resolution ()</a></li>
+<li class="chapter" data-level="2.88" data-path="ggplot2.html"><a href="ggplot2.html#scale_alpha"><i class="fa fa-check"></i><b>2.88</b> scale_alpha ()</a></li>
+<li class="chapter" data-level="2.89" data-path="ggplot2.html"><a href="ggplot2.html#scale_colour_brewer"><i class="fa fa-check"></i><b>2.89</b> scale_colour_brewer ()</a></li>
+<li class="chapter" data-level="2.90" data-path="ggplot2.html"><a href="ggplot2.html#scale_colour_gradient"><i class="fa fa-check"></i><b>2.90</b> scale_colour_gradient ()</a></li>
+<li class="chapter" data-level="2.91" data-path="ggplot2.html"><a href="ggplot2.html#scale_colour_grey"><i class="fa fa-check"></i><b>2.91</b> scale_colour_grey ()</a></li>
+<li class="chapter" data-level="2.92" data-path="ggplot2.html"><a href="ggplot2.html#scale_colour_hue"><i class="fa fa-check"></i><b>2.92</b> scale_colour_hue ()</a></li>
+<li class="chapter" data-level="2.93" data-path="ggplot2.html"><a href="ggplot2.html#scale_continuous"><i class="fa fa-check"></i><b>2.93</b> scale_continuous ()</a></li>
+<li class="chapter" data-level="2.94" data-path="ggplot2.html"><a href="ggplot2.html#scale_date"><i class="fa fa-check"></i><b>2.94</b> scale_date ()</a></li>
+<li class="chapter" data-level="2.95" data-path="ggplot2.html"><a href="ggplot2.html#scale_identity"><i class="fa fa-check"></i><b>2.95</b> scale_identity ()</a></li>
+<li class="chapter" data-level="2.96" data-path="ggplot2.html"><a href="ggplot2.html#scale_linetype"><i class="fa fa-check"></i><b>2.96</b> scale_linetype ()</a></li>
+<li class="chapter" data-level="2.97" data-path="ggplot2.html"><a href="ggplot2.html#scale_manual"><i class="fa fa-check"></i><b>2.97</b> scale_manual ()</a></li>
+<li class="chapter" data-level="2.98" data-path="ggplot2.html"><a href="ggplot2.html#scale_shape"><i class="fa fa-check"></i><b>2.98</b> scale_shape ()</a></li>
+<li class="chapter" data-level="2.99" data-path="ggplot2.html"><a href="ggplot2.html#scale_size"><i class="fa fa-check"></i><b>2.99</b> scale_size ()</a></li>
+<li class="chapter" data-level="2.100" data-path="ggplot2.html"><a href="ggplot2.html#scale_x_discrete"><i class="fa fa-check"></i><b>2.100</b> scale_x_discrete ()</a></li>
+<li class="chapter" data-level="2.101" data-path="ggplot2.html"><a href="ggplot2.html#seals"><i class="fa fa-check"></i><b>2.101</b> seals ()</a></li>
+<li class="chapter" data-level="2.102" data-path="ggplot2.html"><a href="ggplot2.html#sec_axis"><i class="fa fa-check"></i><b>2.102</b> sec_axis ()</a></li>
+<li class="chapter" data-level="2.103" data-path="ggplot2.html"><a href="ggplot2.html#stat_ecdf"><i class="fa fa-check"></i><b>2.103</b> stat_ecdf ()</a></li>
+<li class="chapter" data-level="2.104" data-path="ggplot2.html"><a href="ggplot2.html#stat_ellipse"><i class="fa fa-check"></i><b>2.104</b> stat_ellipse ()</a></li>
+<li class="chapter" data-level="2.105" data-path="ggplot2.html"><a href="ggplot2.html#stat_function"><i class="fa fa-check"></i><b>2.105</b> stat_function ()</a></li>
+<li class="chapter" data-level="2.106" data-path="ggplot2.html"><a href="ggplot2.html#stat_identity"><i class="fa fa-check"></i><b>2.106</b> stat_identity ()</a></li>
+<li class="chapter" data-level="2.107" data-path="ggplot2.html"><a href="ggplot2.html#stat_summary_2d"><i class="fa fa-check"></i><b>2.107</b> stat_summary_2d ()</a></li>
+<li class="chapter" data-level="2.108" data-path="ggplot2.html"><a href="ggplot2.html#stat_summary_bin"><i class="fa fa-check"></i><b>2.108</b> stat_summary_bin ()</a></li>
+<li class="chapter" data-level="2.109" data-path="ggplot2.html"><a href="ggplot2.html#stat_unique"><i class="fa fa-check"></i><b>2.109</b> stat_unique ()</a></li>
+<li class="chapter" data-level="2.110" data-path="ggplot2.html"><a href="ggplot2.html#theme"><i class="fa fa-check"></i><b>2.110</b> theme ()</a></li>
+<li class="chapter" data-level="2.111" data-path="ggplot2.html"><a href="ggplot2.html#theme_get"><i class="fa fa-check"></i><b>2.111</b> theme_get ()</a></li>
+<li class="chapter" data-level="2.112" data-path="ggplot2.html"><a href="ggplot2.html#txhousing"><i class="fa fa-check"></i><b>2.112</b> txhousing ()</a></li>
+<li class="chapter" data-level="2.113" data-path="ggplot2.html"><a href="ggplot2.html#ggiraph"><i class="fa fa-check"></i><b>2.113</b> ggiraph</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a><ul>
+<li class="chapter" data-level="3.1" data-path="dplyr.html"><a href="dplyr.html#select"><i class="fa fa-check"></i><b>3.1</b> select()</a></li>
+<li class="chapter" data-level="3.2" data-path="dplyr.html"><a href="dplyr.html#rename"><i class="fa fa-check"></i><b>3.2</b> rename()</a></li>
+<li class="chapter" data-level="3.3" data-path="dplyr.html"><a href="dplyr.html#filter"><i class="fa fa-check"></i><b>3.3</b> filter()</a></li>
+<li class="chapter" data-level="3.4" data-path="dplyr.html"><a href="dplyr.html#arrange"><i class="fa fa-check"></i><b>3.4</b> arrange()</a></li>
+<li class="chapter" data-level="3.5" data-path="dplyr.html"><a href="dplyr.html#mutate-and-transmute"><i class="fa fa-check"></i><b>3.5</b> mutate() and transmute()</a></li>
+<li class="chapter" data-level="3.6" data-path="dplyr.html"><a href="dplyr.html#summarise"><i class="fa fa-check"></i><b>3.6</b> summarise()</a></li>
+<li class="chapter" data-level="3.7" data-path="dplyr.html"><a href="dplyr.html#sample_n-and-sample_frac"><i class="fa fa-check"></i><b>3.7</b> sample_n() and sample_frac()</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>4</b> tidyr</a><ul>
+<li class="chapter" data-level="4.1" data-path="tidyr.html"><a href="tidyr.html#complete"><i class="fa fa-check"></i><b>4.1</b> complete ()</a></li>
+<li class="chapter" data-level="4.2" data-path="tidyr.html"><a href="tidyr.html#drop_na"><i class="fa fa-check"></i><b>4.2</b> drop_na ()</a></li>
+<li class="chapter" data-level="4.3" data-path="tidyr.html"><a href="tidyr.html#expand"><i class="fa fa-check"></i><b>4.3</b> expand ()</a></li>
+<li class="chapter" data-level="4.4" data-path="tidyr.html"><a href="tidyr.html#extract"><i class="fa fa-check"></i><b>4.4</b> extract ()</a></li>
+<li class="chapter" data-level="4.5" data-path="tidyr.html"><a href="tidyr.html#fill"><i class="fa fa-check"></i><b>4.5</b> fill ()</a></li>
+<li class="chapter" data-level="4.6" data-path="tidyr.html"><a href="tidyr.html#full_seq"><i class="fa fa-check"></i><b>4.6</b> full_seq ()</a></li>
+<li class="chapter" data-level="4.7" data-path="tidyr.html"><a href="tidyr.html#gather"><i class="fa fa-check"></i><b>4.7</b> gather ()</a></li>
+<li class="chapter" data-level="4.8" data-path="tidyr.html"><a href="tidyr.html#nest"><i class="fa fa-check"></i><b>4.8</b> nest ()</a></li>
+<li class="chapter" data-level="4.9" data-path="tidyr.html"><a href="tidyr.html#replace_na"><i class="fa fa-check"></i><b>4.9</b> replace_na ()</a></li>
+<li class="chapter" data-level="4.10" data-path="tidyr.html"><a href="tidyr.html#separate"><i class="fa fa-check"></i><b>4.10</b> separate ()</a></li>
+<li class="chapter" data-level="4.11" data-path="tidyr.html"><a href="tidyr.html#separate_rows"><i class="fa fa-check"></i><b>4.11</b> separate_rows ()</a></li>
+<li class="chapter" data-level="4.12" data-path="tidyr.html"><a href="tidyr.html#smiths"><i class="fa fa-check"></i><b>4.12</b> smiths ()</a></li>
+<li class="chapter" data-level="4.13" data-path="tidyr.html"><a href="tidyr.html#spread"><i class="fa fa-check"></i><b>4.13</b> spread ()</a></li>
+<li class="chapter" data-level="4.14" data-path="tidyr.html"><a href="tidyr.html#table1"><i class="fa fa-check"></i><b>4.14</b> table1 ()</a></li>
+<li class="chapter" data-level="4.15" data-path="tidyr.html"><a href="tidyr.html#uncount"><i class="fa fa-check"></i><b>4.15</b> uncount ()</a></li>
+<li class="chapter" data-level="4.16" data-path="tidyr.html"><a href="tidyr.html#unite"><i class="fa fa-check"></i><b>4.16</b> unite ()</a></li>
+<li class="chapter" data-level="4.17" data-path="tidyr.html"><a href="tidyr.html#unnest"><i class="fa fa-check"></i><b>4.17</b> unnest ()</a></li>
+<li class="chapter" data-level="4.18" data-path="tidyr.html"><a href="tidyr.html#who"><i class="fa fa-check"></i><b>4.18</b> who ()</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>5</b> readr</a><ul>
+<li class="chapter" data-level="5.1" data-path="readr.html"><a href="readr.html#read_csv"><i class="fa fa-check"></i><b>5.1</b> read_csv()</a></li>
+<li class="chapter" data-level="5.2" data-path="readr.html"><a href="readr.html#cols"><i class="fa fa-check"></i><b>5.2</b> cols ()</a></li>
+<li class="chapter" data-level="5.3" data-path="readr.html"><a href="readr.html#cols_condense"><i class="fa fa-check"></i><b>5.3</b> cols_condense ()</a></li>
+<li class="chapter" data-level="5.4" data-path="readr.html"><a href="readr.html#col_skip"><i class="fa fa-check"></i><b>5.4</b> col_skip ()</a></li>
+<li class="chapter" data-level="5.5" data-path="readr.html"><a href="readr.html#count_fields"><i class="fa fa-check"></i><b>5.5</b> count_fields ()</a></li>
+<li class="chapter" data-level="5.6" data-path="readr.html"><a href="readr.html#date_names"><i class="fa fa-check"></i><b>5.6</b> date_names ()</a></li>
+<li class="chapter" data-level="5.7" data-path="readr.html"><a href="readr.html#format_delim"><i class="fa fa-check"></i><b>5.7</b> format_delim ()</a></li>
+<li class="chapter" data-level="5.8" data-path="readr.html"><a href="readr.html#guess_encoding"><i class="fa fa-check"></i><b>5.8</b> guess_encoding ()</a></li>
+<li class="chapter" data-level="5.9" data-path="readr.html"><a href="readr.html#locale"><i class="fa fa-check"></i><b>5.9</b> locale ()</a></li>
+<li class="chapter" data-level="5.10" data-path="readr.html"><a href="readr.html#parse_atomic"><i class="fa fa-check"></i><b>5.10</b> parse_atomic ()</a></li>
+<li class="chapter" data-level="5.11" data-path="readr.html"><a href="readr.html#parse_datetime-parse_date-and-parse_time"><i class="fa fa-check"></i><b>5.11</b> parse_datetime (), parse_date() and parse_time()</a></li>
+<li class="chapter" data-level="5.12" data-path="readr.html"><a href="readr.html#parse_factor"><i class="fa fa-check"></i><b>5.12</b> parse_factor ()</a></li>
+<li class="chapter" data-level="5.13" data-path="readr.html"><a href="readr.html#parse_logical-parse_number-parse_double-and-parse_integer"><i class="fa fa-check"></i><b>5.13</b> parse_logical(), parse_number(), parse_double() and parse_integer()</a></li>
+<li class="chapter" data-level="5.14" data-path="readr.html"><a href="readr.html#parse_character"><i class="fa fa-check"></i><b>5.14</b> parse_character()</a></li>
+<li class="chapter" data-level="5.15" data-path="readr.html"><a href="readr.html#parse_guess"><i class="fa fa-check"></i><b>5.15</b> parse_guess ()</a></li>
+<li class="chapter" data-level="5.16" data-path="readr.html"><a href="readr.html#problems"><i class="fa fa-check"></i><b>5.16</b> problems ()</a></li>
+<li class="chapter" data-level="5.17" data-path="readr.html"><a href="readr.html#read_delim"><i class="fa fa-check"></i><b>5.17</b> read_delim ()</a></li>
+<li class="chapter" data-level="5.18" data-path="readr.html"><a href="readr.html#read_file"><i class="fa fa-check"></i><b>5.18</b> read_file ()</a></li>
+<li class="chapter" data-level="5.19" data-path="readr.html"><a href="readr.html#read_fwf"><i class="fa fa-check"></i><b>5.19</b> read_fwf ()</a></li>
+<li class="chapter" data-level="5.20" data-path="readr.html"><a href="readr.html#read_lines"><i class="fa fa-check"></i><b>5.20</b> read_lines ()</a></li>
+<li class="chapter" data-level="5.21" data-path="readr.html"><a href="readr.html#read_log"><i class="fa fa-check"></i><b>5.21</b> read_log ()</a></li>
+<li class="chapter" data-level="5.22" data-path="readr.html"><a href="readr.html#read_table"><i class="fa fa-check"></i><b>5.22</b> read_table ()</a></li>
+<li class="chapter" data-level="5.23" data-path="readr.html"><a href="readr.html#spec_delim"><i class="fa fa-check"></i><b>5.23</b> spec_delim ()</a></li>
+<li class="chapter" data-level="5.24" data-path="readr.html"><a href="readr.html#type_convert"><i class="fa fa-check"></i><b>5.24</b> type_convert ()</a></li>
+<li class="chapter" data-level="5.25" data-path="readr.html"><a href="readr.html#write_delim"><i class="fa fa-check"></i><b>5.25</b> write_delim ()</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="purrr.html"><a href="purrr.html"><i class="fa fa-check"></i><b>6</b> purrr</a><ul>
+<li class="chapter" data-level="6.1" data-path="purrr.html"><a href="purrr.html#overview"><i class="fa fa-check"></i><b>6.1</b> Overview</a></li>
+<li class="chapter" data-level="6.2" data-path="purrr.html"><a href="purrr.html#map-family"><i class="fa fa-check"></i><b>6.2</b> Map Family</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="purrr.html"><a href="purrr.html#map"><i class="fa fa-check"></i><b>6.2.1</b> map</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="purrr.html"><a href="purrr.html#reduce-family"><i class="fa fa-check"></i><b>6.3</b> Reduce Family</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="purrr.html"><a href="purrr.html#reduce"><i class="fa fa-check"></i><b>6.3.1</b> reduce</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>7</b> tibble</a><ul>
+<li class="chapter" data-level="7.1" data-path="tibble.html"><a href="tibble.html#how-to-create-tibble"><i class="fa fa-check"></i><b>7.1</b> How to create tibble?</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="tibble.html"><a href="tibble.html#as_tibble"><i class="fa fa-check"></i><b>7.1.1</b> as_tibble()</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tibble.html"><a href="tibble.html#tibble-1"><i class="fa fa-check"></i><b>7.1.2</b> tibble()</a></li>
+<li class="chapter" data-level="7.1.3" data-path="tibble.html"><a href="tibble.html#tribble"><i class="fa fa-check"></i><b>7.1.3</b> tribble()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="tibble.html"><a href="tibble.html#tibble-package"><i class="fa fa-check"></i><b>7.2</b> tibble-package ()</a></li>
+<li class="chapter" data-level="7.3" data-path="tibble.html"><a href="tibble.html#add_column"><i class="fa fa-check"></i><b>7.3</b> add_column ()</a></li>
+<li class="chapter" data-level="7.4" data-path="tibble.html"><a href="tibble.html#add_row"><i class="fa fa-check"></i><b>7.4</b> add_row ()</a></li>
+<li class="chapter" data-level="7.5" data-path="tibble.html"><a href="tibble.html#enframe"><i class="fa fa-check"></i><b>7.5</b> enframe ()</a></li>
+<li class="chapter" data-level="7.6" data-path="tibble.html"><a href="tibble.html#frame_matrix"><i class="fa fa-check"></i><b>7.6</b> frame_matrix ()</a></li>
+<li class="chapter" data-level="7.7" data-path="tibble.html"><a href="tibble.html#glimpse"><i class="fa fa-check"></i><b>7.7</b> glimpse ()</a></li>
+<li class="chapter" data-level="7.8" data-path="tibble.html"><a href="tibble.html#is_tibble"><i class="fa fa-check"></i><b>7.8</b> is_tibble ()</a></li>
+<li class="chapter" data-level="7.9" data-path="tibble.html"><a href="tibble.html#new_tibble"><i class="fa fa-check"></i><b>7.9</b> new_tibble ()</a></li>
+<li class="chapter" data-level="7.10" data-path="tibble.html"><a href="tibble.html#rownames"><i class="fa fa-check"></i><b>7.10</b> rownames ()</a></li>
+<li class="chapter" data-level="7.11" data-path="tibble.html"><a href="tibble.html#set_tidy_names"><i class="fa fa-check"></i><b>7.11</b> set_tidy_names ()</a></li>
+<li class="chapter" data-level="7.12" data-path="tibble.html"><a href="tibble.html#tbl_sum"><i class="fa fa-check"></i><b>7.12</b> tbl_sum ()</a></li>
+<li class="chapter" data-level="7.13" data-path="tibble.html"><a href="tibble.html#tibble-options"><i class="fa fa-check"></i><b>7.13</b> tibble-options ()</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>8</b> stringr</a><ul>
+<li class="chapter" data-level="8.1" data-path="stringr.html"><a href="stringr.html#pattern-matching"><i class="fa fa-check"></i><b>8.1</b> Pattern matching</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="stringr.html"><a href="stringr.html#str_count"><i class="fa fa-check"></i><b>8.1.1</b> str_count</a></li>
+<li class="chapter" data-level="8.1.2" data-path="stringr.html"><a href="stringr.html#str_detect"><i class="fa fa-check"></i><b>8.1.2</b> str_detect</a></li>
+<li class="chapter" data-level="8.1.3" data-path="stringr.html"><a href="stringr.html#str_extract"><i class="fa fa-check"></i><b>8.1.3</b> str_extract</a></li>
+<li class="chapter" data-level="8.1.4" data-path="stringr.html"><a href="stringr.html#str_extract_all"><i class="fa fa-check"></i><b>8.1.4</b> str_extract_all</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="stringr.html"><a href="stringr.html#locate-the-position-of-patterns-in-a-string."><i class="fa fa-check"></i><b>8.2</b> Locate the position of patterns in a string.</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="stringr.html"><a href="stringr.html#str_locatestring-pattern"><i class="fa fa-check"></i><b>8.2.1</b> str_locate(string, pattern)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="stringr.html"><a href="stringr.html#extract-matched-groups-from-a-string."><i class="fa fa-check"></i><b>8.3</b> Extract matched groups from a string.</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="stringr.html"><a href="stringr.html#str_to_upper"><i class="fa fa-check"></i><b>8.3.1</b> str_to_upper ()</a></li>
+<li class="chapter" data-level="8.3.2" data-path="stringr.html"><a href="stringr.html#invert_match"><i class="fa fa-check"></i><b>8.3.2</b> invert_match ()</a></li>
+<li class="chapter" data-level="8.3.3" data-path="stringr.html"><a href="stringr.html#modifiers"><i class="fa fa-check"></i><b>8.3.3</b> modifiers ()</a></li>
+<li class="chapter" data-level="8.3.4" data-path="stringr.html"><a href="stringr.html#stringr-data"><i class="fa fa-check"></i><b>8.3.4</b> stringr-data ()</a></li>
+<li class="chapter" data-level="8.3.5" data-path="stringr.html"><a href="stringr.html#str_c"><i class="fa fa-check"></i><b>8.3.5</b> str_c ()</a></li>
+<li class="chapter" data-level="8.3.6" data-path="stringr.html"><a href="stringr.html#str_conv"><i class="fa fa-check"></i><b>8.3.6</b> str_conv ()</a></li>
+<li class="chapter" data-level="8.3.7" data-path="stringr.html"><a href="stringr.html#str_count-1"><i class="fa fa-check"></i><b>8.3.7</b> str_count ()</a></li>
+<li class="chapter" data-level="8.3.8" data-path="stringr.html"><a href="stringr.html#str_dup"><i class="fa fa-check"></i><b>8.3.8</b> str_dup ()</a></li>
+<li class="chapter" data-level="8.3.9" data-path="stringr.html"><a href="stringr.html#str_flatten"><i class="fa fa-check"></i><b>8.3.9</b> str_flatten ()</a></li>
+<li class="chapter" data-level="8.3.10" data-path="stringr.html"><a href="stringr.html#str_glue"><i class="fa fa-check"></i><b>8.3.10</b> str_glue ()</a></li>
+<li class="chapter" data-level="8.3.11" data-path="stringr.html"><a href="stringr.html#str_length"><i class="fa fa-check"></i><b>8.3.11</b> str_length ()</a></li>
+<li class="chapter" data-level="8.3.12" data-path="stringr.html"><a href="stringr.html#str_match"><i class="fa fa-check"></i><b>8.3.12</b> str_match ()</a></li>
+<li class="chapter" data-level="8.3.13" data-path="stringr.html"><a href="stringr.html#str_order"><i class="fa fa-check"></i><b>8.3.13</b> str_order ()</a></li>
+<li class="chapter" data-level="8.3.14" data-path="stringr.html"><a href="stringr.html#str_pad"><i class="fa fa-check"></i><b>8.3.14</b> str_pad ()</a></li>
+<li class="chapter" data-level="8.3.15" data-path="stringr.html"><a href="stringr.html#str_remove"><i class="fa fa-check"></i><b>8.3.15</b> str_remove ()</a></li>
+<li class="chapter" data-level="8.3.16" data-path="stringr.html"><a href="stringr.html#str_replace"><i class="fa fa-check"></i><b>8.3.16</b> str_replace ()</a></li>
+<li class="chapter" data-level="8.3.17" data-path="stringr.html"><a href="stringr.html#str_replace_na"><i class="fa fa-check"></i><b>8.3.17</b> str_replace_na ()</a></li>
+<li class="chapter" data-level="8.3.18" data-path="stringr.html"><a href="stringr.html#str_split"><i class="fa fa-check"></i><b>8.3.18</b> str_split ()</a></li>
+<li class="chapter" data-level="8.3.19" data-path="stringr.html"><a href="stringr.html#str_sub"><i class="fa fa-check"></i><b>8.3.19</b> str_sub ()</a></li>
+<li class="chapter" data-level="8.3.20" data-path="stringr.html"><a href="stringr.html#str_subset"><i class="fa fa-check"></i><b>8.3.20</b> str_subset ()</a></li>
+<li class="chapter" data-level="8.3.21" data-path="stringr.html"><a href="stringr.html#str_trim"><i class="fa fa-check"></i><b>8.3.21</b> str_trim ()</a></li>
+<li class="chapter" data-level="8.3.22" data-path="stringr.html"><a href="stringr.html#str_trunc"><i class="fa fa-check"></i><b>8.3.22</b> str_trunc ()</a></li>
+<li class="chapter" data-level="8.3.23" data-path="stringr.html"><a href="stringr.html#str_view"><i class="fa fa-check"></i><b>8.3.23</b> str_view ()</a></li>
+<li class="chapter" data-level="8.3.24" data-path="stringr.html"><a href="stringr.html#str_wrap"><i class="fa fa-check"></i><b>8.3.24</b> str_wrap ()</a></li>
+<li class="chapter" data-level="8.3.25" data-path="stringr.html"><a href="stringr.html#word"><i class="fa fa-check"></i><b>8.3.25</b> word ()</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>9</b> forcats</a><ul>
+<li class="chapter" data-level="9.1" data-path="forcats.html"><a href="forcats.html#as_factor"><i class="fa fa-check"></i><b>9.1</b> as_factor ()</a></li>
+<li class="chapter" data-level="9.2" data-path="forcats.html"><a href="forcats.html#fct_anonv"><i class="fa fa-check"></i><b>9.2</b> fct_anonv ()</a></li>
+<li class="chapter" data-level="9.3" data-path="forcats.html"><a href="forcats.html#fct_c"><i class="fa fa-check"></i><b>9.3</b> fct_c ()</a></li>
+<li class="chapter" data-level="9.4" data-path="forcats.html"><a href="forcats.html#fct_collapse"><i class="fa fa-check"></i><b>9.4</b> fct_collapse ()</a></li>
+<li class="chapter" data-level="9.5" data-path="forcats.html"><a href="forcats.html#fct_count"><i class="fa fa-check"></i><b>9.5</b> fct_count ()</a></li>
+<li class="chapter" data-level="9.6" data-path="forcats.html"><a href="forcats.html#fct_drop"><i class="fa fa-check"></i><b>9.6</b> fct_drop ()</a></li>
+<li class="chapter" data-level="9.7" data-path="forcats.html"><a href="forcats.html#fct_expand"><i class="fa fa-check"></i><b>9.7</b> fct_expand ()</a></li>
+<li class="chapter" data-level="9.8" data-path="forcats.html"><a href="forcats.html#fct_explicit_na"><i class="fa fa-check"></i><b>9.8</b> fct_explicit_na ()</a></li>
+<li class="chapter" data-level="9.9" data-path="forcats.html"><a href="forcats.html#fct_inorder"><i class="fa fa-check"></i><b>9.9</b> fct_inorder ()</a></li>
+<li class="chapter" data-level="9.10" data-path="forcats.html"><a href="forcats.html#fct_lump"><i class="fa fa-check"></i><b>9.10</b> fct_lump ()</a></li>
+<li class="chapter" data-level="9.11" data-path="forcats.html"><a href="forcats.html#fct_other"><i class="fa fa-check"></i><b>9.11</b> fct_other ()</a></li>
+<li class="chapter" data-level="9.12" data-path="forcats.html"><a href="forcats.html#fct_recode"><i class="fa fa-check"></i><b>9.12</b> fct_recode ()</a></li>
+<li class="chapter" data-level="9.13" data-path="forcats.html"><a href="forcats.html#fct_relabel"><i class="fa fa-check"></i><b>9.13</b> fct_relabel ()</a></li>
+<li class="chapter" data-level="9.14" data-path="forcats.html"><a href="forcats.html#fct_relevel"><i class="fa fa-check"></i><b>9.14</b> fct_relevel ()</a></li>
+<li class="chapter" data-level="9.15" data-path="forcats.html"><a href="forcats.html#fct_reorder"><i class="fa fa-check"></i><b>9.15</b> fct_reorder ()</a></li>
+<li class="chapter" data-level="9.16" data-path="forcats.html"><a href="forcats.html#fct_rev"><i class="fa fa-check"></i><b>9.16</b> fct_rev ()</a></li>
+<li class="chapter" data-level="9.17" data-path="forcats.html"><a href="forcats.html#fct_shift"><i class="fa fa-check"></i><b>9.17</b> fct_shift ()</a></li>
+<li class="chapter" data-level="9.18" data-path="forcats.html"><a href="forcats.html#fct_shuffle"><i class="fa fa-check"></i><b>9.18</b> fct_shuffle ()</a></li>
+<li class="chapter" data-level="9.19" data-path="forcats.html"><a href="forcats.html#fct_unify"><i class="fa fa-check"></i><b>9.19</b> fct_unify ()</a></li>
+<li class="chapter" data-level="9.20" data-path="forcats.html"><a href="forcats.html#fct_unique"><i class="fa fa-check"></i><b>9.20</b> fct_unique ()</a></li>
+<li class="chapter" data-level="9.21" data-path="forcats.html"><a href="forcats.html#gss_cat"><i class="fa fa-check"></i><b>9.21</b> gss_cat ()</a></li>
+<li class="chapter" data-level="9.22" data-path="forcats.html"><a href="forcats.html#lvls"><i class="fa fa-check"></i><b>9.22</b> lvls ()</a></li>
+<li class="chapter" data-level="9.23" data-path="forcats.html"><a href="forcats.html#lvls_union"><i class="fa fa-check"></i><b>9.23</b> lvls_union ()</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -93,8 +411,995 @@
 
             <section class="normal" id="section-">
 <div id="dplyr" class="section level1">
-<h1><span class="header-section-number">4</span> dplyr</h1>
+<h1><span class="header-section-number">3</span> dplyr</h1>
+<p>dplyr provides a grammar of data manipulation, providing a consistent set of verbs that solve the most common data manipulation challenges.</p>
+<div id="select" class="section level2">
+<h2><span class="header-section-number">3.1</span> select()</h2>
+<p>The select function provides options for selecting only certain columns of data to work with.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="kw">library</span>(kableExtra)</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">alcohol.data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv&#39;</span>) </a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">alcohol.data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">beer_servings</th>
+<th align="right">spirit_servings</th>
+<th align="right">wine_servings</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">89</td>
+<td align="right">132</td>
+<td align="right">54</td>
+<td align="right">4.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="right">14</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">245</td>
+<td align="right">138</td>
+<td align="right">312</td>
+<td align="right">12.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">217</td>
+<td align="right">57</td>
+<td align="right">45</td>
+<td align="right">5.9</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">102</td>
+<td align="right">128</td>
+<td align="right">45</td>
+<td align="right">4.9</td>
+</tr>
+</tbody>
+</table>
+<p>At it’s most basic, select allows for the manual selection of columns</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">alcohol.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(country, total_litres_of_pure_alcohol) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">4.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">12.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">5.9</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">4.9</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">alcohol.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">spirit_servings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">132</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">138</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">57</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">128</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">alcohol.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">beer_servings</th>
+<th align="right">spirit_servings</th>
+<th align="right">wine_servings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">89</td>
+<td align="right">132</td>
+<td align="right">54</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">245</td>
+<td align="right">138</td>
+<td align="right">312</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">217</td>
+<td align="right">57</td>
+<td align="right">45</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">102</td>
+<td align="right">128</td>
+<td align="right">45</td>
+</tr>
+</tbody>
+</table>
+<p>There are a number of additional functions that can be used to select columns based on specific criteria. These include:</p>
+<ul>
+<li><code>starts_with()</code> which selects all columns that begin with the given text</li>
+<li><code>ends_with()</code> which selects all columns that end with the given text</li>
+<li><code>contains()</code> which selects all columns that contain the given text anywhere</li>
+<li><code>matches()</code> which selects all columns that match the given regular expression. See regular expressions for more details.</li>
+<li><code>num_range(&quot;x&quot;, 1:5)</code> which selects the variables named x01, x02, x03, x04 and x05</li>
+<li><code>one_of(x)</code> which selects every name that appears in x, which should be a character vector.</li>
+</ul>
+<p>Finally, a dash (-) may be added to the beginning of any of these functions to select all columns that do NOT match.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">alcohol.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">ends_with</span>(<span class="st">&#39;servings&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">4.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">12.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">5.9</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">4.9</td>
+</tr>
+</tbody>
+</table>
+<p>The select function can also be used to rearrange the columns in a data frame.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">alcohol.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+<th align="right">beer_servings</th>
+<th align="right">spirit_servings</th>
+<th align="right">wine_servings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">4.9</td>
+<td align="right">89</td>
+<td align="right">132</td>
+<td align="right">54</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">0.7</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">12.4</td>
+<td align="right">245</td>
+<td align="right">138</td>
+<td align="right">312</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">5.9</td>
+<td align="right">217</td>
+<td align="right">57</td>
+<td align="right">45</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">4.9</td>
+<td align="right">102</td>
+<td align="right">128</td>
+<td align="right">45</td>
+</tr>
+</tbody>
+</table>
+<p>A special function <code>everything()</code> will select all remaining columns in order. This is best used when you wish to move a single column to a new position but do not care to rearrange the remaining columns.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">alcohol.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="kw">everything</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+<th align="right">beer_servings</th>
+<th align="right">spirit_servings</th>
+<th align="right">wine_servings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">4.9</td>
+<td align="right">89</td>
+<td align="right">132</td>
+<td align="right">54</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">0.7</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">12.4</td>
+<td align="right">245</td>
+<td align="right">138</td>
+<td align="right">312</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">5.9</td>
+<td align="right">217</td>
+<td align="right">57</td>
+<td align="right">45</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">4.9</td>
+<td align="right">102</td>
+<td align="right">128</td>
+<td align="right">45</td>
+</tr>
+</tbody>
+</table>
+<p>Select also has the ability to rename columns, however, it will drop all columns not mentioned. In order to rename columns but to keep all columns (regardless of whether their names have been changed) it is best to use <code>rename()</code>. See rename().</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">alcohol.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="dt">location=</span>country, <span class="kw">everything</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">location</th>
+<th align="right">beer_servings</th>
+<th align="right">spirit_servings</th>
+<th align="right">wine_servings</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">89</td>
+<td align="right">132</td>
+<td align="right">54</td>
+<td align="right">4.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="right">14</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">245</td>
+<td align="right">138</td>
+<td align="right">312</td>
+<td align="right">12.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">217</td>
+<td align="right">57</td>
+<td align="right">45</td>
+<td align="right">5.9</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">102</td>
+<td align="right">128</td>
+<td align="right">45</td>
+<td align="right">4.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="rename" class="section level2">
+<h2><span class="header-section-number">3.2</span> rename()</h2>
+<p>The rename function is used to alter the names of columns. Any columns not specified will not be changed. If you wish to drop unnamed columns at the same time, use <code>select()</code> See select().</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">alcohol.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">beer=</span>beer_servings, <span class="dt">spirit=</span>spirit_servings, <span class="dt">wine=</span>wine_servings) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">beer</th>
+<th align="right">spirit</th>
+<th align="right">wine</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">89</td>
+<td align="right">132</td>
+<td align="right">54</td>
+<td align="right">4.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="right">14</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">245</td>
+<td align="right">138</td>
+<td align="right">312</td>
+<td align="right">12.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">217</td>
+<td align="right">57</td>
+<td align="right">45</td>
+<td align="right">5.9</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">102</td>
+<td align="right">128</td>
+<td align="right">45</td>
+<td align="right">4.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="filter" class="section level2">
+<h2><span class="header-section-number">3.3</span> filter()</h2>
+<p>The filter function allows a user to subset a data frame based on the values in a given column.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">avengers.data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/fivethirtyeight/data/master/avengers/avengers.csv&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">avengers.data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name/Alias</th>
+<th align="right">Appearances</th>
+<th align="left">Current?</th>
+<th align="left">Gender</th>
+<th align="left">Probationary Introl</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Henry Jonathan “Hank” Pym</td>
+<td align="right">1269</td>
+<td align="left">YES</td>
+<td align="left">MALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Janet van Dyne</td>
+<td align="right">1165</td>
+<td align="left">YES</td>
+<td align="left">FEMALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Anthony Edward “Tony” Stark</td>
+<td align="right">3068</td>
+<td align="left">YES</td>
+<td align="left">MALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Robert Bruce Banner</td>
+<td align="right">2089</td>
+<td align="left">YES</td>
+<td align="left">MALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Thor Odinson</td>
+<td align="right">2402</td>
+<td align="left">YES</td>
+<td align="left">MALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Richard Milhouse Jones</td>
+<td align="right">612</td>
+<td align="left">YES</td>
+<td align="left">MALE</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<p>Perhaps the user would like to work only with the female avengers.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">avengers.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Gender <span class="op">==</span><span class="st"> &#39;FEMALE&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name/Alias</th>
+<th align="right">Appearances</th>
+<th align="left">Current?</th>
+<th align="left">Gender</th>
+<th align="left">Probationary Introl</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Janet van Dyne</td>
+<td align="right">1165</td>
+<td align="left">YES</td>
+<td align="left">FEMALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Wanda Maximoff</td>
+<td align="right">1214</td>
+<td align="left">YES</td>
+<td align="left">FEMALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Natalia Alianovna Romanova</td>
+<td align="right">1112</td>
+<td align="left">YES</td>
+<td align="left">FEMALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Brandt</td>
+<td align="right">160</td>
+<td align="left">NO</td>
+<td align="left">FEMALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Heather Douglas</td>
+<td align="right">332</td>
+<td align="left">NO</td>
+<td align="left">FEMALE</td>
+<td align="left">Jul-75</td>
+</tr>
+<tr class="even">
+<td align="left">Patsy Walker</td>
+<td align="right">557</td>
+<td align="left">NO</td>
+<td align="left">FEMALE</td>
+<td align="left">Nov-75</td>
+</tr>
+</tbody>
+</table>
+<p>Perhaps the user would like to work only with female avengers with more than 500 appearances.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">avengers.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Gender <span class="op">==</span><span class="st"> &#39;FEMALE&#39;</span> <span class="op">&amp;</span><span class="st"> </span>Appearances <span class="op">&gt;</span><span class="st"> </span><span class="dv">500</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name/Alias</th>
+<th align="right">Appearances</th>
+<th align="left">Current?</th>
+<th align="left">Gender</th>
+<th align="left">Probationary Introl</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Janet van Dyne</td>
+<td align="right">1165</td>
+<td align="left">YES</td>
+<td align="left">FEMALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Wanda Maximoff</td>
+<td align="right">1214</td>
+<td align="left">YES</td>
+<td align="left">FEMALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Natalia Alianovna Romanova</td>
+<td align="right">1112</td>
+<td align="left">YES</td>
+<td align="left">FEMALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Patsy Walker</td>
+<td align="right">557</td>
+<td align="left">NO</td>
+<td align="left">FEMALE</td>
+<td align="left">Nov-75</td>
+</tr>
+<tr class="odd">
+<td align="left">Carol Susan Jane Danvers</td>
+<td align="right">935</td>
+<td align="left">YES</td>
+<td align="left">FEMALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Jennifer Walters</td>
+<td align="right">933</td>
+<td align="left">YES</td>
+<td align="left">FEMALE</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<p>There are numerous comparison options that can be used with filter. These include: <code>==, &gt;, &gt;=, &lt;, &lt;=, !=</code>
+The use of a single ampersand <code>&amp;</code> is used to indicate ‘and’ while a single pipe <code>|</code> is used to indicate ‘or’.
+The exclamation point <code>!</code> is used to indicate ‘nor’ (see next example) and <code>xor()</code> is the exclusive or.</p>
+<p>Filtering can also be based on whether an element is NA.</p>
+<p>This data set does not have any NAs, but rather has empty strings in cases where the variable does not apply.</p>
+<p>To demonstrate the technique of filtering out NAs, let’s convert these empty strings to NAs.</p>
+<p>Then, use the filter function to select cases where the variable is non-NA.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">avengers.data_incl_NAs &lt;-<span class="st"> </span><span class="kw">data.frame</span>(avengers.data,<span class="dt">check.names=</span><span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">var &lt;-<span class="st"> &quot;Probationary Introl&quot;</span></a>
+<a class="sourceLine" id="cb23-3" data-line-number="3">avengers.data_incl_NAs[,var] &lt;-<span class="st"> </span>plyr<span class="op">::</span><span class="kw">mapvalues</span>(avengers.data_incl_NAs[,var],</a>
+<a class="sourceLine" id="cb23-4" data-line-number="4">  <span class="dt">from =</span> <span class="st">&quot;&quot;</span>,<span class="dt">to=</span><span class="ot">NA</span>)</a></code></pre></div>
+<pre><code>## The following `from` values were not present in `x`:</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">avengers.data_incl_NAs <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(<span class="st">`</span><span class="dt">Probationary Introl</span><span class="st">`</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name/Alias</th>
+<th align="right">Appearances</th>
+<th align="left">Current?</th>
+<th align="left">Gender</th>
+<th align="left">Probationary Introl</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Henry P. McCoy</td>
+<td align="right">1886</td>
+<td align="left">NO</td>
+<td align="left">MALE</td>
+<td align="left">Jul-75</td>
+</tr>
+<tr class="even">
+<td align="left">Heather Douglas</td>
+<td align="right">332</td>
+<td align="left">NO</td>
+<td align="left">FEMALE</td>
+<td align="left">Jul-75</td>
+</tr>
+<tr class="odd">
+<td align="left">Patsy Walker</td>
+<td align="right">557</td>
+<td align="left">NO</td>
+<td align="left">FEMALE</td>
+<td align="left">Nov-75</td>
+</tr>
+<tr class="even">
+<td align="left">Robert L. Frank Sr.</td>
+<td align="right">106</td>
+<td align="left">NO</td>
+<td align="left">MALE</td>
+<td align="left">Apr-77</td>
+</tr>
+<tr class="odd">
+<td align="left">Simon Williams</td>
+<td align="right">692</td>
+<td align="left">YES</td>
+<td align="left">MALE</td>
+<td align="left">Apr-77</td>
+</tr>
+<tr class="even">
+<td align="left">Jocasta</td>
+<td align="right">141</td>
+<td align="left">YES</td>
+<td align="left">FEMALE</td>
+<td align="left">Jul-80</td>
+</tr>
+<tr class="odd">
+<td align="left">Monica Rambeau</td>
+<td align="right">348</td>
+<td align="left">YES</td>
+<td align="left">FEMALE</td>
+<td align="left">Jan-83</td>
+</tr>
+<tr class="even">
+<td align="left">Eros</td>
+<td align="right">206</td>
+<td align="left">NO</td>
+<td align="left">MALE</td>
+<td align="left">Jun-83</td>
+</tr>
+<tr class="odd">
+<td align="left">James R. Rhodes</td>
+<td align="right">533</td>
+<td align="left">NO</td>
+<td align="left">MALE</td>
+<td align="left">May-84</td>
+</tr>
+<tr class="even">
+<td align="left">Barbara Barton (nee Morse)</td>
+<td align="right">374</td>
+<td align="left">NO</td>
+<td align="left">FEMALE</td>
+<td align="left">Jun-84</td>
+</tr>
+<tr class="odd">
+<td align="left">Marc Spector</td>
+<td align="right">402</td>
+<td align="left">NO</td>
+<td align="left">MALE</td>
+<td align="left">Sep-87</td>
+</tr>
+<tr class="even">
+<td align="left">Scott Edward Harris Lang</td>
+<td align="right">217</td>
+<td align="left">NO</td>
+<td align="left">MALE</td>
+<td align="left">Jan-87</td>
+</tr>
+<tr class="odd">
+<td align="left">Elvin Haliday</td>
+<td align="right">158</td>
+<td align="left">NO</td>
+<td align="left">MALE</td>
+<td align="left">Feb-91</td>
+</tr>
+<tr class="even">
+<td align="left">William Baker</td>
+<td align="right">355</td>
+<td align="left">NO</td>
+<td align="left">MALE</td>
+<td align="left">Feb-91</td>
+</tr>
+<tr class="odd">
+<td align="left">Crystal Amaquelin Maximoff</td>
+<td align="right">517</td>
+<td align="left">NO</td>
+<td align="left">FEMALE</td>
+<td align="left">Aug-91</td>
+</tr>
+</tbody>
+</table>
+<p>Between can be used to filter between a range of values.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">avengers.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">between</span>(Appearances, <span class="dv">500</span>, <span class="dv">1000</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name/Alias</th>
+<th align="right">Appearances</th>
+<th align="left">Current?</th>
+<th align="left">Gender</th>
+<th align="left">Probationary Introl</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Richard Milhouse Jones</td>
+<td align="right">612</td>
+<td align="left">YES</td>
+<td align="left">MALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Pietro Maximoff</td>
+<td align="right">769</td>
+<td align="left">YES</td>
+<td align="left">MALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Heracles</td>
+<td align="right">741</td>
+<td align="left">YES</td>
+<td align="left">MALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">T’Challa</td>
+<td align="right">780</td>
+<td align="left">NO</td>
+<td align="left">MALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Patsy Walker</td>
+<td align="right">557</td>
+<td align="left">NO</td>
+<td align="left">FEMALE</td>
+<td align="left">Nov-75</td>
+</tr>
+<tr class="even">
+<td align="left">Simon Williams</td>
+<td align="right">692</td>
+<td align="left">YES</td>
+<td align="left">MALE</td>
+<td align="left">Apr-77</td>
+</tr>
+</tbody>
+</table>
+<p>Finally, near can be used to select a range of values within a certain range of a central value.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">avengers.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">near</span>(Appearances, <span class="dv">612</span>, <span class="dt">tol=</span><span class="dv">20</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name/Alias</th>
+<th align="right">Appearances</th>
+<th align="left">Current?</th>
+<th align="left">Gender</th>
+<th align="left">Probationary Introl</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Richard Milhouse Jones</td>
+<td align="right">612</td>
+<td align="left">YES</td>
+<td align="left">MALE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Daniel Thomas Rand K’ai</td>
+<td align="right">629</td>
+<td align="left">NO</td>
+<td align="left">MALE</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<p>Of course, all of these can be combined with ‘and’ <code>&amp;</code> and ‘or’ <code>|</code> logical operators.</p>
+<p>There are three related functions <code>filter_if()</code>, <code>filter_all()</code>, and <code>filter_at()</code>. See scoped operations.</p>
+<p>For a last example, let’s combine the and operator with the or operator to choose results meeting two mutually exclusive criteria, each based on two different conditions.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">high_appearance_females &lt;-<span class="st"> </span>avengers.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="kw">filter</span>(Gender <span class="op">==</span><span class="st"> &quot;FEMALE&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Appearances <span class="op">&gt;</span><span class="st"> </span><span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">low_appearance_males &lt;-<span class="st"> </span>avengers.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="kw">filter</span>(Gender <span class="op">==</span><span class="st"> &quot;MALE&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Appearances <span class="op">&lt;</span><span class="st"> </span><span class="dv">200</span>)</a>
+<a class="sourceLine" id="cb28-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">high_appearance_females_or_low_appearance_males &lt;-<span class="st"> </span>avengers.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb28-8" data-line-number="8"><span class="kw">filter</span>((Gender <span class="op">==</span><span class="st"> &quot;FEMALE&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Appearances <span class="op">&gt;</span><span class="st"> </span><span class="dv">500</span>) <span class="op">|</span><span class="st"> </span>(Gender <span class="op">==</span><span class="st"> &quot;MALE&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Appearances <span class="op">&lt;</span><span class="st"> </span><span class="dv">200</span>))</a>
+<a class="sourceLine" id="cb28-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb28-10" data-line-number="10"><span class="kw">nrow</span>(high_appearance_females)</a></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">nrow</span>(low_appearance_males)</a></code></pre></div>
+<pre><code>## [1] 65</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">nrow</span>(high_appearance_females_or_low_appearance_males)</a></code></pre></div>
+<pre><code>## [1] 75</code></pre>
+<p>There are 10 high appearance females and 65 low appearance males. Thus, the fact that we get 75 results for the query using OR operator makes sense, as the criteria we looked for using the OR operator are mutually exclusive.</p>
+</div>
+<div id="arrange" class="section level2">
+<h2><span class="header-section-number">3.4</span> arrange()</h2>
+<p>arrange changes the natural column order of the data frame. It takes data frame
+name and the column name(s) as input and re arranges the columns based on input.</p>
+</div>
+<div id="mutate-and-transmute" class="section level2">
+<h2><span class="header-section-number">3.5</span> mutate() and transmute()</h2>
+<p>The mutate function creates new columns which can be added to a copy of the dataset. You can also add new columns to your existing dataset by overwriting it like this:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">alcohol.data &lt;-<span class="st"> </span><span class="kw">mutate</span>(alcohol.data, <span class="dt">total_servings =</span> beer_servings <span class="op">+</span><span class="st"> </span>spirit_servings <span class="op">+</span><span class="st"> </span>wine_servings)</a></code></pre></div>
+<p>You can use any mathematical operator (+, -, *, /) as well as functions like:</p>
+<ul>
+<li>log()</li>
+<li>lead(), lag()</li>
+<li>dense_rank(), min_rank(), percent_rank(), row_number(), cume_dist(), ntile()</li>
+<li>cumsum(), cummean(), cummin(), cummax(), cumany(), cumall()</li>
+<li>na_if(), coalesce()</li>
+<li>if_else(), recode(), case_when()</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co"># Rank into 5 &quot;buckets&quot; by displacement</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">mtcars &lt;-<span class="st"> </span><span class="kw">mutate</span>(mtcars, <span class="dt">rank =</span> <span class="kw">ntile</span>(disp, <span class="dv">5</span>))</a></code></pre></div>
+<p>Transmute does the same thing as mutate, but drops all the other columns not specified in your function arguments.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">transmute</span>(alcohol.data, country, <span class="dt">total_servings =</span> beer_servings <span class="op">+</span><span class="st"> </span>spirit_servings <span class="op">+</span><span class="st"> </span>wine_servings)</a></code></pre></div>
+<pre><code>## # A tibble: 193 x 2
+##    country           total_servings
+##    &lt;chr&gt;                      &lt;int&gt;
+##  1 Afghanistan                    0
+##  2 Albania                      275
+##  3 Algeria                       39
+##  4 Andorra                      695
+##  5 Angola                       319
+##  6 Antigua &amp; Barbuda            275
+##  7 Argentina                    439
+##  8 Armenia                      211
+##  9 Australia                    545
+## 10 Austria                      545
+## # ... with 183 more rows</code></pre>
+</div>
+<div id="summarise" class="section level2">
+<h2><span class="header-section-number">3.6</span> summarise()</h2>
+<p>The summarise function returns a table of summary statistics that you specify by runnning functions on your data. You name each statistic and then specify what function to use and separate additional statistics with commas like this:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">summarise</span>(mtcars, <span class="dt">avg_disp =</span> <span class="kw">mean</span>(disp), <span class="dt">max_disp =</span> <span class="kw">max</span>(disp), <span class="dt">min_disp =</span> <span class="kw">min</span>(disp), <span class="dt">median_disp =</span> <span class="kw">median</span>(disp))</a></code></pre></div>
+<pre><code>##   avg_disp max_disp min_disp median_disp
+## 1 230.7219      472     71.1       196.3</code></pre>
+<p>In addtion to all the usual summary statistic functions in R, summarise comes with some addtional functions that you can use:</p>
+<ul>
+<li><code>first()</code> - returns the first value</li>
+<li><code>last</code> - returns the last value</li>
+<li><code>nth</code> - returns the nth value</li>
+<li><code>n</code> - returns the number of rows</li>
+<li><code>n_distinct</code> - returns the number of unique values</li>
+</ul>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">summarise</span>(mtcars, <span class="dt">first =</span> <span class="kw">first</span>(disp), <span class="dt">last =</span> <span class="kw">last</span>(disp), <span class="dt">fifth =</span> <span class="kw">nth</span>(disp, <span class="dv">5</span>), <span class="dt">n =</span> <span class="kw">n</span>(), <span class="dt">unique =</span> <span class="kw">n_distinct</span>(disp))</a></code></pre></div>
+<pre><code>##   first last fifth  n unique
+## 1   160  121   360 32     27</code></pre>
+</div>
+<div id="sample_n-and-sample_frac" class="section level2">
+<h2><span class="header-section-number">3.7</span> sample_n() and sample_frac()</h2>
+<p><code>sample_n</code> and <code>sample_frac</code> return random samples from your data. <code>sample_n</code> wil select the number of rows you specify in the second argument at random. <code>sample_frac</code> returns a random sample fraction of rows. You specify the fraction of rows you want returned in your second function argument with a decimal number from 0 to 1. Both functions can be set to sample with or without replacement using the <code>replace = TRUE/FALSE</code> argument.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">sample_n</span>(mtcars, <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>##     mpg cyl  disp  hp drat    wt  qsec vs am gear carb rank
+## 12 16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3    3
+## 5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2    5
+## 26 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1    1
+## 7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4    5
+## 27 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2    2</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">sample_frac</span>(mtcars, <span class="fl">0.25</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>##     mpg cyl  disp  hp drat    wt  qsec vs am gear carb rank
+## 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4    3
+## 5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2    5
+## 15 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4    5
+## 9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2    2
+## 4  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1    3
+## 32 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2    2
+## 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4    2
+## 10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4    3</code></pre>
 
+</div>
 </div>
             </section>
 
