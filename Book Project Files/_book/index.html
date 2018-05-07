@@ -25,7 +25,7 @@
 <meta name="author" content="CUNY SPS DATA 607 Spring 2018">
 
 
-<meta name="date" content="2018-03-02">
+<meta name="date" content="2018-05-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -49,6 +49,71 @@
 
 
 
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 </head>
 
@@ -66,14 +131,257 @@
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#core-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Core tidyverse</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>3</b> ggplot2</a></li>
-<li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> dplyr</a></li>
-<li class="chapter" data-level="5" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>5</b> tidyr</a></li>
-<li class="chapter" data-level="6" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>6</b> readr</a></li>
-<li class="chapter" data-level="7" data-path="purrr.html"><a href="purrr.html"><i class="fa fa-check"></i><b>7</b> purrr</a></li>
-<li class="chapter" data-level="8" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>8</b> tibble</a></li>
-<li class="chapter" data-level="9" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>9</b> stringr</a></li>
-<li class="chapter" data-level="10" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>10</b> forcats</a></li>
+<li class="chapter" data-level="3" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>3</b> ggplot2</a><ul>
+<li class="chapter" data-level="3.1" data-path="ggplot2.html"><a href="ggplot2.html#gg"><i class="fa fa-check"></i><b>3.1</b> +.gg ()</a></li>
+<li class="chapter" data-level="3.2" data-path="ggplot2.html"><a href="ggplot2.html#aes"><i class="fa fa-check"></i><b>3.2</b> aes ()</a></li>
+<li class="chapter" data-level="3.3" data-path="ggplot2.html"><a href="ggplot2.html#aes_"><i class="fa fa-check"></i><b>3.3</b> aes_ ()</a></li>
+<li class="chapter" data-level="3.4" data-path="ggplot2.html"><a href="ggplot2.html#aes_colour_fill_alpha"><i class="fa fa-check"></i><b>3.4</b> aes_colour_fill_alpha ()</a></li>
+<li class="chapter" data-level="3.5" data-path="ggplot2.html"><a href="ggplot2.html#aes_group_order"><i class="fa fa-check"></i><b>3.5</b> aes_group_order ()</a></li>
+<li class="chapter" data-level="3.6" data-path="ggplot2.html"><a href="ggplot2.html#aes_linetype_size_shape"><i class="fa fa-check"></i><b>3.6</b> aes_linetype_size_shape ()</a></li>
+<li class="chapter" data-level="3.7" data-path="ggplot2.html"><a href="ggplot2.html#aes_position"><i class="fa fa-check"></i><b>3.7</b> aes_position ()</a></li>
+<li class="chapter" data-level="3.8" data-path="ggplot2.html"><a href="ggplot2.html#annotate"><i class="fa fa-check"></i><b>3.8</b> annotate ()</a></li>
+<li class="chapter" data-level="3.9" data-path="ggplot2.html"><a href="ggplot2.html#annotation_custom"><i class="fa fa-check"></i><b>3.9</b> annotation_custom ()</a></li>
+<li class="chapter" data-level="3.10" data-path="ggplot2.html"><a href="ggplot2.html#annotation_logticks"><i class="fa fa-check"></i><b>3.10</b> annotation_logticks ()</a></li>
+<li class="chapter" data-level="3.11" data-path="ggplot2.html"><a href="ggplot2.html#annotation_map"><i class="fa fa-check"></i><b>3.11</b> annotation_map ()</a></li>
+<li class="chapter" data-level="3.12" data-path="ggplot2.html"><a href="ggplot2.html#annotation_raster"><i class="fa fa-check"></i><b>3.12</b> annotation_raster ()</a></li>
+<li class="chapter" data-level="3.13" data-path="ggplot2.html"><a href="ggplot2.html#autoplot"><i class="fa fa-check"></i><b>3.13</b> autoplot ()</a></li>
+<li class="chapter" data-level="3.14" data-path="ggplot2.html"><a href="ggplot2.html#borders"><i class="fa fa-check"></i><b>3.14</b> borders ()</a></li>
+<li class="chapter" data-level="3.15" data-path="ggplot2.html"><a href="ggplot2.html#coord_cartesian"><i class="fa fa-check"></i><b>3.15</b> coord_cartesian ()</a></li>
+<li class="chapter" data-level="3.16" data-path="ggplot2.html"><a href="ggplot2.html#coord_fixed"><i class="fa fa-check"></i><b>3.16</b> coord_fixed ()</a></li>
+<li class="chapter" data-level="3.17" data-path="ggplot2.html"><a href="ggplot2.html#coord_flip"><i class="fa fa-check"></i><b>3.17</b> coord_flip ()</a></li>
+<li class="chapter" data-level="3.18" data-path="ggplot2.html"><a href="ggplot2.html#coord_map"><i class="fa fa-check"></i><b>3.18</b> coord_map ()</a></li>
+<li class="chapter" data-level="3.19" data-path="ggplot2.html"><a href="ggplot2.html#coord_polar"><i class="fa fa-check"></i><b>3.19</b> coord_polar ()</a></li>
+<li class="chapter" data-level="3.20" data-path="ggplot2.html"><a href="ggplot2.html#coord_trans"><i class="fa fa-check"></i><b>3.20</b> coord_trans ()</a></li>
+<li class="chapter" data-level="3.21" data-path="ggplot2.html"><a href="ggplot2.html#cut_interval"><i class="fa fa-check"></i><b>3.21</b> cut_interval ()</a></li>
+<li class="chapter" data-level="3.22" data-path="ggplot2.html"><a href="ggplot2.html#diamonds"><i class="fa fa-check"></i><b>3.22</b> diamonds ()</a></li>
+<li class="chapter" data-level="3.23" data-path="ggplot2.html"><a href="ggplot2.html#economics"><i class="fa fa-check"></i><b>3.23</b> economics ()</a></li>
+<li class="chapter" data-level="3.24" data-path="ggplot2.html"><a href="ggplot2.html#expand_limits"><i class="fa fa-check"></i><b>3.24</b> expand_limits ()</a></li>
+<li class="chapter" data-level="3.25" data-path="ggplot2.html"><a href="ggplot2.html#facet_grid"><i class="fa fa-check"></i><b>3.25</b> facet_grid ()</a></li>
+<li class="chapter" data-level="3.26" data-path="ggplot2.html"><a href="ggplot2.html#facet_wrap"><i class="fa fa-check"></i><b>3.26</b> facet_wrap ()</a></li>
+<li class="chapter" data-level="3.27" data-path="ggplot2.html"><a href="ggplot2.html#faithfuld"><i class="fa fa-check"></i><b>3.27</b> faithfuld ()</a></li>
+<li class="chapter" data-level="3.28" data-path="ggplot2.html"><a href="ggplot2.html#fortify"><i class="fa fa-check"></i><b>3.28</b> fortify ()</a></li>
+<li class="chapter" data-level="3.29" data-path="ggplot2.html"><a href="ggplot2.html#geom_abline"><i class="fa fa-check"></i><b>3.29</b> geom_abline ()</a></li>
+<li class="chapter" data-level="3.30" data-path="ggplot2.html"><a href="ggplot2.html#geom_bar"><i class="fa fa-check"></i><b>3.30</b> geom_bar ()</a></li>
+<li class="chapter" data-level="3.31" data-path="ggplot2.html"><a href="ggplot2.html#geom_bin2d"><i class="fa fa-check"></i><b>3.31</b> geom_bin2d ()</a></li>
+<li class="chapter" data-level="3.32" data-path="ggplot2.html"><a href="ggplot2.html#geom_blank"><i class="fa fa-check"></i><b>3.32</b> geom_blank ()</a></li>
+<li class="chapter" data-level="3.33" data-path="ggplot2.html"><a href="ggplot2.html#geom_boxplot"><i class="fa fa-check"></i><b>3.33</b> geom_boxplot ()</a></li>
+<li class="chapter" data-level="3.34" data-path="ggplot2.html"><a href="ggplot2.html#geom_contour"><i class="fa fa-check"></i><b>3.34</b> geom_contour ()</a></li>
+<li class="chapter" data-level="3.35" data-path="ggplot2.html"><a href="ggplot2.html#geom_count"><i class="fa fa-check"></i><b>3.35</b> geom_count ()</a></li>
+<li class="chapter" data-level="3.36" data-path="ggplot2.html"><a href="ggplot2.html#geom_crossbar"><i class="fa fa-check"></i><b>3.36</b> geom_crossbar ()</a></li>
+<li class="chapter" data-level="3.37" data-path="ggplot2.html"><a href="ggplot2.html#geom_density"><i class="fa fa-check"></i><b>3.37</b> geom_density ()</a></li>
+<li class="chapter" data-level="3.38" data-path="ggplot2.html"><a href="ggplot2.html#geom_density_2d"><i class="fa fa-check"></i><b>3.38</b> geom_density_2d ()</a></li>
+<li class="chapter" data-level="3.39" data-path="ggplot2.html"><a href="ggplot2.html#geom_dotplot"><i class="fa fa-check"></i><b>3.39</b> geom_dotplot ()</a></li>
+<li class="chapter" data-level="3.40" data-path="ggplot2.html"><a href="ggplot2.html#geom_errorbarh"><i class="fa fa-check"></i><b>3.40</b> geom_errorbarh ()</a></li>
+<li class="chapter" data-level="3.41" data-path="ggplot2.html"><a href="ggplot2.html#geom_freqpoly"><i class="fa fa-check"></i><b>3.41</b> geom_freqpoly ()</a></li>
+<li class="chapter" data-level="3.42" data-path="ggplot2.html"><a href="ggplot2.html#geom_hex"><i class="fa fa-check"></i><b>3.42</b> geom_hex ()</a></li>
+<li class="chapter" data-level="3.43" data-path="ggplot2.html"><a href="ggplot2.html#geom_jitter"><i class="fa fa-check"></i><b>3.43</b> geom_jitter ()</a></li>
+<li class="chapter" data-level="3.44" data-path="ggplot2.html"><a href="ggplot2.html#geom_label"><i class="fa fa-check"></i><b>3.44</b> geom_label ()</a></li>
+<li class="chapter" data-level="3.45" data-path="ggplot2.html"><a href="ggplot2.html#geom_map"><i class="fa fa-check"></i><b>3.45</b> geom_map ()</a></li>
+<li class="chapter" data-level="3.46" data-path="ggplot2.html"><a href="ggplot2.html#geom_path"><i class="fa fa-check"></i><b>3.46</b> geom_path ()</a></li>
+<li class="chapter" data-level="3.47" data-path="ggplot2.html"><a href="ggplot2.html#geom_point"><i class="fa fa-check"></i><b>3.47</b> geom_point ()</a></li>
+<li class="chapter" data-level="3.48" data-path="ggplot2.html"><a href="ggplot2.html#geom_polygon"><i class="fa fa-check"></i><b>3.48</b> geom_polygon ()</a></li>
+<li class="chapter" data-level="3.49" data-path="ggplot2.html"><a href="ggplot2.html#geom_qq"><i class="fa fa-check"></i><b>3.49</b> geom_qq ()</a></li>
+<li class="chapter" data-level="3.50" data-path="ggplot2.html"><a href="ggplot2.html#geom_quantile"><i class="fa fa-check"></i><b>3.50</b> geom_quantile ()</a></li>
+<li class="chapter" data-level="3.51" data-path="ggplot2.html"><a href="ggplot2.html#geom_raster"><i class="fa fa-check"></i><b>3.51</b> geom_raster ()</a></li>
+<li class="chapter" data-level="3.52" data-path="ggplot2.html"><a href="ggplot2.html#geom_ribbon"><i class="fa fa-check"></i><b>3.52</b> geom_ribbon ()</a></li>
+<li class="chapter" data-level="3.53" data-path="ggplot2.html"><a href="ggplot2.html#geom_rug"><i class="fa fa-check"></i><b>3.53</b> geom_rug ()</a></li>
+<li class="chapter" data-level="3.54" data-path="ggplot2.html"><a href="ggplot2.html#geom_segment"><i class="fa fa-check"></i><b>3.54</b> geom_segment ()</a></li>
+<li class="chapter" data-level="3.55" data-path="ggplot2.html"><a href="ggplot2.html#geom_smooth"><i class="fa fa-check"></i><b>3.55</b> geom_smooth ()</a></li>
+<li class="chapter" data-level="3.56" data-path="ggplot2.html"><a href="ggplot2.html#geom_spoke"><i class="fa fa-check"></i><b>3.56</b> geom_spoke ()</a></li>
+<li class="chapter" data-level="3.57" data-path="ggplot2.html"><a href="ggplot2.html#geom_violin"><i class="fa fa-check"></i><b>3.57</b> geom_violin ()</a></li>
+<li class="chapter" data-level="3.58" data-path="ggplot2.html"><a href="ggplot2.html#ggplot"><i class="fa fa-check"></i><b>3.58</b> ggplot ()</a></li>
+<li class="chapter" data-level="3.59" data-path="ggplot2.html"><a href="ggplot2.html#ggproto"><i class="fa fa-check"></i><b>3.59</b> ggproto ()</a></li>
+<li class="chapter" data-level="3.60" data-path="ggplot2.html"><a href="ggplot2.html#ggsave"><i class="fa fa-check"></i><b>3.60</b> ggsave ()</a></li>
+<li class="chapter" data-level="3.61" data-path="ggplot2.html"><a href="ggplot2.html#ggtheme"><i class="fa fa-check"></i><b>3.61</b> ggtheme ()</a></li>
+<li class="chapter" data-level="3.62" data-path="ggplot2.html"><a href="ggplot2.html#guides"><i class="fa fa-check"></i><b>3.62</b> guides ()</a></li>
+<li class="chapter" data-level="3.63" data-path="ggplot2.html"><a href="ggplot2.html#guide_colourbar"><i class="fa fa-check"></i><b>3.63</b> guide_colourbar ()</a></li>
+<li class="chapter" data-level="3.64" data-path="ggplot2.html"><a href="ggplot2.html#guide_legend"><i class="fa fa-check"></i><b>3.64</b> guide_legend ()</a></li>
+<li class="chapter" data-level="3.65" data-path="ggplot2.html"><a href="ggplot2.html#hmisc"><i class="fa fa-check"></i><b>3.65</b> hmisc ()</a></li>
+<li class="chapter" data-level="3.66" data-path="ggplot2.html"><a href="ggplot2.html#labeller"><i class="fa fa-check"></i><b>3.66</b> labeller ()</a></li>
+<li class="chapter" data-level="3.67" data-path="ggplot2.html"><a href="ggplot2.html#labellers"><i class="fa fa-check"></i><b>3.67</b> labellers ()</a></li>
+<li class="chapter" data-level="3.68" data-path="ggplot2.html"><a href="ggplot2.html#label_bquote"><i class="fa fa-check"></i><b>3.68</b> label_bquote ()</a></li>
+<li class="chapter" data-level="3.69" data-path="ggplot2.html"><a href="ggplot2.html#labs"><i class="fa fa-check"></i><b>3.69</b> labs ()</a></li>
+<li class="chapter" data-level="3.70" data-path="ggplot2.html"><a href="ggplot2.html#lims"><i class="fa fa-check"></i><b>3.70</b> lims ()</a></li>
+<li class="chapter" data-level="3.71" data-path="ggplot2.html"><a href="ggplot2.html#luv_colours"><i class="fa fa-check"></i><b>3.71</b> luv_colours ()</a></li>
+<li class="chapter" data-level="3.72" data-path="ggplot2.html"><a href="ggplot2.html#margin"><i class="fa fa-check"></i><b>3.72</b> margin ()</a></li>
+<li class="chapter" data-level="3.73" data-path="ggplot2.html"><a href="ggplot2.html#mean_se"><i class="fa fa-check"></i><b>3.73</b> mean_se ()</a></li>
+<li class="chapter" data-level="3.74" data-path="ggplot2.html"><a href="ggplot2.html#midwest"><i class="fa fa-check"></i><b>3.74</b> midwest ()</a></li>
+<li class="chapter" data-level="3.75" data-path="ggplot2.html"><a href="ggplot2.html#mpg"><i class="fa fa-check"></i><b>3.75</b> mpg ()</a></li>
+<li class="chapter" data-level="3.76" data-path="ggplot2.html"><a href="ggplot2.html#msleep"><i class="fa fa-check"></i><b>3.76</b> msleep ()</a></li>
+<li class="chapter" data-level="3.77" data-path="ggplot2.html"><a href="ggplot2.html#position_dodge"><i class="fa fa-check"></i><b>3.77</b> position_dodge ()</a></li>
+<li class="chapter" data-level="3.78" data-path="ggplot2.html"><a href="ggplot2.html#position_identity"><i class="fa fa-check"></i><b>3.78</b> position_identity ()</a></li>
+<li class="chapter" data-level="3.79" data-path="ggplot2.html"><a href="ggplot2.html#position_jitter"><i class="fa fa-check"></i><b>3.79</b> position_jitter ()</a></li>
+<li class="chapter" data-level="3.80" data-path="ggplot2.html"><a href="ggplot2.html#position_jitterdodge"><i class="fa fa-check"></i><b>3.80</b> position_jitterdodge ()</a></li>
+<li class="chapter" data-level="3.81" data-path="ggplot2.html"><a href="ggplot2.html#position_nudge"><i class="fa fa-check"></i><b>3.81</b> position_nudge ()</a></li>
+<li class="chapter" data-level="3.82" data-path="ggplot2.html"><a href="ggplot2.html#position_stack"><i class="fa fa-check"></i><b>3.82</b> position_stack ()</a></li>
+<li class="chapter" data-level="3.83" data-path="ggplot2.html"><a href="ggplot2.html#presidential"><i class="fa fa-check"></i><b>3.83</b> presidential ()</a></li>
+<li class="chapter" data-level="3.84" data-path="ggplot2.html"><a href="ggplot2.html#print.ggplot"><i class="fa fa-check"></i><b>3.84</b> print.ggplot ()</a></li>
+<li class="chapter" data-level="3.85" data-path="ggplot2.html"><a href="ggplot2.html#print.ggproto"><i class="fa fa-check"></i><b>3.85</b> print.ggproto ()</a></li>
+<li class="chapter" data-level="3.86" data-path="ggplot2.html"><a href="ggplot2.html#qplot"><i class="fa fa-check"></i><b>3.86</b> qplot ()</a></li>
+<li class="chapter" data-level="3.87" data-path="ggplot2.html"><a href="ggplot2.html#resolution"><i class="fa fa-check"></i><b>3.87</b> resolution ()</a></li>
+<li class="chapter" data-level="3.88" data-path="ggplot2.html"><a href="ggplot2.html#scale_alpha"><i class="fa fa-check"></i><b>3.88</b> scale_alpha ()</a></li>
+<li class="chapter" data-level="3.89" data-path="ggplot2.html"><a href="ggplot2.html#scale_colour_brewer"><i class="fa fa-check"></i><b>3.89</b> scale_colour_brewer ()</a></li>
+<li class="chapter" data-level="3.90" data-path="ggplot2.html"><a href="ggplot2.html#scale_colour_gradient"><i class="fa fa-check"></i><b>3.90</b> scale_colour_gradient ()</a></li>
+<li class="chapter" data-level="3.91" data-path="ggplot2.html"><a href="ggplot2.html#scale_colour_grey"><i class="fa fa-check"></i><b>3.91</b> scale_colour_grey ()</a></li>
+<li class="chapter" data-level="3.92" data-path="ggplot2.html"><a href="ggplot2.html#scale_colour_hue"><i class="fa fa-check"></i><b>3.92</b> scale_colour_hue ()</a></li>
+<li class="chapter" data-level="3.93" data-path="ggplot2.html"><a href="ggplot2.html#scale_continuous"><i class="fa fa-check"></i><b>3.93</b> scale_continuous ()</a></li>
+<li class="chapter" data-level="3.94" data-path="ggplot2.html"><a href="ggplot2.html#scale_date"><i class="fa fa-check"></i><b>3.94</b> scale_date ()</a></li>
+<li class="chapter" data-level="3.95" data-path="ggplot2.html"><a href="ggplot2.html#scale_identity"><i class="fa fa-check"></i><b>3.95</b> scale_identity ()</a></li>
+<li class="chapter" data-level="3.96" data-path="ggplot2.html"><a href="ggplot2.html#scale_linetype"><i class="fa fa-check"></i><b>3.96</b> scale_linetype ()</a></li>
+<li class="chapter" data-level="3.97" data-path="ggplot2.html"><a href="ggplot2.html#scale_manual"><i class="fa fa-check"></i><b>3.97</b> scale_manual ()</a></li>
+<li class="chapter" data-level="3.98" data-path="ggplot2.html"><a href="ggplot2.html#scale_shape"><i class="fa fa-check"></i><b>3.98</b> scale_shape ()</a></li>
+<li class="chapter" data-level="3.99" data-path="ggplot2.html"><a href="ggplot2.html#scale_size"><i class="fa fa-check"></i><b>3.99</b> scale_size ()</a></li>
+<li class="chapter" data-level="3.100" data-path="ggplot2.html"><a href="ggplot2.html#scale_x_discrete"><i class="fa fa-check"></i><b>3.100</b> scale_x_discrete ()</a></li>
+<li class="chapter" data-level="3.101" data-path="ggplot2.html"><a href="ggplot2.html#seals"><i class="fa fa-check"></i><b>3.101</b> seals ()</a></li>
+<li class="chapter" data-level="3.102" data-path="ggplot2.html"><a href="ggplot2.html#sec_axis"><i class="fa fa-check"></i><b>3.102</b> sec_axis ()</a></li>
+<li class="chapter" data-level="3.103" data-path="ggplot2.html"><a href="ggplot2.html#stat_ecdf"><i class="fa fa-check"></i><b>3.103</b> stat_ecdf ()</a></li>
+<li class="chapter" data-level="3.104" data-path="ggplot2.html"><a href="ggplot2.html#stat_ellipse"><i class="fa fa-check"></i><b>3.104</b> stat_ellipse ()</a></li>
+<li class="chapter" data-level="3.105" data-path="ggplot2.html"><a href="ggplot2.html#stat_function"><i class="fa fa-check"></i><b>3.105</b> stat_function ()</a></li>
+<li class="chapter" data-level="3.106" data-path="ggplot2.html"><a href="ggplot2.html#stat_identity"><i class="fa fa-check"></i><b>3.106</b> stat_identity ()</a></li>
+<li class="chapter" data-level="3.107" data-path="ggplot2.html"><a href="ggplot2.html#stat_summary_2d"><i class="fa fa-check"></i><b>3.107</b> stat_summary_2d ()</a></li>
+<li class="chapter" data-level="3.108" data-path="ggplot2.html"><a href="ggplot2.html#stat_summary_bin"><i class="fa fa-check"></i><b>3.108</b> stat_summary_bin ()</a></li>
+<li class="chapter" data-level="3.109" data-path="ggplot2.html"><a href="ggplot2.html#stat_unique"><i class="fa fa-check"></i><b>3.109</b> stat_unique ()</a></li>
+<li class="chapter" data-level="3.110" data-path="ggplot2.html"><a href="ggplot2.html#theme"><i class="fa fa-check"></i><b>3.110</b> theme ()</a></li>
+<li class="chapter" data-level="3.111" data-path="ggplot2.html"><a href="ggplot2.html#theme_get"><i class="fa fa-check"></i><b>3.111</b> theme_get ()</a></li>
+<li class="chapter" data-level="3.112" data-path="ggplot2.html"><a href="ggplot2.html#txhousing"><i class="fa fa-check"></i><b>3.112</b> txhousing ()</a></li>
+<li class="chapter" data-level="3.113" data-path="ggplot2.html"><a href="ggplot2.html#rename"><i class="fa fa-check"></i><b>3.113</b> rename()</a></li>
+<li class="chapter" data-level="3.114" data-path="ggplot2.html"><a href="ggplot2.html#filter"><i class="fa fa-check"></i><b>3.114</b> filter()</a></li>
+<li class="chapter" data-level="3.115" data-path="ggplot2.html"><a href="ggplot2.html#arrange"><i class="fa fa-check"></i><b>3.115</b> arrange()</a></li>
+<li class="chapter" data-level="3.116" data-path="ggplot2.html"><a href="ggplot2.html#mutate-and-transmute"><i class="fa fa-check"></i><b>3.116</b> mutate() and transmute()</a></li>
+<li class="chapter" data-level="3.117" data-path="ggplot2.html"><a href="ggplot2.html#summarise"><i class="fa fa-check"></i><b>3.117</b> summarise()</a></li>
+<li class="chapter" data-level="3.118" data-path="ggplot2.html"><a href="ggplot2.html#sample_n-and-sample_frac"><i class="fa fa-check"></i><b>3.118</b> sample_n() and sample_frac()</a></li>
+<li class="chapter" data-level="3.119" data-path="ggplot2.html"><a href="ggplot2.html#scored-operations"><i class="fa fa-check"></i><b>3.119</b> scored operations</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>4</b> tidyr</a><ul>
+<li class="chapter" data-level="4.1" data-path="tidyr.html"><a href="tidyr.html#complete"><i class="fa fa-check"></i><b>4.1</b> complete ()</a></li>
+<li class="chapter" data-level="4.2" data-path="tidyr.html"><a href="tidyr.html#drop_na"><i class="fa fa-check"></i><b>4.2</b> drop_na ()</a></li>
+<li class="chapter" data-level="4.3" data-path="tidyr.html"><a href="tidyr.html#expand"><i class="fa fa-check"></i><b>4.3</b> expand ()</a></li>
+<li class="chapter" data-level="4.4" data-path="tidyr.html"><a href="tidyr.html#extract"><i class="fa fa-check"></i><b>4.4</b> extract ()</a></li>
+<li class="chapter" data-level="4.5" data-path="tidyr.html"><a href="tidyr.html#fill"><i class="fa fa-check"></i><b>4.5</b> fill ()</a></li>
+<li class="chapter" data-level="4.6" data-path="tidyr.html"><a href="tidyr.html#full_seq"><i class="fa fa-check"></i><b>4.6</b> full_seq ()</a></li>
+<li class="chapter" data-level="4.7" data-path="tidyr.html"><a href="tidyr.html#gather"><i class="fa fa-check"></i><b>4.7</b> gather ()</a></li>
+<li class="chapter" data-level="4.8" data-path="tidyr.html"><a href="tidyr.html#nest"><i class="fa fa-check"></i><b>4.8</b> nest ()</a></li>
+<li class="chapter" data-level="4.9" data-path="tidyr.html"><a href="tidyr.html#replace_na"><i class="fa fa-check"></i><b>4.9</b> replace_na ()</a></li>
+<li class="chapter" data-level="4.10" data-path="tidyr.html"><a href="tidyr.html#separate"><i class="fa fa-check"></i><b>4.10</b> separate ()</a></li>
+<li class="chapter" data-level="4.11" data-path="tidyr.html"><a href="tidyr.html#separate_rows"><i class="fa fa-check"></i><b>4.11</b> separate_rows ()</a></li>
+<li class="chapter" data-level="4.12" data-path="tidyr.html"><a href="tidyr.html#smiths"><i class="fa fa-check"></i><b>4.12</b> smiths ()</a></li>
+<li class="chapter" data-level="4.13" data-path="tidyr.html"><a href="tidyr.html#spread"><i class="fa fa-check"></i><b>4.13</b> spread ()</a></li>
+<li class="chapter" data-level="4.14" data-path="tidyr.html"><a href="tidyr.html#table1"><i class="fa fa-check"></i><b>4.14</b> table1 ()</a></li>
+<li class="chapter" data-level="4.15" data-path="tidyr.html"><a href="tidyr.html#uncount"><i class="fa fa-check"></i><b>4.15</b> uncount ()</a></li>
+<li class="chapter" data-level="4.16" data-path="tidyr.html"><a href="tidyr.html#unite"><i class="fa fa-check"></i><b>4.16</b> unite ()</a></li>
+<li class="chapter" data-level="4.17" data-path="tidyr.html"><a href="tidyr.html#unnest"><i class="fa fa-check"></i><b>4.17</b> unnest ()</a></li>
+<li class="chapter" data-level="4.18" data-path="tidyr.html"><a href="tidyr.html#who"><i class="fa fa-check"></i><b>4.18</b> who ()</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>5</b> readr</a><ul>
+<li class="chapter" data-level="5.1" data-path="readr.html"><a href="readr.html#read_csv"><i class="fa fa-check"></i><b>5.1</b> read_csv()</a></li>
+<li class="chapter" data-level="5.2" data-path="readr.html"><a href="readr.html#cols"><i class="fa fa-check"></i><b>5.2</b> cols ()</a></li>
+<li class="chapter" data-level="5.3" data-path="readr.html"><a href="readr.html#cols_condense"><i class="fa fa-check"></i><b>5.3</b> cols_condense ()</a></li>
+<li class="chapter" data-level="5.4" data-path="readr.html"><a href="readr.html#col_skip"><i class="fa fa-check"></i><b>5.4</b> col_skip ()</a></li>
+<li class="chapter" data-level="5.5" data-path="readr.html"><a href="readr.html#count_fields"><i class="fa fa-check"></i><b>5.5</b> count_fields ()</a></li>
+<li class="chapter" data-level="5.6" data-path="readr.html"><a href="readr.html#date_names"><i class="fa fa-check"></i><b>5.6</b> date_names ()</a></li>
+<li class="chapter" data-level="5.7" data-path="readr.html"><a href="readr.html#format_delim"><i class="fa fa-check"></i><b>5.7</b> format_delim ()</a></li>
+<li class="chapter" data-level="5.8" data-path="readr.html"><a href="readr.html#guess_encoding"><i class="fa fa-check"></i><b>5.8</b> guess_encoding ()</a></li>
+<li class="chapter" data-level="5.9" data-path="readr.html"><a href="readr.html#locale"><i class="fa fa-check"></i><b>5.9</b> locale ()</a></li>
+<li class="chapter" data-level="5.10" data-path="readr.html"><a href="readr.html#parse_atomic"><i class="fa fa-check"></i><b>5.10</b> parse_atomic ()</a></li>
+<li class="chapter" data-level="5.11" data-path="readr.html"><a href="readr.html#parse_datetime-parse_date-and-parse_time"><i class="fa fa-check"></i><b>5.11</b> parse_datetime (), parse_date() and parse_time()</a></li>
+<li class="chapter" data-level="5.12" data-path="readr.html"><a href="readr.html#parse_factor"><i class="fa fa-check"></i><b>5.12</b> parse_factor ()</a></li>
+<li class="chapter" data-level="5.13" data-path="readr.html"><a href="readr.html#parse_logical-parse_number-parse_double-and-parse_integer"><i class="fa fa-check"></i><b>5.13</b> parse_logical(), parse_number(), parse_double() and parse_integer()</a></li>
+<li class="chapter" data-level="5.14" data-path="readr.html"><a href="readr.html#parse_character"><i class="fa fa-check"></i><b>5.14</b> parse_character()</a></li>
+<li class="chapter" data-level="5.15" data-path="readr.html"><a href="readr.html#parse_guess"><i class="fa fa-check"></i><b>5.15</b> parse_guess ()</a></li>
+<li class="chapter" data-level="5.16" data-path="readr.html"><a href="readr.html#problems"><i class="fa fa-check"></i><b>5.16</b> problems ()</a></li>
+<li class="chapter" data-level="5.17" data-path="readr.html"><a href="readr.html#read_delim"><i class="fa fa-check"></i><b>5.17</b> read_delim ()</a></li>
+<li class="chapter" data-level="5.18" data-path="readr.html"><a href="readr.html#read_file"><i class="fa fa-check"></i><b>5.18</b> read_file ()</a></li>
+<li class="chapter" data-level="5.19" data-path="readr.html"><a href="readr.html#read_fwf"><i class="fa fa-check"></i><b>5.19</b> read_fwf ()</a></li>
+<li class="chapter" data-level="5.20" data-path="readr.html"><a href="readr.html#read_lines"><i class="fa fa-check"></i><b>5.20</b> read_lines ()</a></li>
+<li class="chapter" data-level="5.21" data-path="readr.html"><a href="readr.html#read_log"><i class="fa fa-check"></i><b>5.21</b> read_log ()</a></li>
+<li class="chapter" data-level="5.22" data-path="readr.html"><a href="readr.html#read_table"><i class="fa fa-check"></i><b>5.22</b> read_table ()</a></li>
+<li class="chapter" data-level="5.23" data-path="readr.html"><a href="readr.html#spec_delim"><i class="fa fa-check"></i><b>5.23</b> spec_delim ()</a></li>
+<li class="chapter" data-level="5.24" data-path="readr.html"><a href="readr.html#type_convert"><i class="fa fa-check"></i><b>5.24</b> type_convert ()</a></li>
+<li class="chapter" data-level="5.25" data-path="readr.html"><a href="readr.html#write_delim"><i class="fa fa-check"></i><b>5.25</b> write_delim ()</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="purrr.html"><a href="purrr.html"><i class="fa fa-check"></i><b>6</b> purrr</a><ul>
+<li class="chapter" data-level="6.1" data-path="purrr.html"><a href="purrr.html#overview"><i class="fa fa-check"></i><b>6.1</b> Overview</a></li>
+<li class="chapter" data-level="6.2" data-path="purrr.html"><a href="purrr.html#map-family"><i class="fa fa-check"></i><b>6.2</b> Map Family</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="purrr.html"><a href="purrr.html#map"><i class="fa fa-check"></i><b>6.2.1</b> map</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="purrr.html"><a href="purrr.html#reduce-family"><i class="fa fa-check"></i><b>6.3</b> Reduce Family</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="purrr.html"><a href="purrr.html#reduce"><i class="fa fa-check"></i><b>6.3.1</b> reduce</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>7</b> tibble</a><ul>
+<li class="chapter" data-level="7.1" data-path="tibble.html"><a href="tibble.html#how-to-create-tibble"><i class="fa fa-check"></i><b>7.1</b> How to create tibble?</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="tibble.html"><a href="tibble.html#as_tibble"><i class="fa fa-check"></i><b>7.1.1</b> as_tibble()</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tibble.html"><a href="tibble.html#tibble-1"><i class="fa fa-check"></i><b>7.1.2</b> tibble()</a></li>
+<li class="chapter" data-level="7.1.3" data-path="tibble.html"><a href="tibble.html#tribble"><i class="fa fa-check"></i><b>7.1.3</b> tribble()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="tibble.html"><a href="tibble.html#tibble-package"><i class="fa fa-check"></i><b>7.2</b> tibble-package ()</a></li>
+<li class="chapter" data-level="7.3" data-path="tibble.html"><a href="tibble.html#add_column"><i class="fa fa-check"></i><b>7.3</b> add_column ()</a></li>
+<li class="chapter" data-level="7.4" data-path="tibble.html"><a href="tibble.html#add_row"><i class="fa fa-check"></i><b>7.4</b> add_row ()</a></li>
+<li class="chapter" data-level="7.5" data-path="tibble.html"><a href="tibble.html#enframe"><i class="fa fa-check"></i><b>7.5</b> enframe ()</a></li>
+<li class="chapter" data-level="7.6" data-path="tibble.html"><a href="tibble.html#frame_matrix"><i class="fa fa-check"></i><b>7.6</b> frame_matrix ()</a></li>
+<li class="chapter" data-level="7.7" data-path="tibble.html"><a href="tibble.html#glimpse"><i class="fa fa-check"></i><b>7.7</b> glimpse ()</a></li>
+<li class="chapter" data-level="7.8" data-path="tibble.html"><a href="tibble.html#is_tibble"><i class="fa fa-check"></i><b>7.8</b> is_tibble ()</a></li>
+<li class="chapter" data-level="7.9" data-path="tibble.html"><a href="tibble.html#new_tibble"><i class="fa fa-check"></i><b>7.9</b> new_tibble ()</a></li>
+<li class="chapter" data-level="7.10" data-path="tibble.html"><a href="tibble.html#rownames"><i class="fa fa-check"></i><b>7.10</b> rownames ()</a></li>
+<li class="chapter" data-level="7.11" data-path="tibble.html"><a href="tibble.html#set_tidy_names"><i class="fa fa-check"></i><b>7.11</b> set_tidy_names ()</a></li>
+<li class="chapter" data-level="7.12" data-path="tibble.html"><a href="tibble.html#tbl_sum"><i class="fa fa-check"></i><b>7.12</b> tbl_sum ()</a></li>
+<li class="chapter" data-level="7.13" data-path="tibble.html"><a href="tibble.html#tibble-options"><i class="fa fa-check"></i><b>7.13</b> tibble-options ()</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>8</b> stringr</a><ul>
+<li class="chapter" data-level="8.1" data-path="stringr.html"><a href="stringr.html#case"><i class="fa fa-check"></i><b>8.1</b> case ()</a></li>
+<li class="chapter" data-level="8.2" data-path="stringr.html"><a href="stringr.html#invert_match"><i class="fa fa-check"></i><b>8.2</b> invert_match ()</a></li>
+<li class="chapter" data-level="8.3" data-path="stringr.html"><a href="stringr.html#modifiers"><i class="fa fa-check"></i><b>8.3</b> modifiers ()</a></li>
+<li class="chapter" data-level="8.4" data-path="stringr.html"><a href="stringr.html#stringr-data"><i class="fa fa-check"></i><b>8.4</b> stringr-data ()</a></li>
+<li class="chapter" data-level="8.5" data-path="stringr.html"><a href="stringr.html#str_c"><i class="fa fa-check"></i><b>8.5</b> str_c ()</a></li>
+<li class="chapter" data-level="8.6" data-path="stringr.html"><a href="stringr.html#str_conv"><i class="fa fa-check"></i><b>8.6</b> str_conv ()</a></li>
+<li class="chapter" data-level="8.7" data-path="stringr.html"><a href="stringr.html#str_count"><i class="fa fa-check"></i><b>8.7</b> str_count ()</a></li>
+<li class="chapter" data-level="8.8" data-path="stringr.html"><a href="stringr.html#str_detect"><i class="fa fa-check"></i><b>8.8</b> str_detect ()</a></li>
+<li class="chapter" data-level="8.9" data-path="stringr.html"><a href="stringr.html#str_dup"><i class="fa fa-check"></i><b>8.9</b> str_dup ()</a></li>
+<li class="chapter" data-level="8.10" data-path="stringr.html"><a href="stringr.html#str_extract"><i class="fa fa-check"></i><b>8.10</b> str_extract ()</a></li>
+<li class="chapter" data-level="8.11" data-path="stringr.html"><a href="stringr.html#str_flatten"><i class="fa fa-check"></i><b>8.11</b> str_flatten ()</a></li>
+<li class="chapter" data-level="8.12" data-path="stringr.html"><a href="stringr.html#str_glue"><i class="fa fa-check"></i><b>8.12</b> str_glue ()</a></li>
+<li class="chapter" data-level="8.13" data-path="stringr.html"><a href="stringr.html#str_length"><i class="fa fa-check"></i><b>8.13</b> str_length ()</a></li>
+<li class="chapter" data-level="8.14" data-path="stringr.html"><a href="stringr.html#str_locate"><i class="fa fa-check"></i><b>8.14</b> str_locate ()</a></li>
+<li class="chapter" data-level="8.15" data-path="stringr.html"><a href="stringr.html#str_match"><i class="fa fa-check"></i><b>8.15</b> str_match ()</a></li>
+<li class="chapter" data-level="8.16" data-path="stringr.html"><a href="stringr.html#str_order"><i class="fa fa-check"></i><b>8.16</b> str_order ()</a></li>
+<li class="chapter" data-level="8.17" data-path="stringr.html"><a href="stringr.html#str_pad"><i class="fa fa-check"></i><b>8.17</b> str_pad ()</a></li>
+<li class="chapter" data-level="8.18" data-path="stringr.html"><a href="stringr.html#str_remove"><i class="fa fa-check"></i><b>8.18</b> str_remove ()</a></li>
+<li class="chapter" data-level="8.19" data-path="stringr.html"><a href="stringr.html#str_replace"><i class="fa fa-check"></i><b>8.19</b> str_replace ()</a></li>
+<li class="chapter" data-level="8.20" data-path="stringr.html"><a href="stringr.html#str_replace_na"><i class="fa fa-check"></i><b>8.20</b> str_replace_na ()</a></li>
+<li class="chapter" data-level="8.21" data-path="stringr.html"><a href="stringr.html#str_split"><i class="fa fa-check"></i><b>8.21</b> str_split ()</a></li>
+<li class="chapter" data-level="8.22" data-path="stringr.html"><a href="stringr.html#str_sub"><i class="fa fa-check"></i><b>8.22</b> str_sub ()</a></li>
+<li class="chapter" data-level="8.23" data-path="stringr.html"><a href="stringr.html#str_subset"><i class="fa fa-check"></i><b>8.23</b> str_subset ()</a></li>
+<li class="chapter" data-level="8.24" data-path="stringr.html"><a href="stringr.html#str_trim"><i class="fa fa-check"></i><b>8.24</b> str_trim ()</a></li>
+<li class="chapter" data-level="8.25" data-path="stringr.html"><a href="stringr.html#str_trunc"><i class="fa fa-check"></i><b>8.25</b> str_trunc ()</a></li>
+<li class="chapter" data-level="8.26" data-path="stringr.html"><a href="stringr.html#str_view"><i class="fa fa-check"></i><b>8.26</b> str_view ()</a></li>
+<li class="chapter" data-level="8.27" data-path="stringr.html"><a href="stringr.html#str_wrap"><i class="fa fa-check"></i><b>8.27</b> str_wrap ()</a></li>
+<li class="chapter" data-level="8.28" data-path="stringr.html"><a href="stringr.html#word"><i class="fa fa-check"></i><b>8.28</b> word ()</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>9</b> forcats</a><ul>
+<li class="chapter" data-level="9.1" data-path="forcats.html"><a href="forcats.html#as_factor"><i class="fa fa-check"></i><b>9.1</b> as_factor ()</a></li>
+<li class="chapter" data-level="9.2" data-path="forcats.html"><a href="forcats.html#fct_anonv"><i class="fa fa-check"></i><b>9.2</b> fct_anonv ()</a></li>
+<li class="chapter" data-level="9.3" data-path="forcats.html"><a href="forcats.html#fct_c"><i class="fa fa-check"></i><b>9.3</b> fct_c ()</a></li>
+<li class="chapter" data-level="9.4" data-path="forcats.html"><a href="forcats.html#fct_collapse"><i class="fa fa-check"></i><b>9.4</b> fct_collapse ()</a></li>
+<li class="chapter" data-level="9.5" data-path="forcats.html"><a href="forcats.html#fct_count"><i class="fa fa-check"></i><b>9.5</b> fct_count ()</a></li>
+<li class="chapter" data-level="9.6" data-path="forcats.html"><a href="forcats.html#fct_drop"><i class="fa fa-check"></i><b>9.6</b> fct_drop ()</a></li>
+<li class="chapter" data-level="9.7" data-path="forcats.html"><a href="forcats.html#fct_expand"><i class="fa fa-check"></i><b>9.7</b> fct_expand ()</a></li>
+<li class="chapter" data-level="9.8" data-path="forcats.html"><a href="forcats.html#fct_explicit_na"><i class="fa fa-check"></i><b>9.8</b> fct_explicit_na ()</a></li>
+<li class="chapter" data-level="9.9" data-path="forcats.html"><a href="forcats.html#fct_inorder"><i class="fa fa-check"></i><b>9.9</b> fct_inorder ()</a></li>
+<li class="chapter" data-level="9.10" data-path="forcats.html"><a href="forcats.html#fct_lump"><i class="fa fa-check"></i><b>9.10</b> fct_lump ()</a></li>
+<li class="chapter" data-level="9.11" data-path="forcats.html"><a href="forcats.html#fct_other"><i class="fa fa-check"></i><b>9.11</b> fct_other ()</a></li>
+<li class="chapter" data-level="9.12" data-path="forcats.html"><a href="forcats.html#fct_recode"><i class="fa fa-check"></i><b>9.12</b> fct_recode ()</a></li>
+<li class="chapter" data-level="9.13" data-path="forcats.html"><a href="forcats.html#fct_relabel"><i class="fa fa-check"></i><b>9.13</b> fct_relabel ()</a></li>
+<li class="chapter" data-level="9.14" data-path="forcats.html"><a href="forcats.html#fct_relevel"><i class="fa fa-check"></i><b>9.14</b> fct_relevel ()</a></li>
+<li class="chapter" data-level="9.15" data-path="forcats.html"><a href="forcats.html#fct_reorder"><i class="fa fa-check"></i><b>9.15</b> fct_reorder ()</a></li>
+<li class="chapter" data-level="9.16" data-path="forcats.html"><a href="forcats.html#fct_rev"><i class="fa fa-check"></i><b>9.16</b> fct_rev ()</a></li>
+<li class="chapter" data-level="9.17" data-path="forcats.html"><a href="forcats.html#fct_shift"><i class="fa fa-check"></i><b>9.17</b> fct_shift ()</a></li>
+<li class="chapter" data-level="9.18" data-path="forcats.html"><a href="forcats.html#fct_shuffle"><i class="fa fa-check"></i><b>9.18</b> fct_shuffle ()</a></li>
+<li class="chapter" data-level="9.19" data-path="forcats.html"><a href="forcats.html#fct_unify"><i class="fa fa-check"></i><b>9.19</b> fct_unify ()</a></li>
+<li class="chapter" data-level="9.20" data-path="forcats.html"><a href="forcats.html#fct_unique"><i class="fa fa-check"></i><b>9.20</b> fct_unique ()</a></li>
+<li class="chapter" data-level="9.21" data-path="forcats.html"><a href="forcats.html#gss_cat"><i class="fa fa-check"></i><b>9.21</b> gss_cat ()</a></li>
+<li class="chapter" data-level="9.22" data-path="forcats.html"><a href="forcats.html#lvls"><i class="fa fa-check"></i><b>9.22</b> lvls ()</a></li>
+<li class="chapter" data-level="9.23" data-path="forcats.html"><a href="forcats.html#lvls_union"><i class="fa fa-check"></i><b>9.23</b> lvls_union ()</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -95,7 +403,7 @@
 <div id="header">
 <h1 class="title">tidyverse Book</h1>
 <h4 class="author"><em>CUNY SPS DATA 607 Spring 2018</em></h4>
-<h4 class="date"><em>2018-03-02</em></h4>
+<h4 class="date"><em>2018-05-06</em></h4>
 </div>
 <div id="preface" class="section level1">
 <h1><span class="header-section-number">1</span> Preface</h1>
@@ -158,6 +466,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

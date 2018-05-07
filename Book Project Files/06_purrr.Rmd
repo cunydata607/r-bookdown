@@ -1,6 +1,6 @@
 # purrr {#purrr}
 
-```{r setup, include=FALSE}
+```{r include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(tidy = TRUE)
 knitr::opts_chunk$set(warning = FALSE)

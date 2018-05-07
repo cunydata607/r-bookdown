@@ -24,6 +24,11 @@ knitr::write_bib(c(
 # Still not really sure how this works! ?write_bib 
 ```
 
+```{r}
+library(tidyverse)
+```
+
+
 # Preface
 
 Testing the bibliography below... To create an inline reference use square brackets and \@R- followed by the package name. 
