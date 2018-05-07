@@ -414,33 +414,157 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">4</span> tidyr</h1>
 <div id="complete" class="section level2">
 <h2><span class="header-section-number">4.1</span> complete ()</h2>
+<p>Complete a data frame with missing combinations of data.</p>
+<p>Description:</p>
+<p>Turns implicit missing values into explicit missing values. This is a wrapper around expand(), dplyr::left_join() and replace_na() that’s useful for completing missing combinations of data.</p>
+<p>Usage:</p>
+<pre><code>complete(data, ..., fill = list())</code></pre>
+<p>Example:</p>
+<pre><code>library(dplyr, warn.conflicts = FALSE)
+df &lt;- tibble(
+  group = c(1:2, 1),
+  item_id = c(1:2, 2),
+  item_name = c(&quot;a&quot;, &quot;b&quot;, &quot;b&quot;),
+  value1 = 1:3,
+  value2 = 4:6
+)
+df %&gt;% complete(group, nesting(item_id, item_name))
+# You can also choose to fill in missing values
+df %&gt;% complete(group, nesting(item_id, item_name), fill = list(value1 = 0))</code></pre>
 </div>
 <div id="drop_na" class="section level2">
 <h2><span class="header-section-number">4.2</span> drop_na ()</h2>
+<p>Drop rows containing missing values</p>
+<p>Description:</p>
+<p>Drop rows containing missing values</p>
+<p>Usage:</p>
+<pre><code>drop_na(data, ...)</code></pre>
+<p>Example:
+library(dplyr)
+df &lt;- tibble(x = c(1, 2, NA), y = c(“a”, NA, “b”))
+df %&gt;% drop_na()
+df %&gt;% drop_na(x)</p>
 </div>
 <div id="expand" class="section level2">
 <h2><span class="header-section-number">4.3</span> expand ()</h2>
+<p>Expand data frame to include all combinations of values</p>
+<p>Description:</p>
+<p>expand() is often useful in conjunction with left_join if you want to convert implicit missing values to explicit missing values. Or you can use it in conjunction with anti_join() to figure out which combinations are missing.</p>
+<p>Usage:</p>
+<pre><code>expand(data, ...)</code></pre>
+<p>Example:</p>
+<pre><code>library(dplyr)
+# All possible combinations of vs &amp; cyl, even those that aren&#39;t
+# present in the data
+expand(mtcars, vs, cyl)</code></pre>
 </div>
 <div id="extract" class="section level2">
 <h2><span class="header-section-number">4.4</span> extract ()</h2>
+<p>Extract one column into multiple columns.</p>
+<p>Description:</p>
+<p>Given a regular expression with capturing groups, extract() turns each group into a new column. If the groups don’t match, or the input is NA, the output will be NA.</p>
+<p>Usage:</p>
+<pre><code>extract(data, col, into, regex = &quot;([[:alnum:]]+)&quot;, remove = TRUE,
+  convert = FALSE, ...)
+  </code></pre>
+<p>Example:</p>
+<pre><code>library(dplyr)
+df &lt;- data.frame(x = c(NA, &quot;a-b&quot;, &quot;a-d&quot;, &quot;b-c&quot;, &quot;d-e&quot;))
+df %&gt;% extract(x, &quot;A&quot;)
+df %&gt;% extract(x, c(&quot;A&quot;, &quot;B&quot;), &quot;([[:alnum:]]+)-([[:alnum:]]+)&quot;)</code></pre>
 </div>
 <div id="fill" class="section level2">
 <h2><span class="header-section-number">4.5</span> fill ()</h2>
+<p>Fill in missing values.</p>
+<p>Description:</p>
+<p>Fills missing values in using the previous entry. This is useful in the common output format where values are not repeated, they’re recorded each time they change.</p>
+<p>Usage:</p>
+<pre><code> fill(data, ..., .direction = c(&quot;down&quot;, &quot;up&quot;))
+ </code></pre>
+<p>Example:</p>
+<pre><code>df &lt;- data.frame(Month = 1:12, Year = c(2000, rep(NA, 11)))
+df %&gt;% fill(Year)  </code></pre>
 </div>
 <div id="full_seq" class="section level2">
 <h2><span class="header-section-number">4.6</span> full_seq ()</h2>
 </div>
 <div id="gather" class="section level2">
 <h2><span class="header-section-number">4.7</span> gather ()</h2>
+<p>Gather columns into key-value pairs.</p>
+<p>Description:</p>
+<p>Gather takes multiple columns and collapses into key-value pairs, duplicating all other columns as needed. You use gather() when you notice that you have columns that are not variables.</p>
+<p>Usage:</p>
+<pre><code>gather(data, key = &quot;key&quot;, value = &quot;value&quot;, ..., na.rm = FALSE,
+  convert = FALSE, factor_key = FALSE)</code></pre>
+<p>Example:</p>
+<pre><code>library(dplyr)
+# From http://stackoverflow.com/questions/1181060
+stocks &lt;- tibble(
+  time = as.Date(&#39;2009-01-01&#39;) + 0:9,
+  X = rnorm(10, 0, 1),
+  Y = rnorm(10, 0, 2),
+  Z = rnorm(10, 0, 4))
+gather(stocks, stock, price, -time)
+stocks %&gt;% gather(stock, price, -time)</code></pre>
 </div>
 <div id="nest" class="section level2">
 <h2><span class="header-section-number">4.8</span> nest ()</h2>
+<p>Nest repeated values in a list-variable.</p>
+<p>Description:</p>
+<p>There are many possible ways one could choose to nest columns inside a data frame. nest() creates a list of data frames containing all the nested variables: this seems to be the most useful form in practice.</p>
+<p>Usage:</p>
+<pre><code> nest(data, ..., .key = &quot;data&quot;)</code></pre>
+<p>Example:</p>
+<pre><code>library(dplyr)
+    as_tibble(iris) %&gt;% nest(-Species)
+    as_tibble(chickwts) %&gt;% nest(weight)
+    if (require(&quot;gapminder&quot;)) {
+      gapminder %&gt;%
+        group_by(country, continent) %&gt;%
+        nest()
+      gapminder %&gt;%
+        nest(-country, -continent)
+}     </code></pre>
 </div>
 <div id="replace_na" class="section level2">
 <h2><span class="header-section-number">4.9</span> replace_na ()</h2>
+<p>Replace missing values</p>
+<p>Description:</p>
+<p>Replace missing values</p>
+<p>Usage:</p>
+<pre><code> replace_na(data, replace, ...)</code></pre>
+<p>Example:</p>
+<pre><code>library(dplyr)
+df &lt;- tibble(x = c(1, 2, NA), y = c(&quot;a&quot;, NA, &quot;b&quot;), z = list(1:5, NULL, 10:20))
+df %&gt;% replace_na(list(x = 0, y = &quot;unknown&quot;))
+# NULL are the list-col equivalent of NAs
+df %&gt;% replace_na(list(z = list(5)))
+df$x %&gt;% replace_na(0)
+df$y %&gt;% replace_na(&quot;unknown&quot;)</code></pre>
 </div>
 <div id="separate" class="section level2">
 <h2><span class="header-section-number">4.10</span> separate ()</h2>
+<p>Separate one column into multiple columns.</p>
+<p>Description:</p>
+<p>Given either regular expression or a vector of character positions, separate() turns a single char- acter column into multiple columns.</p>
+<p>Usage:</p>
+<pre><code> separate(data, col, into, sep = &quot;[^[:alnum:]]+&quot;, remove = TRUE,
+  convert = FALSE, extra = &quot;warn&quot;, fill = &quot;warn&quot;, ...)</code></pre>
+<p>Example:</p>
+<pre><code>library(dplyr)
+df &lt;- data.frame(x = c(NA, &quot;a.b&quot;, &quot;a.d&quot;, &quot;b.c&quot;))
+df %&gt;% separate(x, c(&quot;A&quot;, &quot;B&quot;))
+# If every row doesn&#39;t split into the same number of pieces, use
+# the extra and file arguments to control what happens
+df &lt;- data.frame(x = c(&quot;a&quot;, &quot;a b&quot;, &quot;a b c&quot;, NA))
+df %&gt;% separate(x, c(&quot;a&quot;, &quot;b&quot;))
+# The same behaviour but no warnings
+df %&gt;% separate(x, c(&quot;a&quot;, &quot;b&quot;), extra = &quot;drop&quot;, fill = &quot;right&quot;)
+# Another option:
+df %&gt;% separate(x, c(&quot;a&quot;, &quot;b&quot;), extra = &quot;merge&quot;, fill = &quot;left&quot;)
+# If only want to split specified number of times use extra = &quot;merge&quot;
+df &lt;- data.frame(x = c(&quot;x: 123&quot;, &quot;y: error: 7&quot;))
+df %&gt;% separate(x, c(&quot;key&quot;, &quot;value&quot;), &quot;: &quot;, extra = &quot;merge&quot;)</code></pre>
 </div>
 <div id="separate_rows" class="section level2">
 <h2><span class="header-section-number">4.11</span> separate_rows ()</h2>

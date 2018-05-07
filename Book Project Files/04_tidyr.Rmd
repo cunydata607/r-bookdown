@@ -2,23 +2,208 @@
 
 ## complete ()
 
+Complete a data frame with missing combinations of data.
+
+Description:
+
+Turns implicit missing values into explicit missing values. This is a wrapper around expand(), dplyr::left_join() and replace_na() that’s useful for completing missing combinations of data.
+
+Usage:
+
+    complete(data, ..., fill = list())
+
+Example:
+
+    library(dplyr, warn.conflicts = FALSE)
+    df <- tibble(
+      group = c(1:2, 1),
+      item_id = c(1:2, 2),
+      item_name = c("a", "b", "b"),
+      value1 = 1:3,
+      value2 = 4:6
+    )
+    df %>% complete(group, nesting(item_id, item_name))
+    # You can also choose to fill in missing values
+    df %>% complete(group, nesting(item_id, item_name), fill = list(value1 = 0))
+
 ## drop_na ()
+
+Drop rows containing missing values
+
+Description:
+
+Drop rows containing missing values
+
+Usage:
+
+    drop_na(data, ...)
+
+Example:
+    library(dplyr)
+    df <- tibble(x = c(1, 2, NA), y = c("a", NA, "b"))
+    df %>% drop_na()
+    df %>% drop_na(x)
 
 ## expand ()
 
+Expand data frame to include all combinations of values
+
+Description:
+
+expand() is often useful in conjunction with left_join if you want to convert implicit missing values to explicit missing values. Or you can use it in conjunction with anti_join() to figure out which combinations are missing.
+
+Usage:
+
+    expand(data, ...)
+    
+Example:
+
+    library(dplyr)
+    # All possible combinations of vs & cyl, even those that aren't
+    # present in the data
+    expand(mtcars, vs, cyl)
+
 ## extract ()
 
+Extract one column into multiple columns.
+
+Description:
+
+Given a regular expression with capturing groups, extract() turns each group into a new column. If the groups don’t match, or the input is NA, the output will be NA.
+
+Usage:
+   
+    extract(data, col, into, regex = "([[:alnum:]]+)", remove = TRUE,
+      convert = FALSE, ...)
+      
+Example:
+
+    library(dplyr)
+    df <- data.frame(x = c(NA, "a-b", "a-d", "b-c", "d-e"))
+    df %>% extract(x, "A")
+    df %>% extract(x, c("A", "B"), "([[:alnum:]]+)-([[:alnum:]]+)")
+    
 ## fill ()
+
+Fill in missing values.
+
+Description:
+
+Fills missing values in using the previous entry. This is useful in the common output format where values are not repeated, they’re recorded each time they change.
+
+Usage:
+
+     fill(data, ..., .direction = c("down", "up"))
+     
+Example:
+
+    df <- data.frame(Month = 1:12, Year = c(2000, rep(NA, 11)))
+    df %>% fill(Year)  
 
 ## full_seq ()
 
 ## gather ()
 
+Gather columns into key-value pairs.
+
+Description:
+
+Gather takes multiple columns and collapses into key-value pairs, duplicating all other columns as needed. You use gather() when you notice that you have columns that are not variables.
+
+Usage:
+
+    gather(data, key = "key", value = "value", ..., na.rm = FALSE,
+      convert = FALSE, factor_key = FALSE)
+
+Example:
+
+    library(dplyr)
+    # From http://stackoverflow.com/questions/1181060
+    stocks <- tibble(
+      time = as.Date('2009-01-01') + 0:9,
+      X = rnorm(10, 0, 1),
+      Y = rnorm(10, 0, 2),
+      Z = rnorm(10, 0, 4))
+    gather(stocks, stock, price, -time)
+    stocks %>% gather(stock, price, -time)
+
 ## nest ()
+
+Nest repeated values in a list-variable.
+
+Description:
+
+There are many possible ways one could choose to nest columns inside a data frame. nest() creates a list of data frames containing all the nested variables: this seems to be the most useful form in practice.
+
+Usage:
+
+     nest(data, ..., .key = "data")
+
+Example:
+
+    library(dplyr)
+        as_tibble(iris) %>% nest(-Species)
+        as_tibble(chickwts) %>% nest(weight)
+        if (require("gapminder")) {
+          gapminder %>%
+            group_by(country, continent) %>%
+            nest()
+          gapminder %>%
+            nest(-country, -continent)
+    }     
+
 
 ## replace_na ()
 
+Replace missing values
+
+Description:
+
+Replace missing values
+
+Usage:
+
+     replace_na(data, replace, ...)
+
+Example:
+
+    library(dplyr)
+    df <- tibble(x = c(1, 2, NA), y = c("a", NA, "b"), z = list(1:5, NULL, 10:20))
+    df %>% replace_na(list(x = 0, y = "unknown"))
+    # NULL are the list-col equivalent of NAs
+    df %>% replace_na(list(z = list(5)))
+    df$x %>% replace_na(0)
+    df$y %>% replace_na("unknown")
+
 ## separate ()
+
+Separate one column into multiple columns.
+
+Description:
+
+Given either regular expression or a vector of character positions, separate() turns a single char- acter column into multiple columns.
+
+Usage:
+
+     separate(data, col, into, sep = "[^[:alnum:]]+", remove = TRUE,
+      convert = FALSE, extra = "warn", fill = "warn", ...)
+
+Example:
+
+    library(dplyr)
+    df <- data.frame(x = c(NA, "a.b", "a.d", "b.c"))
+    df %>% separate(x, c("A", "B"))
+    # If every row doesn't split into the same number of pieces, use
+    # the extra and file arguments to control what happens
+    df <- data.frame(x = c("a", "a b", "a b c", NA))
+    df %>% separate(x, c("a", "b"))
+    # The same behaviour but no warnings
+    df %>% separate(x, c("a", "b"), extra = "drop", fill = "right")
+    # Another option:
+    df %>% separate(x, c("a", "b"), extra = "merge", fill = "left")
+    # If only want to split specified number of times use extra = "merge"
+    df <- data.frame(x = c("x: 123", "y: error: 7"))
+    df %>% separate(x, c("key", "value"), ": ", extra = "merge")
 
 ## separate_rows ()
 
