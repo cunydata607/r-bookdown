@@ -68,3 +68,9 @@ If you are not fimiliar with how to use GitHub please see the links above for lo
 ## Slack channel communication
 
 Further communication among class members may also be found at https://data607.slack.com in the #tidyversebook channel.
+
+## Required Packages
+
+Please add any additional packages needed to this list and make sure you have these installed if you want to build the book on your computer.
+
+https://github.com/cunydata607/r-bookdown/blob/master/Required_Packages.md
