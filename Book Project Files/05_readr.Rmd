@@ -16,7 +16,8 @@ library(hms)
 
 Read file will print out a column specification that gives the name and type of each column:
 
-```{r}
+```{r eval=FALSE}
+# Need to debug and get rid of eval=FALSE above once working
 data <- read_csv("data/example.csv")
 ```
 

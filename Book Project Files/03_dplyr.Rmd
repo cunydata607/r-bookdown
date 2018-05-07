@@ -133,7 +133,8 @@ To demonstrate the technique of filtering out NAs, let's convert these empty str
 
 Then, use the filter function to select cases where the variable is non-NA.
 
-```{r}
+```{r eval=FALSE}
+# Need to debug and get rid of eval=FALSE above once working
 avengers.data_incl_NAs <- avengers.data
 var <- "Probationary Introl"
 avengers.data_incl_NAs[,var] <- plyr::mapvalues(avengers.data_incl_NAs[,var],

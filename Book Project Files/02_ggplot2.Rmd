@@ -356,12 +356,15 @@ The ggiraph function is called using library(ggiraph).
 
 Tooltips Tooltips can be created using the following example:
 
-```{r}
+```{r eval=FALSE}
+# Need to debug and get rid of eval=FALSE above once working
 library(tidyverse)
 library(ggiraph)
 library(fueleconomy)
 ```
-```{r}
+
+```{r eval=FALSE}
+# Need to debug and get rid of eval=FALSE above once working
 ggexample <- ggplot(vehicles, aes(factor(vehicles$year), vehicles$hwy)) +
   geom_boxplot_interactive(aes(tooltip = year))
   
@@ -372,7 +375,8 @@ When the users mouse hovers over an item, the tooltip will be displayed - in thi
 
 Hover effects can be created using the following example:
 
-```{r}
+```{r eval=FALSE}
+# Need to debug and get rid of eval=FALSE above once working
 ggexample <- ggplot(vehicles, aes(factor(vehicles$year), vehicles$hwy, color = hwy)) +
   geom_boxplot_interactive(aes(tooltip = year, data_id = year))
   
