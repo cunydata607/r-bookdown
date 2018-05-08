@@ -211,6 +211,33 @@ Example:
 
 ## spread ()
 
+Take a tidy key-value pairs and spread them across multiple columns.
+
+Description:
+
+The antithesis of gather, spread() unstacks or unpivots tables by spreading rows into columns.
+
+Usage:
+
+  spread(data, key, value, fill = NA, convert = FALSE, drop = TRUE, sep = NULL)
+
+Example:
+
+```{r}
+library(tidyr)
+library(kableExtra)
+alcohol.data <- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv') 
+
+alcohol.data %>% head() %>% kable()
+
+# While gather() "pivots" the data table so that each observation forms a row...
+alc.gather <- alcohol.data %>% gather("type", "amount", 2:5)
+alc.gather %>% head() %>% kable()                        
+
+# ...spread() performs the opposite operation, widening the data table.
+alc.spread <- alc.gather %>% spread(type, amount)
+alc.spread %>% head() %>% kable()
+```
 ## table1 ()
 
 ## uncount ()
