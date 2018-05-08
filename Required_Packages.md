@@ -1,8 +1,6 @@
 # Required Packages
 
-#### Please add any packages required for the code you add to the book to this list...
-
-I added them in the order in which they are needed in the files...
+#### Please add any packages required for your code to this list...
 
 - tidyverse
 - knitr
@@ -11,3 +9,8 @@ I added them in the order in which they are needed in the files...
 - fueleconomy - will need if Nick can figure out an easy way to make it work for everyone...
 - hms
 - magrittr
+- sparklyr
+
+#### Other software requirements
+
+[Java SE Development Kit version 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html) 

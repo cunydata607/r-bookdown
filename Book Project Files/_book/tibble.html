@@ -25,7 +25,7 @@
 <meta name="author" content="CUNY SPS DATA 607 Spring 2018">
 
 
-<meta name="date" content="2018-05-06">
+<meta name="date" content="2018-05-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -253,6 +253,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="dplyr.html"><a href="dplyr.html#mutate-and-transmute"><i class="fa fa-check"></i><b>3.5</b> mutate() and transmute()</a></li>
 <li class="chapter" data-level="3.6" data-path="dplyr.html"><a href="dplyr.html#summarise"><i class="fa fa-check"></i><b>3.6</b> summarise()</a></li>
 <li class="chapter" data-level="3.7" data-path="dplyr.html"><a href="dplyr.html#sample_n-and-sample_frac"><i class="fa fa-check"></i><b>3.7</b> sample_n() and sample_frac()</a></li>
+<li class="chapter" data-level="3.8" data-path="dplyr.html"><a href="dplyr.html#sparklyr"><i class="fa fa-check"></i><b>3.8</b> sparklyr</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="dplyr.html"><a href="dplyr.html#installation-of-sparklyr-and-spark-on-local-machine"><i class="fa fa-check"></i><b>3.8.1</b> Installation of sparklyr and Spark on local machine</a></li>
+<li class="chapter" data-level="3.8.2" data-path="dplyr.html"><a href="dplyr.html#using-filter"><i class="fa fa-check"></i><b>3.8.2</b> <em>Using filter()</em></a></li>
+<li class="chapter" data-level="3.8.3" data-path="dplyr.html"><a href="dplyr.html#group_by-summarise-and-collect"><i class="fa fa-check"></i><b>3.8.3</b> <em>group_by(), summarise() and collect()</em></a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>4</b> tidyr</a><ul>
 <li class="chapter" data-level="4.1" data-path="tidyr.html"><a href="tidyr.html#complete"><i class="fa fa-check"></i><b>4.1</b> complete ()</a></li>
@@ -418,7 +423,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="as_tibble" class="section level3">
 <h3><span class="header-section-number">7.1.1</span> as_tibble()</h3>
 <p>You can coerce a data frame to tibble.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="kw">as_tibble</span>(nycflights13<span class="op">::</span>airlines)</a></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="kw">as_tibble</span>(nycflights13<span class="op">::</span>airlines)</a></code></pre></div>
 <pre><code>## # A tibble: 16 x 2
 ##    carrier name                       
 ##    &lt;chr&gt;   &lt;chr&gt;                      
@@ -442,11 +447,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tibble-1" class="section level3">
 <h3><span class="header-section-number">7.1.2</span> tibble()</h3>
 <p>You can create a new tibble from individual vectors with tibble().</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="kw">tibble</span>(</a>
-<a class="sourceLine" id="cb111-2" data-line-number="2">  <span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, </a>
-<a class="sourceLine" id="cb111-3" data-line-number="3">  <span class="dt">b =</span> a <span class="op">*</span><span class="st"> </span><span class="dv">2</span>, </a>
-<a class="sourceLine" id="cb111-4" data-line-number="4">  <span class="dt">c =</span> a <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>b</a>
-<a class="sourceLine" id="cb111-5" data-line-number="5">)</a></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1"><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb118-2" data-line-number="2">  <span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, </a>
+<a class="sourceLine" id="cb118-3" data-line-number="3">  <span class="dt">b =</span> a <span class="op">*</span><span class="st"> </span><span class="dv">2</span>, </a>
+<a class="sourceLine" id="cb118-4" data-line-number="4">  <span class="dt">c =</span> a <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>b</a>
+<a class="sourceLine" id="cb118-5" data-line-number="5">)</a></code></pre></div>
 <pre><code>## # A tibble: 15 x 3
 ##        a     b     c
 ##    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -469,23 +474,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tribble" class="section level3">
 <h3><span class="header-section-number">7.1.3</span> tribble()</h3>
 <p>Another way to create a tibble is with tribble(), short for <code>transposed tibble</code>. tribble() is customised for data entry in code: column headings are defined by formulas (i.e. they start with ~), and entries are separated by commas. This makes it possible to lay out small amounts of data in easy to read form.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb113-2" data-line-number="2">  <span class="op">~</span>x, <span class="op">~</span>y, <span class="op">~</span>z,</a>
-<a class="sourceLine" id="cb113-3" data-line-number="3">  <span class="co">#--|--|----</span></a>
-<a class="sourceLine" id="cb113-4" data-line-number="4">  <span class="st">&quot;a&quot;</span>, <span class="dv">2</span>, <span class="fl">3.6</span>,</a>
-<a class="sourceLine" id="cb113-5" data-line-number="5">  <span class="st">&quot;b&quot;</span>, <span class="dv">1</span>, <span class="fl">8.5</span></a>
-<a class="sourceLine" id="cb113-6" data-line-number="6">)</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb120-2" data-line-number="2">  <span class="op">~</span>x, <span class="op">~</span>y, <span class="op">~</span>z,</a>
+<a class="sourceLine" id="cb120-3" data-line-number="3">  <span class="co">#--|--|----</span></a>
+<a class="sourceLine" id="cb120-4" data-line-number="4">  <span class="st">&quot;a&quot;</span>, <span class="dv">2</span>, <span class="fl">3.6</span>,</a>
+<a class="sourceLine" id="cb120-5" data-line-number="5">  <span class="st">&quot;b&quot;</span>, <span class="dv">1</span>, <span class="fl">8.5</span></a>
+<a class="sourceLine" id="cb120-6" data-line-number="6">)</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##   x         y     z
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1 a        2.  3.60
 ## 2 b        1.  8.50</code></pre>
 <p>It’s possible for a tibble to have column names that are not valid R variable names, aka non-syntactic names.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">tb &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
-<a class="sourceLine" id="cb115-2" data-line-number="2">  <span class="st">`</span><span class="dt">:-)</span><span class="st">`</span> =<span class="st"> &quot;smile&quot;</span>, </a>
-<a class="sourceLine" id="cb115-3" data-line-number="3">  <span class="st">`</span><span class="dt"> </span><span class="st">`</span> =<span class="st"> &quot;space&quot;</span>,</a>
-<a class="sourceLine" id="cb115-4" data-line-number="4">  <span class="st">`</span><span class="dt">5000</span><span class="st">`</span> =<span class="st"> &quot;number&quot;</span></a>
-<a class="sourceLine" id="cb115-5" data-line-number="5">)</a></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">tb &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb122-2" data-line-number="2">  <span class="st">`</span><span class="dt">:-)</span><span class="st">`</span> =<span class="st"> &quot;smile&quot;</span>, </a>
+<a class="sourceLine" id="cb122-3" data-line-number="3">  <span class="st">`</span><span class="dt"> </span><span class="st">`</span> =<span class="st"> &quot;space&quot;</span>,</a>
+<a class="sourceLine" id="cb122-4" data-line-number="4">  <span class="st">`</span><span class="dt">5000</span><span class="st">`</span> =<span class="st"> &quot;number&quot;</span></a>
+<a class="sourceLine" id="cb122-5" data-line-number="5">)</a></code></pre></div>
 <p>Reference<br />
 <a href="https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html">Cran R Blog</a><br />
 <a href="http://r4ds.had.co.nz/">R for Data Science</a></p>

@@ -25,7 +25,7 @@
 <meta name="author" content="CUNY SPS DATA 607 Spring 2018">
 
 
-<meta name="date" content="2018-05-06">
+<meta name="date" content="2018-05-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -253,6 +253,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="dplyr.html"><a href="dplyr.html#mutate-and-transmute"><i class="fa fa-check"></i><b>3.5</b> mutate() and transmute()</a></li>
 <li class="chapter" data-level="3.6" data-path="dplyr.html"><a href="dplyr.html#summarise"><i class="fa fa-check"></i><b>3.6</b> summarise()</a></li>
 <li class="chapter" data-level="3.7" data-path="dplyr.html"><a href="dplyr.html#sample_n-and-sample_frac"><i class="fa fa-check"></i><b>3.7</b> sample_n() and sample_frac()</a></li>
+<li class="chapter" data-level="3.8" data-path="dplyr.html"><a href="dplyr.html#sparklyr"><i class="fa fa-check"></i><b>3.8</b> sparklyr</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="dplyr.html"><a href="dplyr.html#installation-of-sparklyr-and-spark-on-local-machine"><i class="fa fa-check"></i><b>3.8.1</b> Installation of sparklyr and Spark on local machine</a></li>
+<li class="chapter" data-level="3.8.2" data-path="dplyr.html"><a href="dplyr.html#using-filter"><i class="fa fa-check"></i><b>3.8.2</b> <em>Using filter()</em></a></li>
+<li class="chapter" data-level="3.8.3" data-path="dplyr.html"><a href="dplyr.html#group_by-summarise-and-collect"><i class="fa fa-check"></i><b>3.8.3</b> <em>group_by(), summarise() and collect()</em></a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>4</b> tidyr</a><ul>
 <li class="chapter" data-level="4.1" data-path="tidyr.html"><a href="tidyr.html#complete"><i class="fa fa-check"></i><b>4.1</b> complete ()</a></li>
@@ -1362,11 +1367,11 @@ name and the column name(s) as input and re arranges the columns based on input.
 </div>
 <div id="summarise" class="section level2">
 <h2><span class="header-section-number">3.6</span> summarise()</h2>
-<p>The summarise function returns a table of summary statistics that you specify by runnning functions on your data. You name each statistic and then specify what function to use and separate additional statistics with commas like this:</p>
+<p>The summarise function returns a table of summary statistics that you specify by running functions on your data. You name each statistic and then specify what function to use and separate additional statistics with commas like this:</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">summarise</span>(mtcars, <span class="dt">avg_disp =</span> <span class="kw">mean</span>(disp), <span class="dt">max_disp =</span> <span class="kw">max</span>(disp), <span class="dt">min_disp =</span> <span class="kw">min</span>(disp), <span class="dt">median_disp =</span> <span class="kw">median</span>(disp))</a></code></pre></div>
 <pre><code>##   avg_disp max_disp min_disp median_disp
 ## 1 230.7219      472     71.1       196.3</code></pre>
-<p>In addtion to all the usual summary statistic functions in R, summarise comes with some addtional functions that you can use:</p>
+<p>In addition to all the usual summary statistic functions in R, summarise comes with some additional functions that you can use:</p>
 <ul>
 <li><code>first()</code> - returns the first value</li>
 <li><code>last</code> - returns the last value</li>
@@ -1380,25 +1385,83 @@ name and the column name(s) as input and re arranges the columns based on input.
 </div>
 <div id="sample_n-and-sample_frac" class="section level2">
 <h2><span class="header-section-number">3.7</span> sample_n() and sample_frac()</h2>
-<p><code>sample_n</code> and <code>sample_frac</code> return random samples from your data. <code>sample_n</code> wil select the number of rows you specify in the second argument at random. <code>sample_frac</code> returns a random sample fraction of rows. You specify the fraction of rows you want returned in your second function argument with a decimal number from 0 to 1. Both functions can be set to sample with or without replacement using the <code>replace = TRUE/FALSE</code> argument.</p>
+<p><code>sample_n</code> and <code>sample_frac</code> return random samples from your data. <code>sample_n</code> will select the number of rows you specify in the second argument at random. <code>sample_frac</code> returns a random sample fraction of rows. You specify the fraction of rows you want returned in your second function argument with a decimal number from 0 to 1. Both functions can be set to sample with or without replacement using the <code>replace = TRUE/FALSE</code> argument.</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">sample_n</span>(mtcars, <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>##       mpg cyl  disp  hp drat    wt  qsec vs am gear carb rank
-## 19   30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2    1
-## 32   21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2    2
-## 19.1 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2    1
-## 1    21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4    2
-## 27   26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2    2</code></pre>
+<pre><code>##     mpg cyl  disp  hp drat    wt  qsec vs am gear carb rank
+## 17 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4    5
+## 7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4    5
+## 18 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1    1
+## 6  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1    3
+## 31 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8    4</code></pre>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">sample_frac</span>(mtcars, <span class="fl">0.25</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>##     mpg cyl  disp  hp drat    wt  qsec vs am gear carb rank
+## 17 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4    5
+## 29 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4    4
+## 9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2    2
 ## 14 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3    4
-## 15 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4    5
-## 24 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4    4
-## 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4    3
+## 7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4    5
 ## 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4    2
-## 21 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1    1
-## 31 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8    4
-## 25 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2    5</code></pre>
+## 18 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1    1
+## 22 15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2    4</code></pre>
+</div>
+<div id="sparklyr" class="section level2">
+<h2><span class="header-section-number">3.8</span> sparklyr</h2>
+<ul>
+<li>Connect to Spark from R. The sparklyr package provides a complete dplyr backend.</li>
+<li>Filter and aggregate Spark datasets then bring them into R for analysis and visualization.</li>
+</ul>
+<div id="installation-of-sparklyr-and-spark-on-local-machine" class="section level3">
+<h3><span class="header-section-number">3.8.1</span> Installation of sparklyr and Spark on local machine</h3>
+<p>If you want to run the code chunks below to install and run the sparklyr demo, remove the “eval=FALSE” argument from the chunk settings.</p>
+<p>Also note: You need to have the latest <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html">Java SE Development Kit</a> installed to run this code.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;sparklyr&quot;</span>)</a></code></pre></div>
+<p>In order to get the latest sparklyr</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rstudio/sparklyr&quot;</span>)</a></code></pre></div>
+<div id="install-a-local-version-of-spark-for-development-purposes" class="section level4">
+<h4><span class="header-section-number">3.8.1.1</span> <em>Install a local version of Spark for development purposes</em></h4>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">library</span>(sparklyr)</a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="kw">spark_install</span>(<span class="dt">version =</span> <span class="st">&#39;2.2.0&#39;</span>)</a></code></pre></div>
+</div>
+<div id="connecting-to-spark" class="section level4">
+<h4><span class="header-section-number">3.8.1.2</span> Connecting to Spark</h4>
+</div>
+<div id="set-up-the-spark-home-directory" class="section level4">
+<h4><span class="header-section-number">3.8.1.3</span> <em>Set up the Spark Home directory</em></h4>
+<p>You need to set the SPARK_HOME to the path where you downloaded spark from previous line.</p>
+<p>For Mac OS it will be something like: “/Users/USERNAME/spark/spark-2.2.0-bin-hadoop2.7”.</p>
+<p>For Windows it will be similar to the path in the code below.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">Sys.setenv</span>(<span class="dt">SPARK_HOME=</span><span class="st">&quot;C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">USERNAME</span><span class="ch">\\</span><span class="st">AppData</span><span class="ch">\\</span><span class="st">Local</span><span class="ch">\\</span><span class="st">spark</span><span class="ch">\\</span><span class="st">spark-2.2.0-bin-hadoop2.7&quot;</span>)</a>
+<a class="sourceLine" id="cb49-2" data-line-number="2">sc &lt;-<span class="st"> </span><span class="kw">spark_connect</span>(<span class="dt">master =</span> <span class="st">&quot;local&quot;</span>)</a></code></pre></div>
+</div>
+<div id="using-dplyr-and-copy-datasets-from-r-into-the-local-spark-cluster" class="section level4">
+<h4><span class="header-section-number">3.8.1.4</span> <em>Using dplyr and copy datasets from R into the local Spark Cluster</em></h4>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="co">#install.packages(&quot;nycflights13&quot;)</span></a>
+<a class="sourceLine" id="cb50-3" data-line-number="3">iris_tbl &lt;-<span class="st"> </span><span class="kw">copy_to</span>(sc, iris)</a>
+<a class="sourceLine" id="cb50-4" data-line-number="4">flights_tbl &lt;-<span class="st"> </span><span class="kw">copy_to</span>(sc, nycflights13<span class="op">::</span>flights, <span class="st">&quot;flights&quot;</span>)</a>
+<a class="sourceLine" id="cb50-5" data-line-number="5"><span class="kw">src_tbls</span>(sc)</a></code></pre></div>
+</div>
+</div>
+<div id="using-filter" class="section level3">
+<h3><span class="header-section-number">3.8.2</span> <em>Using filter()</em></h3>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">flights_tbl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(dep_delay <span class="op">==</span><span class="st"> </span><span class="dv">2</span>)</a></code></pre></div>
+</div>
+<div id="group_by-summarise-and-collect" class="section level3">
+<h3><span class="header-section-number">3.8.3</span> <em>group_by(), summarise() and collect()</em></h3>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">delay &lt;-<span class="st"> </span>flights_tbl <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(tailnum) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count =</span> <span class="kw">n</span>(), <span class="dt">dist =</span> <span class="kw">mean</span>(distance), <span class="dt">delay =</span> <span class="kw">mean</span>(arr_delay)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(count <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>, dist <span class="op">&lt;</span><span class="st"> </span><span class="dv">2000</span>, <span class="op">!</span><span class="kw">is.na</span>(delay)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-5" data-line-number="5"><span class="st">  </span>collect</a>
+<a class="sourceLine" id="cb52-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb52-7" data-line-number="7"><span class="co"># plot delays</span></a>
+<a class="sourceLine" id="cb52-8" data-line-number="8"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb52-9" data-line-number="9"><span class="kw">ggplot</span>(delay, <span class="kw">aes</span>(dist, delay)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> count), <span class="dt">alpha =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-12" data-line-number="12"><span class="st">  </span><span class="kw">scale_size_area</span>(<span class="dt">max_size =</span> <span class="dv">2</span>)</a></code></pre></div>
 
+</div>
 </div>
 </div>
             </section>

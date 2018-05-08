@@ -221,13 +221,13 @@ transmute(alcohol.data, country, total_servings = beer_servings + spirit_serving
 
 ## summarise()
 
-The summarise function returns a table of summary statistics that you specify by runnning functions on your data.  You name each statistic and then specify what function to use and separate additional statistics with commas like this:
+The summarise function returns a table of summary statistics that you specify by running functions on your data.  You name each statistic and then specify what function to use and separate additional statistics with commas like this:
 
 ```{r}
 summarise(mtcars, avg_disp = mean(disp), max_disp = max(disp), min_disp = min(disp), median_disp = median(disp))
 ```
 
-In addtion to all the usual summary statistic functions in R, summarise comes with some addtional functions that you can use:
+In addition to all the usual summary statistic functions in R, summarise comes with some additional functions that you can use:
 
 * ```first()```  - returns the first value
 * ```last``` - returns the last value
@@ -241,7 +241,7 @@ summarise(mtcars, first = first(disp), last = last(disp), fifth = nth(disp, 5), 
 
 ## sample_n() and sample_frac()
 
-`sample_n` and `sample_frac` return random samples from your data.  `sample_n` wil select the number of rows you specify in the second argument at random. `sample_frac` returns a random sample fraction of rows.  You specify the fraction of rows you want returned in your second function argument with a decimal number from 0 to 1.  Both functions can be set to sample with or without replacement using the `replace = TRUE/FALSE` argument.  
+`sample_n` and `sample_frac` return random samples from your data.  `sample_n` will select the number of rows you specify in the second argument at random. `sample_frac` returns a random sample fraction of rows.  You specify the fraction of rows you want returned in your second function argument with a decimal number from 0 to 1.  Both functions can be set to sample with or without replacement using the `replace = TRUE/FALSE` argument.  
 
 ```{r}
 sample_n(mtcars, 5, replace = TRUE)
@@ -251,3 +251,78 @@ sample_n(mtcars, 5, replace = TRUE)
 sample_frac(mtcars, 0.25, replace = FALSE)
 ```
 
+## sparklyr 
+
++ Connect to Spark from R. The sparklyr package provides a complete dplyr backend.
++ Filter and aggregate Spark datasets then bring them into R for analysis and visualization.
+
+### Installation of sparklyr and Spark on local machine
+
+If you want to run the code chunks below to install and run the sparklyr demo, remove the "eval=FALSE" argument from the chunk settings.
+
+Also note:  You need to have the latest [Java SE Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html) installed to run this code.
+
+```{r eval=FALSE}
+install.packages("sparklyr")
+```
+
+In order to get the latest sparklyr
+
+```{r eval=FALSE}
+devtools::install_github("rstudio/sparklyr")
+```
+
+#### _Install a local version of Spark for development purposes_
+
+```{r eval=FALSE}
+library(sparklyr)
+spark_install(version = '2.2.0')
+```
+
+#### Connecting to Spark
+
+#### _Set up the Spark Home directory_
+
+You need to set the SPARK_HOME to the path where you downloaded spark from previous line.  
+
+For Mac OS it will be something like: "/Users/USERNAME/spark/spark-2.2.0-bin-hadoop2.7".  
+
+For Windows it will be similar to the path in the code below.
+
+```{r eval=FALSE}
+Sys.setenv(SPARK_HOME="C:\\Users\\USERNAME\\AppData\\Local\\spark\\spark-2.2.0-bin-hadoop2.7")
+sc <- spark_connect(master = "local")
+```
+
+#### _Using dplyr and copy datasets from R into the local Spark Cluster_
+
+```{r eval=FALSE}
+library(dplyr)
+#install.packages("nycflights13")
+iris_tbl <- copy_to(sc, iris)
+flights_tbl <- copy_to(sc, nycflights13::flights, "flights")
+src_tbls(sc)
+```
+
+### _Using filter()_  
+
+```{r eval=FALSE}
+flights_tbl %>% filter(dep_delay == 2)
+```
+
+### *group_by(), summarise() and collect()*
+
+```{r eval=FALSE}
+delay <- flights_tbl %>% 
+  group_by(tailnum) %>%
+  summarise(count = n(), dist = mean(distance), delay = mean(arr_delay)) %>%
+  filter(count > 20, dist < 2000, !is.na(delay)) %>%
+  collect
+
+# plot delays
+library(ggplot2)
+ggplot(delay, aes(dist, delay)) +
+  geom_point(aes(size = count), alpha = 1/2) +
+  geom_smooth() +
+  scale_size_area(max_size = 2)
+```
