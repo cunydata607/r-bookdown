@@ -1,0 +1,72 @@
+---
+title: "data_607_tidy_recipe"
+author: "Dan Wigodsky"
+date: "May 9, 2018"
+output: html_document
+---
+#2 GGPlots
+##plot 1:point plot with interactive pointer
+##plot 2:horizontal bar plot
+```{r warning=FALSE, message=FALSE}
+library(ggplot2)
+library(ggiraph)
+library(dplyr)
+
+hate_crimes<-read.csv('https://raw.githubusercontent.com/WigodskyD/data-sets/45a5c4658398071a6064e6dbcb3d2b40ba0b2be3/hate_crimes.csv')
+
+```  
+
+##Begin with  basic ggplot scatterplot for two variables from our dataset
+```{r warning=FALSE, message=FALSE}
+our.plot<-ggplot(x=hate_crimes$share_white_poverty,y=hate_crimes$hate_crimes_per_100k_splc,pointtip=hate_crimes$state)+geom_point(aes(x=hate_crimes$share_white_poverty,y=hate_crimes$hate_crimes_per_100k_splc))
+our.plot
+```  
+  
+##Now, change the labels to make sense and make the points look more visible
+```{r warning=FALSE, message=FALSE}
+our.plot<-our.plot+labs(x='share of white poverty, 2015',y='hate crimes per 100,000',title='White Poverty vs. Hate Crimes', subtitle='a comparison')+geom_point(aes(x=hate_crimes$share_white_poverty,y=hate_crimes$hate_crimes_per_100k_splc),shape=21,size=3,fill='red',stroke=1.2)+theme(plot.title = element_text(colour='#962d2d', size=20,face="bold"),axis.title = element_text(colour='#962d2d', size=14,face="bold"))
+our.plot
+```  
+  
+##Align axis labels, change background color and remove background grid
+```{r warning=FALSE, message=FALSE}
+our.plot<-our.plot+ theme(panel.background = element_rect(fill = '#ffa3a3'),panel.grid.major = element_blank(),panel.grid.minor = element_blank()) + 
+   theme(axis.text.x=element_text(size=10, angle=70,hjust=0.55,vjust=.7))+ 
+   theme(axis.title.x=element_text(hjust=.99,vjust=.2))+theme(axis.title.y=element_text(hjust=1,1,vjust=-.1))
+our.plot
+
+```  
+  
+##We add an interactive tip to show state when we hover with the mouse
+```{r warning=FALSE, message=FALSE}
+our.plot<-our.plot+geom_point_interactive(aes(x=hate_crimes$share_white_poverty,y=hate_crimes$hate_crimes_per_100k_splc,data_id=hate_crimes$state,tooltip=hate_crimes$state,label=hate_crimes$state))
+ggiraph(code = print(our.plot),hover_css = "fill:#FF4C3B;font-style:italic;" )
+
+```  
+  
+  
+#Plot 2  
+  
+##Create a plot that shows urban population by state.  Flip it to a horizontal bar plot.
+
+```{r warning=FALSE, message=FALSE} 
+ggplot(data=hate_crimes, aes(x=hate_crimes$state,y=hate_crimes$share_population_in_metro_areas)) + geom_bar(stat='identity',fill='#b5c6fc') +coord_flip()+ theme(panel.background = element_rect(fill = '#707996'))
+hate_crimes %>%
+                filter(hate_crimes$share_population_in_metro_areas>.87) %>% 
+            arrange(share_population_in_metro_areas)->hate_crimes_2
+```  
+  
+##Use dplyr to limit the number of states for a cleaner graph
+```{r warning=FALSE, message=FALSE} 
+plot.a<-ggplot(data=hate_crimes_2, aes(x=reorder(hate_crimes_2$state,hate_crimes_2$share_population_in_metro_areas),y=hate_crimes_2$share_population_in_metro_areas)) + geom_bar(stat='identity',fill='#b5c6fc') +coord_flip()+ theme(panel.background = element_rect(fill = '#707996'))
+plot.a
+```  
+  
+##Add a number representing another dimension of the data in white.  Labels are added
+```{r warning=FALSE, message=FALSE}
+plot.a + geom_text(aes(label=share_population_with_high_school_degree), vjust=0.3,hjust=1.3,color='white')+labs(title="States with most urban population",subtitle="Percent with diploma in white",y='urban population share' ,x='')+theme(plot.title = element_text(colour='#5eacd6', size=20,face="bold"),plot.subtitle = element_text(colour='#1a6c99', size=18,face="bold"),axis.title = element_text(colour='#1a6c99', size=14,face="bold"))
+```  
+
+
+
+```{r warning=FALSE, message=FALSE}
