@@ -389,7 +389,7 @@ As you can see in the example above, the boxs change color on when the users mou
 
 More information can be found here: http://rpubs.com/nschettini/386363 
 
-##2 GGPlots
+## 2 GGPlots
 plot 1:point plot with interactive pointer
 plot 2:horizontal bar plot
 ```{r warning=FALSE, message=FALSE}
