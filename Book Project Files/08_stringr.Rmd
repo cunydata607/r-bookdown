@@ -292,7 +292,7 @@ str_length(c("i", "like", "Ice Cream", NA))
 
 str_order takes a character vector as input and returns an integer vector.  It can also sort digits numerically if `numeric = TRUE` is flagged (default is FALSE).
 Example:
-```{str_order}
+```{r str_order}
 groceries <- c("Apples", "Oranges", "Bananas", "Watermelon", "Strawberry")
 
 # Return integer vector
@@ -309,21 +309,117 @@ numbers[str_order(numbers)]
 
 ### str_pad ()
 
+Add characters (typically " ") to a string at the specified location such that its width is >= the minimum specified width
+*str_pad(string, width, side = c("left", "right", "both"), pad = " ")*
+
+```{r str_pad}
+ 
+my.string <- "this test string is good!!!" 
+
+str_pad(my.string,50,"left")
+str_pad(my.string,50,"right")
+
+```
+
+
 ### str_remove ()
 
 ### str_replace ()
 
+str_replace can be used to replace a pattern within a string and takes the form:  *str_replace(string,pattern,replacement)*
+
+Where "string" is your input string, "pattern" is the pattern that you are looking to replace, which can be either a regular expression, or a fixed string, and replacement is your desired replacement value.
+
+
+```{r str_replace}
+ 
+my.string <- "this test string is good!!!" 
+
+#replace exclamation marks with a period via regex matching
+str_replace(my.string,'\\!+',".")
+
+#replace a fixed string by using fixed()
+str_replace(my.string,"good","great")
+
+```
+
+
 ### str_replace_na ()
+
+
 
 ### str_split ()
 
+str_split splits a string into multiple pieces based on a defined pattern.  It splits the target string on as many occurences of the pattern as are found, unless instructed otherwise.  Also note that the pattern characters are not returns in the split strings.  It takes the following form:
+*str_split(my.string,pattern,n)*
+
+
+
+```{r str_split}
+ 
+my.string <- "this test string is good!!!" 
+
+#split the string on spaces, to a max of 3 splits
+str_split(my.string,"[[:space:]]",n=3)
+
+#Split my.string on the letter "e"
+str_split(my.string,'e')
+
+```
+
 ### str_sub ()
+
+Extract a substring from a character vector.  This function allows you to pull pieces out of larger strings based on an index.
+
+```{r str_sub}
+ 
+my.string <- "this test string is good!!!" 
+
+
+
+#get the first 10 characters of the string
+str_sub(my.string,end=10)
+
+#get the first 5th to the 10th characters of the string
+str_sub(my.string,5,10)
+
+#get the last 10 characters of the string using a negative index
+str_sub(my.string,-10)
+
+```
 
 ### str_subset ()
 
 ### str_trim ()
 
+Removes whitespace from the start of a string.
+
+```{r str_trim}
+ 
+my.string <- "     this test string is good!!!" 
+
+#strip the whitespace from the string
+str_trim(my.string)
+
+
+```
+
 ### str_trunc ()
+
+Truncate a character string.  Essentially this function reduces a string to the specified number of characters or less.
+
+*str_trunc(string, width, side = c("right", "left", "center"),ellipsis = "...")*
+
+```{r str_trunc}
+ 
+my.string <- "this test string is good!!!" 
+
+#truncate the string down to the specified number of characters, from the location specified
+str_trunc(my.string,15,"right")
+str_trunc(my.string,15,"center")
+
+```
+
 
 ### str_view ()
 
