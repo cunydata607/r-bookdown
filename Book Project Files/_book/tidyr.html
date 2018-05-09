@@ -25,7 +25,7 @@
 <meta name="author" content="CUNY SPS DATA 607 Spring 2018">
 
 
-<meta name="date" content="2018-05-08">
+<meta name="date" content="2018-05-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -273,11 +273,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.11" data-path="tidyr.html"><a href="tidyr.html#separate_rows"><i class="fa fa-check"></i><b>4.11</b> separate_rows ()</a></li>
 <li class="chapter" data-level="4.12" data-path="tidyr.html"><a href="tidyr.html#smiths"><i class="fa fa-check"></i><b>4.12</b> smiths ()</a></li>
 <li class="chapter" data-level="4.13" data-path="tidyr.html"><a href="tidyr.html#spread"><i class="fa fa-check"></i><b>4.13</b> spread ()</a></li>
-<li class="chapter" data-level="4.14" data-path="tidyr.html"><a href="tidyr.html#table1"><i class="fa fa-check"></i><b>4.14</b> table1 ()</a></li>
-<li class="chapter" data-level="4.15" data-path="tidyr.html"><a href="tidyr.html#uncount"><i class="fa fa-check"></i><b>4.15</b> uncount ()</a></li>
-<li class="chapter" data-level="4.16" data-path="tidyr.html"><a href="tidyr.html#unite"><i class="fa fa-check"></i><b>4.16</b> unite ()</a></li>
-<li class="chapter" data-level="4.17" data-path="tidyr.html"><a href="tidyr.html#unnest"><i class="fa fa-check"></i><b>4.17</b> unnest ()</a></li>
-<li class="chapter" data-level="4.18" data-path="tidyr.html"><a href="tidyr.html#who"><i class="fa fa-check"></i><b>4.18</b> who ()</a></li>
+<li class="chapter" data-level="4.14" data-path="tidyr.html"><a href="tidyr.html#uncount"><i class="fa fa-check"></i><b>4.14</b> uncount ()</a></li>
+<li class="chapter" data-level="4.15" data-path="tidyr.html"><a href="tidyr.html#unite"><i class="fa fa-check"></i><b>4.15</b> unite ()</a></li>
+<li class="chapter" data-level="4.16" data-path="tidyr.html"><a href="tidyr.html#unnest"><i class="fa fa-check"></i><b>4.16</b> unnest ()</a></li>
+<li class="chapter" data-level="4.17" data-path="tidyr.html"><a href="tidyr.html#who"><i class="fa fa-check"></i><b>4.17</b> who ()</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>5</b> readr</a><ul>
 <li class="chapter" data-level="5.1" data-path="readr.html"><a href="readr.html#read_csv"><i class="fa fa-check"></i><b>5.1</b> read_csv()</a></li>
@@ -396,6 +395,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.21" data-path="forcats.html"><a href="forcats.html#gss_cat"><i class="fa fa-check"></i><b>9.21</b> gss_cat ()</a></li>
 <li class="chapter" data-level="9.22" data-path="forcats.html"><a href="forcats.html#lvls"><i class="fa fa-check"></i><b>9.22</b> lvls ()</a></li>
 <li class="chapter" data-level="9.23" data-path="forcats.html"><a href="forcats.html#lvls_union"><i class="fa fa-check"></i><b>9.23</b> lvls_union ()</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>10</b> lubridate</a><ul>
+<li class="chapter" data-level="10.1" data-path="lubridate.html"><a href="lubridate.html#ymd"><i class="fa fa-check"></i><b>10.1</b> ymd():</a></li>
+<li class="chapter" data-level="10.2" data-path="lubridate.html"><a href="lubridate.html#mdy"><i class="fa fa-check"></i><b>10.2</b> mdy():</a></li>
+<li class="chapter" data-level="10.3" data-path="lubridate.html"><a href="lubridate.html#dmy"><i class="fa fa-check"></i><b>10.3</b> dmy():</a></li>
+<li class="chapter" data-level="10.4" data-path="lubridate.html"><a href="lubridate.html#ymd_hms"><i class="fa fa-check"></i><b>10.4</b> ymd_hms():</a></li>
+<li class="chapter" data-level="10.5" data-path="lubridate.html"><a href="lubridate.html#additional-lubridate-functions"><i class="fa fa-check"></i><b>10.5</b> Additional Lubridate Functions:</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="lubridate.html"><a href="lubridate.html#extract-information-from-dates"><i class="fa fa-check"></i><b>10.5.1</b> Extract Information From Dates:</a></li>
+<li class="chapter" data-level="10.5.2" data-path="lubridate.html"><a href="lubridate.html#date-time-information"><i class="fa fa-check"></i><b>10.5.2</b> Date-Time Information:</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -579,21 +588,200 @@ df %&gt;% separate(x, c(&quot;key&quot;, &quot;value&quot;), &quot;: &quot;, ext
 </div>
 <div id="spread" class="section level2">
 <h2><span class="header-section-number">4.13</span> spread ()</h2>
-</div>
-<div id="table1" class="section level2">
-<h2><span class="header-section-number">4.14</span> table1 ()</h2>
+<p>Take a tidy key-value pairs and spread them across multiple columns.</p>
+<p>Description:</p>
+<p>The antithesis of gather, spread() unstacks or unpivots tables by spreading rows into columns.</p>
+<p>Usage:</p>
+<p>spread(data, key, value, fill = NA, convert = FALSE, drop = TRUE, sep = NULL)</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">library</span>(tidyr)</a>
+<a class="sourceLine" id="cb70-2" data-line-number="2"><span class="kw">library</span>(kableExtra)</a>
+<a class="sourceLine" id="cb70-3" data-line-number="3">alcohol.data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv&#39;</span>) </a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   country = col_character(),
+##   beer_servings = col_integer(),
+##   spirit_servings = col_integer(),
+##   wine_servings = col_integer(),
+##   total_litres_of_pure_alcohol = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1">alcohol.data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">beer_servings</th>
+<th align="right">spirit_servings</th>
+<th align="right">wine_servings</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">89</td>
+<td align="right">132</td>
+<td align="right">54</td>
+<td align="right">4.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="right">14</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">245</td>
+<td align="right">138</td>
+<td align="right">312</td>
+<td align="right">12.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">217</td>
+<td align="right">57</td>
+<td align="right">45</td>
+<td align="right">5.9</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">102</td>
+<td align="right">128</td>
+<td align="right">45</td>
+<td align="right">4.9</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="co"># While gather() &quot;pivots&quot; the data table so that each observation forms a row...</span></a>
+<a class="sourceLine" id="cb73-2" data-line-number="2">alc.gather &lt;-<span class="st"> </span>alcohol.data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">gather</span>(<span class="st">&quot;type&quot;</span>, <span class="st">&quot;amount&quot;</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb73-3" data-line-number="3">alc.gather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable</span>()                        </a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="left">type</th>
+<th align="right">amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="left">beer_servings</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="left">beer_servings</td>
+<td align="right">89</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="left">beer_servings</td>
+<td align="right">25</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="left">beer_servings</td>
+<td align="right">245</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="left">beer_servings</td>
+<td align="right">217</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="left">beer_servings</td>
+<td align="right">102</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="co"># ...spread() performs the opposite operation, widening the data table.</span></a>
+<a class="sourceLine" id="cb74-2" data-line-number="2">alc.spread &lt;-<span class="st"> </span>alc.gather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spread</span>(type, amount)</a>
+<a class="sourceLine" id="cb74-3" data-line-number="3">alc.spread <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">beer_servings</th>
+<th align="right">spirit_servings</th>
+<th align="right">total_litres_of_pure_alcohol</th>
+<th align="right">wine_servings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afghanistan</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">89</td>
+<td align="right">132</td>
+<td align="right">4.9</td>
+<td align="right">54</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="right">0.7</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="left">Andorra</td>
+<td align="right">245</td>
+<td align="right">138</td>
+<td align="right">12.4</td>
+<td align="right">312</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">217</td>
+<td align="right">57</td>
+<td align="right">5.9</td>
+<td align="right">45</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua &amp; Barbuda</td>
+<td align="right">102</td>
+<td align="right">128</td>
+<td align="right">4.9</td>
+<td align="right">45</td>
+</tr>
+<tr class="odd">
+<td align="left">## table1 ()</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="uncount" class="section level2">
-<h2><span class="header-section-number">4.15</span> uncount ()</h2>
+<h2><span class="header-section-number">4.14</span> uncount ()</h2>
 </div>
 <div id="unite" class="section level2">
-<h2><span class="header-section-number">4.16</span> unite ()</h2>
+<h2><span class="header-section-number">4.15</span> unite ()</h2>
 </div>
 <div id="unnest" class="section level2">
-<h2><span class="header-section-number">4.17</span> unnest ()</h2>
+<h2><span class="header-section-number">4.16</span> unnest ()</h2>
 </div>
 <div id="who" class="section level2">
-<h2><span class="header-section-number">4.18</span> who ()</h2>
+<h2><span class="header-section-number">4.17</span> who ()</h2>
 
 </div>
 </div>

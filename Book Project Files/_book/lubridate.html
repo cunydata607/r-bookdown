@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="readr.html">
-<link rel="next" href="tibble.html">
+<link rel="prev" href="forcats.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -424,236 +424,718 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="purrr" class="section level1">
-<h1><span class="header-section-number">6</span> purrr</h1>
-<div id="overview" class="section level2">
-<h2><span class="header-section-number">6.1</span> Overview</h2>
-<p>purrr enhances R’s functional programming (FP) toolkit by providing a complete and consistent set of tools for working with functions and vectors. If you’ve never heard of FP before, the best place to start is the family of map() functions which allow you to replace many for loops with code that is both more succinct and easier to read.</p>
-</div>
-<div id="map-family" class="section level2">
-<h2><span class="header-section-number">6.2</span> Map Family</h2>
-<p>The complete list of functions within the map family are:</p>
-<pre><code>map(.x, .f, ...)
-
-map_lgl(.x, .f, ...)
-
-map_chr(.x, .f, ...)
-
-map_int(.x, .f, ...)
-
-map_dbl(.x, .f, ...)
-
-map_dfr(.x, .f, ..., .id = NULL)
-
-map_dfc(.x, .f, ...)
-
-walk(.x, .f, ...)</code></pre>
-<p>Arguments</p>
+<div id="lubridate" class="section level1">
+<h1><span class="header-section-number">10</span> lubridate</h1>
+<p>The lubridate package makes working with date-time data easier. Base R commands for date-times are generally unintuitive not robust. According to Hadley Wickham, “lubridate has a consistent, memorable syntax, that makes working with dates fun instead of frustrating.” For additional information use help(package = lubridate) to bring up an overview of the package and its functions.</p>
+<p>Load Packages:</p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
+<p>Load data from the FiveThirtyEight article <strong>“Some People Are Too Superstitious To Have A Baby On Friday The 13th”</strong></p>
 <ul>
-<li>.x: A list or atomic vector</li>
-<li>.f: A function, formula, or atomic vector
-<ul>
-<li>If .f is a function, it is used as is</li>
-<li>If .f is a formula, e.g. <code>~ .x + 2</code>, it is converted to a function. There are three ways to refer to the arguments:
-<ul>
-<li>For a single argument function, use .</li>
-<li>For a two argument function, use .x and .y</li>
-<li>For more arguments, use ..1, ..2, ..3, etc…</li>
-</ul></li>
-</ul></li>
+<li><p>Since it is fairly clean data, I will create additional columns to showcase lubridate functionality below</p></li>
+<li><p>I will use the now(), hour(), minute() and second() functions to add addditional metadata to the dataframe. Please see definitions below</p></li>
+<li><p>Once the new columns are added, I will remove the original clean columns</p></li>
 </ul>
-<div id="map" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> map</h3>
-<p>The map function transforms the input, returning a vector of the same length as the input. map, along with reduce, appear to draw their inspiration from JavaScript. In R, map can be very useful when the programmers wants to use the same function on a list. dplyr has mutate for working with data frames, while purrr specializes in lists.</p>
-<div id="function-example" class="section level4">
-<h4><span class="header-section-number">6.2.1.1</span> Function Example</h4>
-<p>Lets extract a vector of numbers from an mtcars dataset (mpg). Lets use map to convert that vector into kmpg</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1">kmpg &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb110-2" data-line-number="2"><span class="st">  </span><span class="kw">map</span>(<span class="dt">.f =</span> <span class="cf">function</span>(x) x <span class="op">*</span><span class="st"> </span><span class="fl">1.60934</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb110-3" data-line-number="3"><span class="st">  </span>print</a></code></pre></div>
-<pre><code>## [[1]]
-## [1] 33.79614
-## 
-## [[2]]
-## [1] 33.79614
-## 
-## [[3]]
-## [1] 36.69295
-## 
-## [[4]]
-## [1] 34.43988
-## 
-## [[5]]
-## [1] 30.09466
-## 
-## [[6]]
-## [1] 29.12905
-## 
-## [[7]]
-## [1] 23.01356
-## 
-## [[8]]
-## [1] 39.2679
-## 
-## [[9]]
-## [1] 36.69295
-## 
-## [[10]]
-## [1] 30.89933
-## 
-## [[11]]
-## [1] 28.64625
-## 
-## [[12]]
-## [1] 26.39318
-## 
-## [[13]]
-## [1] 27.84158
-## 
-## [[14]]
-## [1] 24.46197
-## 
-## [[15]]
-## [1] 16.73714
-## 
-## [[16]]
-## [1] 16.73714
-## 
-## [[17]]
-## [1] 23.6573
-## 
-## [[18]]
-## [1] 52.14262
-## 
-## [[19]]
-## [1] 48.92394
-## 
-## [[20]]
-## [1] 54.55663
-## 
-## [[21]]
-## [1] 34.60081
-## 
-## [[22]]
-## [1] 24.94477
-## 
-## [[23]]
-## [1] 24.46197
-## 
-## [[24]]
-## [1] 21.40422
-## 
-## [[25]]
-## [1] 30.89933
-## 
-## [[26]]
-## [1] 43.93498
-## 
-## [[27]]
-## [1] 41.84284
-## 
-## [[28]]
-## [1] 48.92394
-## 
-## [[29]]
-## [1] 25.42757
-## 
-## [[30]]
-## [1] 31.704
-## 
-## [[31]]
-## [1] 24.1401
-## 
-## [[32]]
-## [1] 34.43988</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">mpg =</span> <span class="kw">c</span>(<span class="kw">class</span>(mpg)), <span class="dt">kmpg =</span> <span class="kw">c</span>(<span class="kw">class</span>(kmpg))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb112-2" data-line-number="2"><span class="st">  </span>kable</a></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" data-line-number="1">US_births_<span class="dv">2000</span> &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/fivethirtyeight/data/master/births/US_births_1994-2003_CDC_NCHS.csv&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb290-2" data-line-number="2"><span class="st">                </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2000</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb290-3" data-line-number="3"><span class="st">                </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw">as.character</span>(year),</a>
+<a class="sourceLine" id="cb290-4" data-line-number="4">                       <span class="dt">month =</span> <span class="kw">as.character</span>(month),</a>
+<a class="sourceLine" id="cb290-5" data-line-number="5">                       <span class="dt">date_of_month =</span> <span class="kw">as.character</span>(date_of_month)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb290-6" data-line-number="6"><span class="st">               </span><span class="kw">mutate</span>(<span class="dt">ymd.raw =</span> <span class="kw">paste</span>(year, month, date_of_month, <span class="dt">sep =</span> <span class="st">&#39;-&#39;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb290-7" data-line-number="7"><span class="st">               </span><span class="kw">mutate</span>(<span class="dt">mdy.raw =</span> <span class="kw">paste</span>(month,date_of_month,year, <span class="dt">sep =</span> <span class="st">&#39;-&#39;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb290-8" data-line-number="8"><span class="st">               </span><span class="kw">mutate</span>(<span class="dt">dmy.raw =</span> <span class="kw">paste</span>(date_of_month,month, year,<span class="dt">sep =</span> <span class="st">&#39;-&#39;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb290-9" data-line-number="9"><span class="st">              </span><span class="kw">mutate</span>(<span class="dt">ymd.hms.raw =</span> <span class="kw">paste</span>(year,month,date_of_month, <span class="kw">hour</span>(<span class="kw">now</span>()), <span class="kw">minute</span>(<span class="kw">now</span>()), <span class="kw">second</span>(<span class="kw">now</span>()),<span class="dt">sep =</span> <span class="st">&#39;-&#39;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb290-10" data-line-number="10"><span class="st">              </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(year, month, date_of_month))</a>
+<a class="sourceLine" id="cb290-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb290-12" data-line-number="12"><span class="kw">kable</span>(<span class="kw">head</span>(US_births_<span class="dv">2000</span>,<span class="dv">10</span>),  <span class="dt">caption =</span> <span class="st">&quot;2000 Birth Data&quot;</span>)</a></code></pre></div>
 <table>
+<caption><span id="tab:unnamed-chunk-72">Table 10.1: </span>2000 Birth Data</caption>
 <thead>
 <tr class="header">
-<th align="left">mpg</th>
-<th align="left">kmpg</th>
+<th align="right">day_of_week</th>
+<th align="right">births</th>
+<th align="left">ymd.raw</th>
+<th align="left">mdy.raw</th>
+<th align="left">dmy.raw</th>
+<th align="left">ymd.hms.raw</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">numeric</td>
-<td align="left">list</td>
+<td align="right">6</td>
+<td align="right">8843</td>
+<td align="left">2000-1-1</td>
+<td align="left">1-1-2000</td>
+<td align="left">1-1-2000</td>
+<td align="left">2000-1-1-13-50-6.64746308326721</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">7816</td>
+<td align="left">2000-1-2</td>
+<td align="left">1-2-2000</td>
+<td align="left">2-1-2000</td>
+<td align="left">2000-1-2-13-50-6.64746308326721</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">11123</td>
+<td align="left">2000-1-3</td>
+<td align="left">1-3-2000</td>
+<td align="left">3-1-2000</td>
+<td align="left">2000-1-3-13-50-6.64746308326721</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">12703</td>
+<td align="left">2000-1-4</td>
+<td align="left">1-4-2000</td>
+<td align="left">4-1-2000</td>
+<td align="left">2000-1-4-13-50-6.64746308326721</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">12240</td>
+<td align="left">2000-1-5</td>
+<td align="left">1-5-2000</td>
+<td align="left">5-1-2000</td>
+<td align="left">2000-1-5-13-50-6.64746308326721</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">12260</td>
+<td align="left">2000-1-6</td>
+<td align="left">1-6-2000</td>
+<td align="left">6-1-2000</td>
+<td align="left">2000-1-6-13-50-6.64746308326721</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">12280</td>
+<td align="left">2000-1-7</td>
+<td align="left">1-7-2000</td>
+<td align="left">7-1-2000</td>
+<td align="left">2000-1-7-13-50-6.64746308326721</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">8750</td>
+<td align="left">2000-1-8</td>
+<td align="left">1-8-2000</td>
+<td align="left">8-1-2000</td>
+<td align="left">2000-1-8-13-50-6.64746308326721</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">7736</td>
+<td align="left">2000-1-9</td>
+<td align="left">1-9-2000</td>
+<td align="left">9-1-2000</td>
+<td align="left">2000-1-9-13-50-6.64746308326721</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">11418</td>
+<td align="left">2000-1-10</td>
+<td align="left">1-10-2000</td>
+<td align="left">10-1-2000</td>
+<td align="left">2000-1-10-13-50-6.64746308326721</td>
 </tr>
 </tbody>
 </table>
-<p>Using map in this instance, returned a list. This may not be preferable in some situations and purrr has built in functions that can return exactly what you are expecting. Our original vector was a numeric vector. We can return a numeric vector using the map_dbl function. Lets re-try the code above using map_dbl.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1">kmpg &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb113-2" data-line-number="2"><span class="st">  </span><span class="kw">map_dbl</span>(<span class="dt">.f =</span> <span class="cf">function</span>(x) x <span class="op">*</span><span class="st"> </span><span class="fl">1.60934</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb113-3" data-line-number="3"><span class="st">  </span>print</a></code></pre></div>
-<pre><code>##  [1] 33.79614 33.79614 36.69295 34.43988 30.09466 29.12905 23.01356
-##  [8] 39.26790 36.69295 30.89933 28.64625 26.39318 27.84158 24.46197
-## [15] 16.73714 16.73714 23.65730 52.14262 48.92394 54.55663 34.60081
-## [22] 24.94477 24.46197 21.40422 30.89933 43.93498 41.84284 48.92394
-## [29] 25.42757 31.70400 24.14010 34.43988</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">mpg =</span> <span class="kw">c</span>(<span class="kw">class</span>(mpg)), <span class="dt">kmpg =</span> <span class="kw">c</span>(<span class="kw">class</span>(kmpg))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb115-2" data-line-number="2"><span class="st">  </span>kable</a></code></pre></div>
+<div id="ymd" class="section level2">
+<h2><span class="header-section-number">10.1</span> ymd():</h2>
+<p>parses in order - year, month, date. I will apply to the “ymd.raw” column and save the results as “ymd.clean”</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1">cleaned_date_df &lt;-<span class="st"> </span>US_births_<span class="dv">2000</span><span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb291-2" data-line-number="2"><span class="st">                  </span><span class="kw">mutate</span>(<span class="dt">ymd.clean =</span> <span class="kw">ymd</span>(ymd.raw),</a>
+<a class="sourceLine" id="cb291-3" data-line-number="3">                         <span class="dt">ymd.type =</span> <span class="kw">class</span>(ymd.clean))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb291-4" data-line-number="4"><span class="st">                  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(ymd.raw))</a>
+<a class="sourceLine" id="cb291-5" data-line-number="5"><span class="kw">kable</span>(<span class="kw">head</span>(cleaned_date_df,<span class="dv">10</span>),  <span class="dt">caption =</span> <span class="st">&quot;ymd() results&quot;</span>)</a></code></pre></div>
 <table>
+<caption><span id="tab:unnamed-chunk-73">Table 10.2: </span>ymd() results</caption>
 <thead>
 <tr class="header">
-<th align="left">mpg</th>
-<th align="left">kmpg</th>
+<th align="right">day_of_week</th>
+<th align="right">births</th>
+<th align="left">mdy.raw</th>
+<th align="left">dmy.raw</th>
+<th align="left">ymd.hms.raw</th>
+<th align="left">ymd.clean</th>
+<th align="left">ymd.type</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">numeric</td>
-<td align="left">numeric</td>
+<td align="right">6</td>
+<td align="right">8843</td>
+<td align="left">1-1-2000</td>
+<td align="left">1-1-2000</td>
+<td align="left">2000-1-1-13-50-6.64746308326721</td>
+<td align="left">2000-01-01</td>
+<td align="left">Date</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">7816</td>
+<td align="left">1-2-2000</td>
+<td align="left">2-1-2000</td>
+<td align="left">2000-1-2-13-50-6.64746308326721</td>
+<td align="left">2000-01-02</td>
+<td align="left">Date</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">11123</td>
+<td align="left">1-3-2000</td>
+<td align="left">3-1-2000</td>
+<td align="left">2000-1-3-13-50-6.64746308326721</td>
+<td align="left">2000-01-03</td>
+<td align="left">Date</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">12703</td>
+<td align="left">1-4-2000</td>
+<td align="left">4-1-2000</td>
+<td align="left">2000-1-4-13-50-6.64746308326721</td>
+<td align="left">2000-01-04</td>
+<td align="left">Date</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">12240</td>
+<td align="left">1-5-2000</td>
+<td align="left">5-1-2000</td>
+<td align="left">2000-1-5-13-50-6.64746308326721</td>
+<td align="left">2000-01-05</td>
+<td align="left">Date</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">12260</td>
+<td align="left">1-6-2000</td>
+<td align="left">6-1-2000</td>
+<td align="left">2000-1-6-13-50-6.64746308326721</td>
+<td align="left">2000-01-06</td>
+<td align="left">Date</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">12280</td>
+<td align="left">1-7-2000</td>
+<td align="left">7-1-2000</td>
+<td align="left">2000-1-7-13-50-6.64746308326721</td>
+<td align="left">2000-01-07</td>
+<td align="left">Date</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">8750</td>
+<td align="left">1-8-2000</td>
+<td align="left">8-1-2000</td>
+<td align="left">2000-1-8-13-50-6.64746308326721</td>
+<td align="left">2000-01-08</td>
+<td align="left">Date</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">7736</td>
+<td align="left">1-9-2000</td>
+<td align="left">9-1-2000</td>
+<td align="left">2000-1-9-13-50-6.64746308326721</td>
+<td align="left">2000-01-09</td>
+<td align="left">Date</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">11418</td>
+<td align="left">1-10-2000</td>
+<td align="left">10-1-2000</td>
+<td align="left">2000-1-10-13-50-6.64746308326721</td>
+<td align="left">2000-01-10</td>
+<td align="left">Date</td>
 </tr>
 </tbody>
 </table>
-<p>As shown, both mpg and kmpg are both numerical vectors. purrr also comes supplies with map_chr, map_dbl, map_dfc (column bind), map_dfr (row bind), map_int, map_lgl. All return vectors except map_dfc and map_dfr which return data frames.</p>
 </div>
-<div id="formula-example" class="section level4">
-<h4><span class="header-section-number">6.2.1.2</span> Formula Example</h4>
-<p>As stated above, we can also use the map functions with the formula syntax</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">mpg <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb116-2" data-line-number="2"><span class="st">  </span><span class="kw">map_dbl</span>(<span class="dt">.f =</span> <span class="op">~</span><span class="st"> </span>.x <span class="op">*</span><span class="st"> </span><span class="fl">1.60934</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb116-3" data-line-number="3"><span class="st">  </span>print</a></code></pre></div>
-<pre><code>##  [1] 33.79614 33.79614 36.69295 34.43988 30.09466 29.12905 23.01356
-##  [8] 39.26790 36.69295 30.89933 28.64625 26.39318 27.84158 24.46197
-## [15] 16.73714 16.73714 23.65730 52.14262 48.92394 54.55663 34.60081
-## [22] 24.94477 24.46197 21.40422 30.89933 43.93498 41.84284 48.92394
-## [29] 25.42757 31.70400 24.14010 34.43988</code></pre>
+<div id="mdy" class="section level2">
+<h2><span class="header-section-number">10.2</span> mdy():</h2>
+<p>parses in order- month, date, year. I will apply to the “mdy.raw” column and save the results as “mdy.clean.” The mdy() function will save the results as year-month-date. This is helpful when trying to normalize data. As you can see below, the “ymd.clean” =“mdy.clean”</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1">cleaned_date_df &lt;-<span class="st"> </span>cleaned_date_df<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb292-2" data-line-number="2"><span class="st">                  </span><span class="kw">mutate</span>(<span class="dt">mdy.clean =</span> <span class="kw">mdy</span>(mdy.raw))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb292-3" data-line-number="3"><span class="st">                  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(mdy.raw))</a>
+<a class="sourceLine" id="cb292-4" data-line-number="4"><span class="kw">kable</span>(<span class="kw">head</span>(cleaned_date_df,<span class="dv">10</span>),  <span class="dt">caption =</span> <span class="st">&quot;mdy() results&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-74">Table 10.3: </span>mdy() results</caption>
+<thead>
+<tr class="header">
+<th align="right">day_of_week</th>
+<th align="right">births</th>
+<th align="left">dmy.raw</th>
+<th align="left">ymd.hms.raw</th>
+<th align="left">ymd.clean</th>
+<th align="left">ymd.type</th>
+<th align="left">mdy.clean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">8843</td>
+<td align="left">1-1-2000</td>
+<td align="left">2000-1-1-13-50-6.64746308326721</td>
+<td align="left">2000-01-01</td>
+<td align="left">Date</td>
+<td align="left">2000-01-01</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">7816</td>
+<td align="left">2-1-2000</td>
+<td align="left">2000-1-2-13-50-6.64746308326721</td>
+<td align="left">2000-01-02</td>
+<td align="left">Date</td>
+<td align="left">2000-01-02</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">11123</td>
+<td align="left">3-1-2000</td>
+<td align="left">2000-1-3-13-50-6.64746308326721</td>
+<td align="left">2000-01-03</td>
+<td align="left">Date</td>
+<td align="left">2000-01-03</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">12703</td>
+<td align="left">4-1-2000</td>
+<td align="left">2000-1-4-13-50-6.64746308326721</td>
+<td align="left">2000-01-04</td>
+<td align="left">Date</td>
+<td align="left">2000-01-04</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">12240</td>
+<td align="left">5-1-2000</td>
+<td align="left">2000-1-5-13-50-6.64746308326721</td>
+<td align="left">2000-01-05</td>
+<td align="left">Date</td>
+<td align="left">2000-01-05</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">12260</td>
+<td align="left">6-1-2000</td>
+<td align="left">2000-1-6-13-50-6.64746308326721</td>
+<td align="left">2000-01-06</td>
+<td align="left">Date</td>
+<td align="left">2000-01-06</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">12280</td>
+<td align="left">7-1-2000</td>
+<td align="left">2000-1-7-13-50-6.64746308326721</td>
+<td align="left">2000-01-07</td>
+<td align="left">Date</td>
+<td align="left">2000-01-07</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">8750</td>
+<td align="left">8-1-2000</td>
+<td align="left">2000-1-8-13-50-6.64746308326721</td>
+<td align="left">2000-01-08</td>
+<td align="left">Date</td>
+<td align="left">2000-01-08</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">7736</td>
+<td align="left">9-1-2000</td>
+<td align="left">2000-1-9-13-50-6.64746308326721</td>
+<td align="left">2000-01-09</td>
+<td align="left">Date</td>
+<td align="left">2000-01-09</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">11418</td>
+<td align="left">10-1-2000</td>
+<td align="left">2000-1-10-13-50-6.64746308326721</td>
+<td align="left">2000-01-10</td>
+<td align="left">Date</td>
+<td align="left">2000-01-10</td>
+</tr>
+</tbody>
+</table>
 </div>
+<div id="dmy" class="section level2">
+<h2><span class="header-section-number">10.3</span> dmy():</h2>
+<p>parses in order- day, month, year. The dmy() function will save the results as year-month-date. This is helpful when trying to normalize data. As you can see below, the “ymd.clean” = “dmy.clean”</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" data-line-number="1">cleaned_date_df &lt;-<span class="st"> </span>cleaned_date_df<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb293-2" data-line-number="2"><span class="st">                  </span><span class="kw">mutate</span>(<span class="dt">dmy.clean =</span> <span class="kw">dmy</span>(dmy.raw))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb293-3" data-line-number="3"><span class="st">                  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(dmy.raw))</a>
+<a class="sourceLine" id="cb293-4" data-line-number="4"><span class="kw">kable</span>(<span class="kw">head</span>(cleaned_date_df,<span class="dv">10</span>),  <span class="dt">caption =</span> <span class="st">&quot;dmy() results&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-75">Table 10.4: </span>dmy() results</caption>
+<thead>
+<tr class="header">
+<th align="right">day_of_week</th>
+<th align="right">births</th>
+<th align="left">ymd.hms.raw</th>
+<th align="left">ymd.clean</th>
+<th align="left">ymd.type</th>
+<th align="left">mdy.clean</th>
+<th align="left">dmy.clean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">8843</td>
+<td align="left">2000-1-1-13-50-6.64746308326721</td>
+<td align="left">2000-01-01</td>
+<td align="left">Date</td>
+<td align="left">2000-01-01</td>
+<td align="left">2000-01-01</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">7816</td>
+<td align="left">2000-1-2-13-50-6.64746308326721</td>
+<td align="left">2000-01-02</td>
+<td align="left">Date</td>
+<td align="left">2000-01-02</td>
+<td align="left">2000-01-02</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">11123</td>
+<td align="left">2000-1-3-13-50-6.64746308326721</td>
+<td align="left">2000-01-03</td>
+<td align="left">Date</td>
+<td align="left">2000-01-03</td>
+<td align="left">2000-01-03</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">12703</td>
+<td align="left">2000-1-4-13-50-6.64746308326721</td>
+<td align="left">2000-01-04</td>
+<td align="left">Date</td>
+<td align="left">2000-01-04</td>
+<td align="left">2000-01-04</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">12240</td>
+<td align="left">2000-1-5-13-50-6.64746308326721</td>
+<td align="left">2000-01-05</td>
+<td align="left">Date</td>
+<td align="left">2000-01-05</td>
+<td align="left">2000-01-05</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">12260</td>
+<td align="left">2000-1-6-13-50-6.64746308326721</td>
+<td align="left">2000-01-06</td>
+<td align="left">Date</td>
+<td align="left">2000-01-06</td>
+<td align="left">2000-01-06</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">12280</td>
+<td align="left">2000-1-7-13-50-6.64746308326721</td>
+<td align="left">2000-01-07</td>
+<td align="left">Date</td>
+<td align="left">2000-01-07</td>
+<td align="left">2000-01-07</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">8750</td>
+<td align="left">2000-1-8-13-50-6.64746308326721</td>
+<td align="left">2000-01-08</td>
+<td align="left">Date</td>
+<td align="left">2000-01-08</td>
+<td align="left">2000-01-08</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">7736</td>
+<td align="left">2000-1-9-13-50-6.64746308326721</td>
+<td align="left">2000-01-09</td>
+<td align="left">Date</td>
+<td align="left">2000-01-09</td>
+<td align="left">2000-01-09</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">11418</td>
+<td align="left">2000-1-10-13-50-6.64746308326721</td>
+<td align="left">2000-01-10</td>
+<td align="left">Date</td>
+<td align="left">2000-01-10</td>
+<td align="left">2000-01-10</td>
+</tr>
+</tbody>
+</table>
 </div>
+<div id="ymd_hms" class="section level2">
+<h2><span class="header-section-number">10.4</span> ymd_hms():</h2>
+<p>parses in order- year, month, day _ hour, minute, second</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1">cleaned_date_df &lt;-<span class="st"> </span>cleaned_date_df<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb294-2" data-line-number="2"><span class="st">                  </span><span class="kw">mutate</span>(<span class="dt">ymd.hms.clean =</span> <span class="kw">ymd_hms</span>(ymd.hms.raw))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb294-3" data-line-number="3"><span class="st">                  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(ymd.hms.raw))</a>
+<a class="sourceLine" id="cb294-4" data-line-number="4"><span class="kw">kable</span>(<span class="kw">head</span>(cleaned_date_df,<span class="dv">10</span>),  <span class="dt">caption =</span> <span class="st">&quot;ymd_hms() results&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-76">Table 10.5: </span>ymd_hms() results</caption>
+<thead>
+<tr class="header">
+<th align="right">day_of_week</th>
+<th align="right">births</th>
+<th align="left">ymd.clean</th>
+<th align="left">ymd.type</th>
+<th align="left">mdy.clean</th>
+<th align="left">dmy.clean</th>
+<th align="left">ymd.hms.clean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">8843</td>
+<td align="left">2000-01-01</td>
+<td align="left">Date</td>
+<td align="left">2000-01-01</td>
+<td align="left">2000-01-01</td>
+<td align="left">2000-01-01 13:50:06</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">7816</td>
+<td align="left">2000-01-02</td>
+<td align="left">Date</td>
+<td align="left">2000-01-02</td>
+<td align="left">2000-01-02</td>
+<td align="left">2000-01-02 13:50:06</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">11123</td>
+<td align="left">2000-01-03</td>
+<td align="left">Date</td>
+<td align="left">2000-01-03</td>
+<td align="left">2000-01-03</td>
+<td align="left">2000-01-03 13:50:06</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">12703</td>
+<td align="left">2000-01-04</td>
+<td align="left">Date</td>
+<td align="left">2000-01-04</td>
+<td align="left">2000-01-04</td>
+<td align="left">2000-01-04 13:50:06</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">12240</td>
+<td align="left">2000-01-05</td>
+<td align="left">Date</td>
+<td align="left">2000-01-05</td>
+<td align="left">2000-01-05</td>
+<td align="left">2000-01-05 13:50:06</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">12260</td>
+<td align="left">2000-01-06</td>
+<td align="left">Date</td>
+<td align="left">2000-01-06</td>
+<td align="left">2000-01-06</td>
+<td align="left">2000-01-06 13:50:06</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">12280</td>
+<td align="left">2000-01-07</td>
+<td align="left">Date</td>
+<td align="left">2000-01-07</td>
+<td align="left">2000-01-07</td>
+<td align="left">2000-01-07 13:50:06</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">8750</td>
+<td align="left">2000-01-08</td>
+<td align="left">Date</td>
+<td align="left">2000-01-08</td>
+<td align="left">2000-01-08</td>
+<td align="left">2000-01-08 13:50:06</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">7736</td>
+<td align="left">2000-01-09</td>
+<td align="left">Date</td>
+<td align="left">2000-01-09</td>
+<td align="left">2000-01-09</td>
+<td align="left">2000-01-09 13:50:06</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">11418</td>
+<td align="left">2000-01-10</td>
+<td align="left">Date</td>
+<td align="left">2000-01-10</td>
+<td align="left">2000-01-10</td>
+<td align="left">2000-01-10 13:50:06</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1">cleaned_date_df &lt;-<span class="st"> </span>cleaned_date_df<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb295-2" data-line-number="2"><span class="st">                  </span><span class="kw">mutate</span>(<span class="dt">wday.clean =</span> <span class="kw">wday</span>(ymd.clean))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb295-3" data-line-number="3"><span class="st">                  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(day_of_week))</a>
+<a class="sourceLine" id="cb295-4" data-line-number="4"><span class="kw">kable</span>(<span class="kw">head</span>(cleaned_date_df,<span class="dv">10</span>),  <span class="dt">caption =</span> <span class="st">&quot;wday() results&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-77">Table 10.6: </span>wday() results</caption>
+<thead>
+<tr class="header">
+<th align="right">births</th>
+<th align="left">ymd.clean</th>
+<th align="left">ymd.type</th>
+<th align="left">mdy.clean</th>
+<th align="left">dmy.clean</th>
+<th align="left">ymd.hms.clean</th>
+<th align="right">wday.clean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">8843</td>
+<td align="left">2000-01-01</td>
+<td align="left">Date</td>
+<td align="left">2000-01-01</td>
+<td align="left">2000-01-01</td>
+<td align="left">2000-01-01 13:50:06</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="right">7816</td>
+<td align="left">2000-01-02</td>
+<td align="left">Date</td>
+<td align="left">2000-01-02</td>
+<td align="left">2000-01-02</td>
+<td align="left">2000-01-02 13:50:06</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">11123</td>
+<td align="left">2000-01-03</td>
+<td align="left">Date</td>
+<td align="left">2000-01-03</td>
+<td align="left">2000-01-03</td>
+<td align="left">2000-01-03 13:50:06</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">12703</td>
+<td align="left">2000-01-04</td>
+<td align="left">Date</td>
+<td align="left">2000-01-04</td>
+<td align="left">2000-01-04</td>
+<td align="left">2000-01-04 13:50:06</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">12240</td>
+<td align="left">2000-01-05</td>
+<td align="left">Date</td>
+<td align="left">2000-01-05</td>
+<td align="left">2000-01-05</td>
+<td align="left">2000-01-05 13:50:06</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">12260</td>
+<td align="left">2000-01-06</td>
+<td align="left">Date</td>
+<td align="left">2000-01-06</td>
+<td align="left">2000-01-06</td>
+<td align="left">2000-01-06 13:50:06</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="right">12280</td>
+<td align="left">2000-01-07</td>
+<td align="left">Date</td>
+<td align="left">2000-01-07</td>
+<td align="left">2000-01-07</td>
+<td align="left">2000-01-07 13:50:06</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">8750</td>
+<td align="left">2000-01-08</td>
+<td align="left">Date</td>
+<td align="left">2000-01-08</td>
+<td align="left">2000-01-08</td>
+<td align="left">2000-01-08 13:50:06</td>
+<td align="right">7</td>
+</tr>
+<tr class="odd">
+<td align="right">7736</td>
+<td align="left">2000-01-09</td>
+<td align="left">Date</td>
+<td align="left">2000-01-09</td>
+<td align="left">2000-01-09</td>
+<td align="left">2000-01-09 13:50:06</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">11418</td>
+<td align="left">2000-01-10</td>
+<td align="left">Date</td>
+<td align="left">2000-01-10</td>
+<td align="left">2000-01-10</td>
+<td align="left">2000-01-10 13:50:06</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="reduce-family" class="section level2">
-<h2><span class="header-section-number">6.3</span> Reduce Family</h2>
-<p>The complete list of functions within the reduce family are:</p>
-<pre><code>reduce(.x, .f, ..., .init)
-
-reduce_right(.x, .f, ..., .init)
-
-reduce2(.x, .y, .f, ..., .init)
-
-reduce2_right(.x, .y, .f, ..., .init)</code></pre>
-<p>Arguments</p>
+<div id="additional-lubridate-functions" class="section level2">
+<h2><span class="header-section-number">10.5</span> Additional Lubridate Functions:</h2>
+<div id="extract-information-from-dates" class="section level3">
+<h3><span class="header-section-number">10.5.1</span> Extract Information From Dates:</h3>
 <ul>
-<li>.x: A list or atomic vector</li>
-<li>.f: A 2-argument function. The function will be passed the accumulated value as the first argument and the next value as the second argument. For reduce2(), a 3-argument function. The function will be passed the accumulated value as the first argument, the next value of .x as the second argument, and the next value of .y as the third argument.</li>
-<li>…: Additional arguments passed on to .f</li>
-<li>.init: If supplied, will be used as the first value to start the accumulation, rather than using x[[1]]. This is useful if you want to ensure that reduce returns a correct value when .x is empty. If missing, and x is empty, will throw an error</li>
-<li>.y: For reduce2(), an additional argument that is passed to .f. If init is not set, .y should be 1 element shorter than .x</li>
+<li><p>tody() : returns today’s date</p></li>
+<li><p>year(): returns the year</p></li>
+<li><p>month(): returns the month</p></li>
 </ul>
-<div id="reduce" class="section level3">
-<h3><span class="header-section-number">6.3.1</span> reduce</h3>
-<p>The reduce function transforms the input into a single value by iteratively applying a binary function. Another function whose inspiration seems to stem from JavaScript. In R, reduce can be useful when you have a list or vector of values that need to be
-“accumulated” in some form to create a single item.</p>
-<div id="example" class="section level4">
-<h4><span class="header-section-number">6.3.1.1</span> Example</h4>
-<p>Lets pretend that we wanted to create a pipe-delimited string from the row names of our cars data</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">names &lt;-<span class="st"> </span><span class="kw">row.names</span>(cars) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb119-2" data-line-number="2"><span class="st">  </span><span class="kw">reduce</span>(<span class="dt">.f =</span> <span class="cf">function</span>(start, .next) <span class="kw">paste</span>(start, .next, <span class="dt">sep =</span> <span class="st">&quot;|&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb119-3" data-line-number="3"><span class="st">  </span>print</a></code></pre></div>
-<pre><code>## [1] &quot;1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32&quot;</code></pre>
-
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1"><span class="kw">Sys.getlocale</span>()</a></code></pre></div>
+<pre><code>## [1] &quot;en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8&quot;</code></pre>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1">this_day &lt;-<span class="st"> </span><span class="kw">today</span>()</a>
+<a class="sourceLine" id="cb298-2" data-line-number="2">this_day</a></code></pre></div>
+<pre><code>## [1] &quot;2018-05-09&quot;</code></pre>
 </div>
+<div id="date-time-information" class="section level3">
+<h3><span class="header-section-number">10.5.2</span> Date-Time Information:</h3>
+<p><em>these were used to create the base dataframe</em></p>
+<ul>
+<li><p>day(): returns the day</p></li>
+<li><p>wday(): day of the week</p></li>
+<li><p>now(): date-time of the exact moment</p></li>
+<li><p>hour(): hour of the exact moment</p></li>
+<li><p>minute(): minute of the exact moment</p></li>
+<li><p>second(): second of the exact moment</p></li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -662,8 +1144,8 @@ reduce2_right(.x, .y, .f, ..., .init)</code></pre>
           </div>
         </div>
       </div>
-<a href="readr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tibble.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="forcats.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

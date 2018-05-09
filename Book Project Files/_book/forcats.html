@@ -25,7 +25,7 @@
 <meta name="author" content="CUNY SPS DATA 607 Spring 2018">
 
 
-<meta name="date" content="2018-05-08">
+<meta name="date" content="2018-05-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="stringr.html">
-<link rel="next" href="references.html">
+<link rel="next" href="lubridate.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -273,11 +273,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.11" data-path="tidyr.html"><a href="tidyr.html#separate_rows"><i class="fa fa-check"></i><b>4.11</b> separate_rows ()</a></li>
 <li class="chapter" data-level="4.12" data-path="tidyr.html"><a href="tidyr.html#smiths"><i class="fa fa-check"></i><b>4.12</b> smiths ()</a></li>
 <li class="chapter" data-level="4.13" data-path="tidyr.html"><a href="tidyr.html#spread"><i class="fa fa-check"></i><b>4.13</b> spread ()</a></li>
-<li class="chapter" data-level="4.14" data-path="tidyr.html"><a href="tidyr.html#table1"><i class="fa fa-check"></i><b>4.14</b> table1 ()</a></li>
-<li class="chapter" data-level="4.15" data-path="tidyr.html"><a href="tidyr.html#uncount"><i class="fa fa-check"></i><b>4.15</b> uncount ()</a></li>
-<li class="chapter" data-level="4.16" data-path="tidyr.html"><a href="tidyr.html#unite"><i class="fa fa-check"></i><b>4.16</b> unite ()</a></li>
-<li class="chapter" data-level="4.17" data-path="tidyr.html"><a href="tidyr.html#unnest"><i class="fa fa-check"></i><b>4.17</b> unnest ()</a></li>
-<li class="chapter" data-level="4.18" data-path="tidyr.html"><a href="tidyr.html#who"><i class="fa fa-check"></i><b>4.18</b> who ()</a></li>
+<li class="chapter" data-level="4.14" data-path="tidyr.html"><a href="tidyr.html#uncount"><i class="fa fa-check"></i><b>4.14</b> uncount ()</a></li>
+<li class="chapter" data-level="4.15" data-path="tidyr.html"><a href="tidyr.html#unite"><i class="fa fa-check"></i><b>4.15</b> unite ()</a></li>
+<li class="chapter" data-level="4.16" data-path="tidyr.html"><a href="tidyr.html#unnest"><i class="fa fa-check"></i><b>4.16</b> unnest ()</a></li>
+<li class="chapter" data-level="4.17" data-path="tidyr.html"><a href="tidyr.html#who"><i class="fa fa-check"></i><b>4.17</b> who ()</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>5</b> readr</a><ul>
 <li class="chapter" data-level="5.1" data-path="readr.html"><a href="readr.html#read_csv"><i class="fa fa-check"></i><b>5.1</b> read_csv()</a></li>
@@ -397,6 +396,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.22" data-path="forcats.html"><a href="forcats.html#lvls"><i class="fa fa-check"></i><b>9.22</b> lvls ()</a></li>
 <li class="chapter" data-level="9.23" data-path="forcats.html"><a href="forcats.html#lvls_union"><i class="fa fa-check"></i><b>9.23</b> lvls_union ()</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>10</b> lubridate</a><ul>
+<li class="chapter" data-level="10.1" data-path="lubridate.html"><a href="lubridate.html#ymd"><i class="fa fa-check"></i><b>10.1</b> ymd():</a></li>
+<li class="chapter" data-level="10.2" data-path="lubridate.html"><a href="lubridate.html#mdy"><i class="fa fa-check"></i><b>10.2</b> mdy():</a></li>
+<li class="chapter" data-level="10.3" data-path="lubridate.html"><a href="lubridate.html#dmy"><i class="fa fa-check"></i><b>10.3</b> dmy():</a></li>
+<li class="chapter" data-level="10.4" data-path="lubridate.html"><a href="lubridate.html#ymd_hms"><i class="fa fa-check"></i><b>10.4</b> ymd_hms():</a></li>
+<li class="chapter" data-level="10.5" data-path="lubridate.html"><a href="lubridate.html#additional-lubridate-functions"><i class="fa fa-check"></i><b>10.5</b> Additional Lubridate Functions:</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="lubridate.html"><a href="lubridate.html#extract-information-from-dates"><i class="fa fa-check"></i><b>10.5.1</b> Extract Information From Dates:</a></li>
+<li class="chapter" data-level="10.5.2" data-path="lubridate.html"><a href="lubridate.html#date-time-information"><i class="fa fa-check"></i><b>10.5.2</b> Date-Time Information:</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -494,7 +503,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="stringr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lubridate.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

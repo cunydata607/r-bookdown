@@ -25,7 +25,7 @@
 <meta name="author" content="CUNY SPS DATA 607 Spring 2018">
 
 
-<meta name="date" content="2018-05-08">
+<meta name="date" content="2018-05-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -273,11 +273,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.11" data-path="tidyr.html"><a href="tidyr.html#separate_rows"><i class="fa fa-check"></i><b>4.11</b> separate_rows ()</a></li>
 <li class="chapter" data-level="4.12" data-path="tidyr.html"><a href="tidyr.html#smiths"><i class="fa fa-check"></i><b>4.12</b> smiths ()</a></li>
 <li class="chapter" data-level="4.13" data-path="tidyr.html"><a href="tidyr.html#spread"><i class="fa fa-check"></i><b>4.13</b> spread ()</a></li>
-<li class="chapter" data-level="4.14" data-path="tidyr.html"><a href="tidyr.html#table1"><i class="fa fa-check"></i><b>4.14</b> table1 ()</a></li>
-<li class="chapter" data-level="4.15" data-path="tidyr.html"><a href="tidyr.html#uncount"><i class="fa fa-check"></i><b>4.15</b> uncount ()</a></li>
-<li class="chapter" data-level="4.16" data-path="tidyr.html"><a href="tidyr.html#unite"><i class="fa fa-check"></i><b>4.16</b> unite ()</a></li>
-<li class="chapter" data-level="4.17" data-path="tidyr.html"><a href="tidyr.html#unnest"><i class="fa fa-check"></i><b>4.17</b> unnest ()</a></li>
-<li class="chapter" data-level="4.18" data-path="tidyr.html"><a href="tidyr.html#who"><i class="fa fa-check"></i><b>4.18</b> who ()</a></li>
+<li class="chapter" data-level="4.14" data-path="tidyr.html"><a href="tidyr.html#uncount"><i class="fa fa-check"></i><b>4.14</b> uncount ()</a></li>
+<li class="chapter" data-level="4.15" data-path="tidyr.html"><a href="tidyr.html#unite"><i class="fa fa-check"></i><b>4.15</b> unite ()</a></li>
+<li class="chapter" data-level="4.16" data-path="tidyr.html"><a href="tidyr.html#unnest"><i class="fa fa-check"></i><b>4.16</b> unnest ()</a></li>
+<li class="chapter" data-level="4.17" data-path="tidyr.html"><a href="tidyr.html#who"><i class="fa fa-check"></i><b>4.17</b> who ()</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>5</b> readr</a><ul>
 <li class="chapter" data-level="5.1" data-path="readr.html"><a href="readr.html#read_csv"><i class="fa fa-check"></i><b>5.1</b> read_csv()</a></li>
@@ -397,6 +396,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.22" data-path="forcats.html"><a href="forcats.html#lvls"><i class="fa fa-check"></i><b>9.22</b> lvls ()</a></li>
 <li class="chapter" data-level="9.23" data-path="forcats.html"><a href="forcats.html#lvls_union"><i class="fa fa-check"></i><b>9.23</b> lvls_union ()</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>10</b> lubridate</a><ul>
+<li class="chapter" data-level="10.1" data-path="lubridate.html"><a href="lubridate.html#ymd"><i class="fa fa-check"></i><b>10.1</b> ymd():</a></li>
+<li class="chapter" data-level="10.2" data-path="lubridate.html"><a href="lubridate.html#mdy"><i class="fa fa-check"></i><b>10.2</b> mdy():</a></li>
+<li class="chapter" data-level="10.3" data-path="lubridate.html"><a href="lubridate.html#dmy"><i class="fa fa-check"></i><b>10.3</b> dmy():</a></li>
+<li class="chapter" data-level="10.4" data-path="lubridate.html"><a href="lubridate.html#ymd_hms"><i class="fa fa-check"></i><b>10.4</b> ymd_hms():</a></li>
+<li class="chapter" data-level="10.5" data-path="lubridate.html"><a href="lubridate.html#additional-lubridate-functions"><i class="fa fa-check"></i><b>10.5</b> Additional Lubridate Functions:</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="lubridate.html"><a href="lubridate.html#extract-information-from-dates"><i class="fa fa-check"></i><b>10.5.1</b> Extract Information From Dates:</a></li>
+<li class="chapter" data-level="10.5.2" data-path="lubridate.html"><a href="lubridate.html#date-time-information"><i class="fa fa-check"></i><b>10.5.2</b> Date-Time Information:</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -423,7 +432,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="as_tibble" class="section level3">
 <h3><span class="header-section-number">7.1.1</span> as_tibble()</h3>
 <p>You can coerce a data frame to tibble.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="kw">as_tibble</span>(nycflights13<span class="op">::</span>airlines)</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="kw">as_tibble</span>(nycflights13<span class="op">::</span>airlines)</a></code></pre></div>
 <pre><code>## # A tibble: 16 x 2
 ##    carrier name                       
 ##    &lt;chr&gt;   &lt;chr&gt;                      
@@ -447,11 +456,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tibble-1" class="section level3">
 <h3><span class="header-section-number">7.1.2</span> tibble()</h3>
 <p>You can create a new tibble from individual vectors with tibble().</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1"><span class="kw">tibble</span>(</a>
-<a class="sourceLine" id="cb118-2" data-line-number="2">  <span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, </a>
-<a class="sourceLine" id="cb118-3" data-line-number="3">  <span class="dt">b =</span> a <span class="op">*</span><span class="st"> </span><span class="dv">2</span>, </a>
-<a class="sourceLine" id="cb118-4" data-line-number="4">  <span class="dt">c =</span> a <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>b</a>
-<a class="sourceLine" id="cb118-5" data-line-number="5">)</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb123-2" data-line-number="2">  <span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, </a>
+<a class="sourceLine" id="cb123-3" data-line-number="3">  <span class="dt">b =</span> a <span class="op">*</span><span class="st"> </span><span class="dv">2</span>, </a>
+<a class="sourceLine" id="cb123-4" data-line-number="4">  <span class="dt">c =</span> a <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>b</a>
+<a class="sourceLine" id="cb123-5" data-line-number="5">)</a></code></pre></div>
 <pre><code>## # A tibble: 15 x 3
 ##        a     b     c
 ##    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -474,23 +483,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tribble" class="section level3">
 <h3><span class="header-section-number">7.1.3</span> tribble()</h3>
 <p>Another way to create a tibble is with tribble(), short for <code>transposed tibble</code>. tribble() is customised for data entry in code: column headings are defined by formulas (i.e. they start with ~), and entries are separated by commas. This makes it possible to lay out small amounts of data in easy to read form.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb120-2" data-line-number="2">  <span class="op">~</span>x, <span class="op">~</span>y, <span class="op">~</span>z,</a>
-<a class="sourceLine" id="cb120-3" data-line-number="3">  <span class="co">#--|--|----</span></a>
-<a class="sourceLine" id="cb120-4" data-line-number="4">  <span class="st">&quot;a&quot;</span>, <span class="dv">2</span>, <span class="fl">3.6</span>,</a>
-<a class="sourceLine" id="cb120-5" data-line-number="5">  <span class="st">&quot;b&quot;</span>, <span class="dv">1</span>, <span class="fl">8.5</span></a>
-<a class="sourceLine" id="cb120-6" data-line-number="6">)</a></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1"><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb125-2" data-line-number="2">  <span class="op">~</span>x, <span class="op">~</span>y, <span class="op">~</span>z,</a>
+<a class="sourceLine" id="cb125-3" data-line-number="3">  <span class="co">#--|--|----</span></a>
+<a class="sourceLine" id="cb125-4" data-line-number="4">  <span class="st">&quot;a&quot;</span>, <span class="dv">2</span>, <span class="fl">3.6</span>,</a>
+<a class="sourceLine" id="cb125-5" data-line-number="5">  <span class="st">&quot;b&quot;</span>, <span class="dv">1</span>, <span class="fl">8.5</span></a>
+<a class="sourceLine" id="cb125-6" data-line-number="6">)</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##   x         y     z
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1 a        2.  3.60
 ## 2 b        1.  8.50</code></pre>
 <p>It’s possible for a tibble to have column names that are not valid R variable names, aka non-syntactic names.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">tb &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
-<a class="sourceLine" id="cb122-2" data-line-number="2">  <span class="st">`</span><span class="dt">:-)</span><span class="st">`</span> =<span class="st"> &quot;smile&quot;</span>, </a>
-<a class="sourceLine" id="cb122-3" data-line-number="3">  <span class="st">`</span><span class="dt"> </span><span class="st">`</span> =<span class="st"> &quot;space&quot;</span>,</a>
-<a class="sourceLine" id="cb122-4" data-line-number="4">  <span class="st">`</span><span class="dt">5000</span><span class="st">`</span> =<span class="st"> &quot;number&quot;</span></a>
-<a class="sourceLine" id="cb122-5" data-line-number="5">)</a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">tb &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb127-2" data-line-number="2">  <span class="st">`</span><span class="dt">:-)</span><span class="st">`</span> =<span class="st"> &quot;smile&quot;</span>, </a>
+<a class="sourceLine" id="cb127-3" data-line-number="3">  <span class="st">`</span><span class="dt"> </span><span class="st">`</span> =<span class="st"> &quot;space&quot;</span>,</a>
+<a class="sourceLine" id="cb127-4" data-line-number="4">  <span class="st">`</span><span class="dt">5000</span><span class="st">`</span> =<span class="st"> &quot;number&quot;</span></a>
+<a class="sourceLine" id="cb127-5" data-line-number="5">)</a></code></pre></div>
 <p>Reference<br />
 <a href="https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html">Cran R Blog</a><br />
 <a href="http://r4ds.had.co.nz/">R for Data Science</a></p>

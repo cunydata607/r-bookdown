@@ -1,0 +1,121 @@
+# lubridate {#lubridate}
+
+The lubridate package makes working with date-time data easier. Base R commands for date-times are generally unintuitive not robust. According to Hadley Wickham, "lubridate has a consistent, memorable syntax, that makes working with dates fun instead of frustrating."  For additional information use help(package = lubridate) to bring up an overview of the package and its functions.
+
+Load Packages:
+
+```{r , message=FALSE, warning=FALSE}
+library(lubridate)
+```
+
+Load data from the FiveThirtyEight article **"Some People Are Too Superstitious To Have A Baby On Friday The 13th"**
+
+-  Since it is fairly clean data, I will create additional columns to showcase lubridate functionality below
+
+-  I will use the now(), hour(), minute() and second() functions to add addditional metadata to the dataframe. Please see definitions below
+
+-  Once the new columns are added, I will remove the original clean columns
+
+```{r, message=FALSE, warning=FALSE}
+US_births_2000 <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/births/US_births_1994-2003_CDC_NCHS.csv")%>%
+                filter(year == 2000)%>%
+                mutate(year = as.character(year),
+                       month = as.character(month),
+                       date_of_month = as.character(date_of_month)) %>%
+               mutate(ymd.raw = paste(year, month, date_of_month, sep = '-'))%>%
+               mutate(mdy.raw = paste(month,date_of_month,year, sep = '-'))%>%
+               mutate(dmy.raw = paste(date_of_month,month, year,sep = '-'))%>%
+              mutate(ymd.hms.raw = paste(year,month,date_of_month, hour(now()), minute(now()), second(now()),sep = '-'))%>%
+              select(-c(year, month, date_of_month))
+
+kable(head(US_births_2000,10),  caption = "2000 Birth Data")
+
+```
+
+##  ymd()
+
+parses in order - year, month, date. I will apply to the "ymd.raw" column and save the results as "ymd.clean"
+
+```{r}
+cleaned_date_df <- US_births_2000%>%
+                  mutate(ymd.clean = ymd(ymd.raw),
+                         ymd.type = class(ymd.clean))%>%
+                  select(-c(ymd.raw))
+kable(head(cleaned_date_df,10),  caption = "ymd() results")
+```
+
+##  mdy()
+
+parses in order- month, date, year. I will apply to the "mdy.raw" column and save the results as "mdy.clean." The mdy() function will save the results as year-month-date. This is helpful when trying to normalize data. As you can see below, the "ymd.clean" ="mdy.clean"
+
+```{r}
+cleaned_date_df <- cleaned_date_df%>%
+                  mutate(mdy.clean = mdy(mdy.raw))%>%
+                  select(-c(mdy.raw))
+kable(head(cleaned_date_df,10),  caption = "mdy() results")
+```
+
+##  dmy()
+
+parses in order- day, month, year. The dmy() function will save the results as year-month-date. This is helpful when trying to normalize data. As you can see below, the "ymd.clean" = "dmy.clean"
+
+```{r}
+cleaned_date_df <- cleaned_date_df%>%
+                  mutate(dmy.clean = dmy(dmy.raw))%>%
+                  select(-c(dmy.raw))
+kable(head(cleaned_date_df,10),  caption = "dmy() results")
+```
+
+##  ymd_hms()
+
+parses in order- year, month, day _ hour, minute, second
+
+```{r}
+cleaned_date_df <- cleaned_date_df%>%
+                  mutate(ymd.hms.clean = ymd_hms(ymd.hms.raw))%>%
+                  select(-c(ymd.hms.raw))
+kable(head(cleaned_date_df,10),  caption = "ymd_hms() results")
+```
+```{r}
+cleaned_date_df <- cleaned_date_df%>%
+                  mutate(wday.clean = wday(ymd.clean))%>%
+                  select(-c(day_of_week))
+kable(head(cleaned_date_df,10),  caption = "wday() results")
+```
+
+## Additional Lubridate Functions
+
+### Extract Information From Dates
+
+-  tody() : returns today's date
+
+-  year(): returns the year
+
+-  month(): returns the month
+
+```{r}
+Sys.getlocale()
+this_day <- today()
+this_day
+```
+
+### Date-Time Information
+
+*these were used to create the base dataframe*
+
+-  day(): returns the day
+
+-  wday(): day of the week
+
+-  now(): date-time of the exact moment 
+
+-  hour(): hour of the exact moment
+
+-  minute(): minute of the exact moment 
+
+-  second(): second of the exact moment 
+
+
+
+
+
