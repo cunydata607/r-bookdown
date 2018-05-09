@@ -3,6 +3,26 @@
 ## +.gg ()
 
 ## aes ()
+#Data from the National Morbidity and Mortality Air Pollution Study (NMMAPS)
+rm(list=ls())
+library(ggplot2)
+
+library(tidyr)
+library(dplyr)
+library(tidyverse)
+myurl<-("https://raw.githubusercontent.com/VioletaStoyanova/Untidy_data/master/chicago-nmmaps.csv")
+#limiting the data from 1997-2000
+data<-read.csv(myurl, as.is = TRUE)
+data$date<-as.Date(data$date)
+data<-data[data$date>as.Date("1996-12-31"),]
+data$year<-substring(data$date,1,4)
+
+head(data)
+
+#For reference: http://rpubs.com/violet/Data607-rbookdown
+
+g<- ggplot(data,aes(date, temp)) + geom_point(color="firebrick")
+g
 
 ## aes_ ()
 
@@ -33,6 +53,9 @@
 ## coord_fixed ()
 
 ## coord_flip ()
+#A geom_violin + coord_flip()
+g+geom_violin(alpha=0.5,color="gray")+geom_jitter(alpha=0.5,aes(color=season),
+position=position_jitter(width=0.1))+coord_flip()
 
 ## coord_map ()
 
@@ -113,6 +136,8 @@
 ## geom_spoke ()
 
 ## geom_violin ()
+g+geom_violin(alpha=0.5,color="gray")+geom_jitter(alpha=0.5,aes(color=season),
+position=position_jitter(width=0.1))+coord_flip()
 
 ## ggplot ()
 
@@ -121,6 +146,10 @@
 ## ggsave ()
 
 ## ggtheme ()
+library(ggthemes)
+ggplot(data,aes(date,temp,color=factor(season)))+
+geom_point()+ggtitle("This plot looks amazing")+
+theme_economist()+scale_colour_economist()
 
 ## guides ()
 
@@ -137,6 +166,10 @@
 ## label_bquote ()
 
 ## labs ()
+g+labs(title='Temperature')
+g
+#or g<‐g+ggtitle('Temperature')
+#g
 
 ## lims ()
 
@@ -328,6 +361,13 @@ Using "colour" instead of "fill" probably isn't what we want for a barplot. But 
 ## theme_get ()
 
 ## txhousing ()
+
+## textgrob()
+library(grid)
+my_grob=grobTree(textGrob("This text stays in place!",x=0.1, y=0.95,hjust=0,
+gp=gpar(col="blue",fontsize=15,fontface="italic")))
+ggplot(data,aes(temp,o3))+geom_point(color="firebrick")+
+annotation_custom(my_grob)
 
 ## ggiraph
 
