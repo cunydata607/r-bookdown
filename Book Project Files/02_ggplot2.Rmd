@@ -390,8 +390,8 @@ As you can see in the example above, the boxs change color on when the users mou
 More information can be found here: http://rpubs.com/nschettini/386363 
 
 ## 2 GGPlots
-plot 1:point plot with interactive pointer
-plot 2:horizontal bar plot
+### plot 1:point plot with interactive pointer  
+### plot 2:horizontal bar plot  
 ```{r warning=FALSE, message=FALSE}
 library(ggplot2)
 library(ggiraph)
@@ -430,7 +430,7 @@ ggiraph(code = print(our.plot),hover_css = "fill:#FF4C3B;font-style:italic;" )
 ```  
   
   
-Plot 2  
+### Plot 2  
   
 Create a plot that shows urban population by state.  Flip it to a horizontal bar plot.
 
