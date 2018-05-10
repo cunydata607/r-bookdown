@@ -40,3 +40,134 @@ Some quotes and concepts [from Hadley Wickham](https://cran.r-project.org/web/pa
 #### Normalization
 
 > Normalisation is useful for tidying and eliminating inconsistencies. However, there are few data analysis tools that work directly with relational data, so analysis usually also requires denormalisation or the merging the datasets back into one table.
+
+----
+
+## Workflow tutorial on using `tidyverse` to process data
+
+This workflow tutorial demonstrates how to process data from start to finish using `tidyverse`. 
+
+In this tutorial, we will do the following: 
+
+(1) Use `readr` package to read a csv file. 
+(2) Use `tidyr` package to transform data into tidy data. 
+(3) Use `dplyr` package to group and summarize data.
+(4) Use `ggplot2` package to visualize data. 
+
+----
+
+### About the data set
+
+This data file was taken from https://data.fivethirtyeight.com/ under data set `uber-tlc-foil-response`. This specific data was taken from an Excel file named `Uber Weekday-Hour AverageTrips.xlsx` under a sheet entitled `Trips Per Hour and Weekday`. 
+
+```{r}
+file <- "https://raw.githubusercontent.com/Shetura36/Data-607-Assignments/master/Bookdown/Uber%20Weekday-Hour%20AverageTrips.csv"
+```
+
+
+----
+
+### Load libraries for this tutorial 
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(knitr)
+```
+
+
+----
+
+### 1. Read file with `readr` package
+
+The code below demonstrates how to use the `readr::read_csv`, which is part of the`tidyverse`. 
+
+- `file` is a variable that contains the file path of the data set. 
+- `skip` indicates the number of lines  to skip before reading data.
+- `col_names` is either TRUE or FALSE or a character vector of column names. 
+
+The code below skips the first two rows of data. If you take a look at the data file, the first row provides a description of the five columns into two groups: `Time`and `Average trips per hour and day of week`. The second row provides the column names; however, the code below will explicitly provide the column names. These two rows from the raw data file are skipped. 
+
+```{r}
+col_names <- c("weekday", "hour", "other_8_bases", "uber", "lyft")
+data <- readr::read_csv(file, skip = 2, col_names)
+```
+
+
+### Preview data set
+
+Below is a preview of the data set. 
+
+```{r echo=FALSE}
+kable(head(data), format="markdown")
+```
+
+----
+
+### 2. Transform data so that each observation represents a car service
+
+The code below uses `tidyr` package to transform data so that each row represents a car service. The transformation will take the columns `uber`, `lyft`, and `other_8_bases` and assign them to a column named `car_service`. It will also create a column called `average_trip_per_hrday` to store the values that used to be stored in the three columns mentioned. The last parameter (`3:5`) indicates the columns that will be renamed as `car_service`. 
+
+```{r}
+data_transform <- tidyr::gather(data, "car_service", "average_trip_per_hrday", 3:5)
+```
+
+
+
+### Preview of transformed data
+
+Below is a preview of the data that has been transformed. 
+
+```{r echo=FALSE}
+kable(head(data_transform), format="markdown")
+```
+
+----
+
+### 3. Use `dplyr` to calculate the average number of trips per hour for each car service
+
+The `group_by` function groups the rows by `car_service`, and then by `hour`. The `summarise` function is used to calculate the mean of the `average_trip_per_hrday` based on the grouping mentioned. Basically, what this does is group all hours across all different days for each car service. The `arrange` function then orders the result by `car_service` and `hour`. 
+
+```{r warning=FALSE}
+average_trips_perhour <- 
+data_transform %>% 
+  dplyr::group_by(car_service, hour) %>% 
+  dplyr::summarise(average_trips = mean(average_trip_per_hrday)) %>% 
+  arrange(car_service, hour)
+```
+
+
+
+### Preview of `average_trips_perhour`
+
+Below is a preview of the summarized data for `average_trips_perhour`, which is the average number of trips for the hour in military time for each car service. 
+
+
+```{r echo=FALSE}
+kable(head(average_trips_perhour), format="markdown")
+```
+
+----
+
+### 4. Use `ggplot2` to visualize data
+
+The plot below shows the average number of trips per hour for each car service. 
+
+`ggplot` function is used to plot a scatter plot and generate a loess regression line. 
+`geom_smooth` is used to generate the regression line. 
+
+Arguments for `geom_smooth`: 
+
+- method : smoothing method to be used. Possible values are lm, glm, gam, loess, rlm.
+- method = "loess": This is the default value for small number of observations. It computes a smooth local regression. You can read more about loess using the R code ?loess.
+- method ="lm": It fits a linear model. Note that, it's also possible to indicate the formula as - formula = y ~ poly(x, 3) to specify a degree 3 polynomial.
+- se : logical value. If TRUE, confidence interval is displayed around smooth.
+- fullrange : logical value. If TRUE, the fit spans the full range of the plot
+- level : level of confidence interval to use. Default value is 0.95
+
+source: http://www.sthda.com/english/wiki/ggplot2-scatter-plots-quick-start-guide-r-software-and-data-visualization
+
+```{r warning=FALSE}
+ggplot(average_trips_perhour, aes(x=hour, y=average_trips, color=car_service)) + geom_point() + 
+  geom_smooth(method="loess", se=TRUE, fullrange=FALSE, level=0.95) + 
+  ggtitle("Average number of trips for each hour of the day")
+```
