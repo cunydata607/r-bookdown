@@ -1,32 +1,280 @@
 # forcats {#forcats}
 
+forcats is a non-core package in the tidyverse and all the main functions start with fct_ Although you can install forcats using install.packages("tidyverse"), it is loaded using library(forcats). 
+
 ## as_factor ()
+
+as_factor (): Converts an input to a factor. as_factor() is a generic version of as.factor()
+
+Description: Creates levels in the order in which they appear. This ensures means that as_factor(x) will always return the same result, regardless of the current locale.
+
+Usage: 
+```
+as_factor(x, ...)
+```
+Example: 
+
+```{r}
+x <- c("e", "f", "g")
+as_factor(x)
+as.factor(x)
+```
 
 ## fct_anonv ()
 
-## fct_c ()
 
+## fct_c ()
+fct_c (): Concatenate factors, combining levels. 
+
+Description: Allows the patching of factors having both different levels and are of different sources.
+
+
+Usage: 
+```
+fct_c(...)
+```
+
+Example: 
+
+```{r}
+fr <- factor("r")
+fs <- factor("s")
+frs <- factor(c("r", "s"))
+
+c(fr, fs, frs)
+fct_c(fr, fs, frs)
+
+```
 ## fct_collapse ()
 
+
 ## fct_count ()
+fct_count (): Count entries in a factor.
+
+Description: Count entries in a factor.
+
+Usage: 
+
+```
+fct_count(f, sort = FALSE)
+```
+
+Example: 
+
+```{r}
+f <- factor(sample(letters)[rpois(1000, 10)])
+table(f)
+fct_count(f)
+fct_count(f, sort = TRUE)
+```
 
 ## fct_drop ()
+fct_drop (): ALlows you to drop unused levels.
 
+Description: In comparison to base::droplevels(), does not drop NA levels that have values.
+
+Usage: 
+
+```
+fct_drop(f, only)
+```
+
+Example: 
+
+```{r}
+f <- factor(c("a", "b"), levels = c("a", "b", "c"))
+f
+fct_drop(f)
+```
+```{r}
+#Restrict which levels to drop
+fct_drop(f, only = "a")
+fct_drop(f, only = "c")
+```
 ## fct_expand ()
+fct_expand (): Add additional levels to a factor.
+
+Description: Allows the expansion of levels to a chosen factor.
+
+Usage: 
+
+```
+fct_expand(f, ...)
+```
+
+Example: 
+
+
+```{r}
+f <- factor(sample(letters[1:3], 20, replace = TRUE))
+f
+fct_expand(f, "d", "e", "f")
+fct_expand(f, letters[1:6])
+```
 
 ## fct_explicit_na ()
+fct_explicit_na (): Make missing values explicit.
+
+Description: Provides missing value an explicit factor level, ensuring that they appear in summaries and on plots.
+
+Usage: 
+
+```
+fct_explicit_na(f, na_level = "(Missing)")
+
+```
+
+Example: 
+
+```{r}
+f1 <- factor(c("a", "a", NA, NA, "a", "a", NA, NA, "c", "a", "c", "b"))
+table(f1)
+```
+
+```{r}
+f2 <- fct_explicit_na(f1)
+table(f2)
+```
+
+
 
 ## fct_inorder ()
+fct_inorder (): Reorder factors levels by first appearance or frequency.
+
+Description: Reorders the factor levels by first appearance or frequency.
+
+Usage: 
+
+```
+fct_inorder(f, ordered = NA)
+
+fct_infreq(f, ordered = NA)
+```
+
+Example: 
+
+
+```{r}
+f <- factor(c("b", "b", "a", "c", "c", "c"))
+f
+fct_inorder(f)
+fct_infreq(f)
+```
+
+```{r}
+fct_inorder(f, ordered = TRUE)
+```
+
 
 ## fct_lump ()
 
 ## fct_other ()
+fct_other (): Replaces levels with "other."
+
+Description: Makes it easier to convert selected levels to “other”
+
+Usage: 
+
+```
+fct_other(f, keep, drop, other_level = "Other")
+
+```
+
+Example: 
+
+
+```{r}
+x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
+fct_other(x, keep = c("A", "B"))
+```
+
+```{r}
+fct_other(x, drop = c("A", "B", "C", "D"))
+```
 
 ## fct_recode ()
+fct_recode (): Change factor levels by hand.
+
+Description: Allows the change of factor levels by hand.
+
+Usage: 
+
+```
+fct_recode(.f, ...)
+```
+
+Example: 
+
+
+```{r}
+x <- factor(c("canada", "dog", "brazil", "cat"))
+fct_recode(x, country = "canada", country = "brazil")
+```
+
+```{r}
+# Keep in mind, if you name the level NULL it will be removed
+fct_recode(x, NULL = "canada", country = "brazil")
+
+```
 
 ## fct_relabel ()
+fct_relabel(): ALlows the programmatic relabeling of levels.
+
+Description: Automatically relabel factor levels, collapse as necessary.
+
+Usage: 
+
+```
+fct_relabel(.f, .fun, ...)
+```
+
+Example: 
+
+```{r}
+x <- factor(letters[1:3])
+x
+```
+
+```{r}
+x %>% fct_relabel(function(x) paste0("-", x, "-"))
+```
 
 ## fct_relevel ()
+fct_relevel (): Reorder factor levels by hand.
+
+Description: Allows you to move any number of levels to any location.
+
+Usage: 
+
+```
+fct_relevel(.f, ..., after = 0L)
+
+```
+
+Example: 
+
+```{r}
+f <- factor(c("w", "x", "y", "z"))
+fct_relevel(f)
+```
+
+```{r}
+fct_relevel(f, "y")
+```
+
+```{r}
+fct_relevel(f, "x", "w")
+```
+
+```{r}
+# Move to the forth position
+fct_relevel(f, "x", after = 3)
+```
+
+```{r}
+# 'Inf' allows you to relevel to the end when there is an unknown number of levels
+fct_relevel(f, "w", after = Inf)
+```
 
 ## fct_reorder ()
 
