@@ -4,6 +4,7 @@
 library(tidyverse)
 library(hms)
 ```
+
 ## read_csv()
 
 **read_csv()** - Reads comma-delimited files
@@ -17,7 +18,8 @@ library(hms)
 Read file will print out a column specification that gives the name and type of each column:
 
 ```{r}
-data <- read_csv("https://raw.githubusercontent.com/cunydata607/r-bookdown/master/Book%20Project%20Files/datasets/example.csv")
+file_path <- "https://raw.githubusercontent.com/cunydata607/r-bookdown/master/Book%20Project%20Files/datasets/example.csv"
+data <- read_csv(file_path)
 ```
 
 `read_csv()` uses the first line of the data for the column names, the following examples will show how to tweak this behavior:
@@ -55,15 +57,55 @@ read_csv("1,2,3
 
 ## cols ()
 
+```{r}
+read_csv("a,b,c
+1,2,3", col_types = cols(.default = "c"))
+```
+
 ## cols_condense ()
+`cols_condense()` takes a spec object and condenses its definition by setting the default column type to the most frequent type and only listing columns with a different type.
+
+`spec()` extracts the full column specification from a `tibble` created by `readr`.
+
+```{r}
+s <- spec(data)
+s
+cols_condense(s)
+```
 
 ## col_skip ()
+Use this function to ignore a column when reading in a file. To skip all columns not otherwise specified, use `cols_only()`.
+
+```{r}
+col_skip()
+```
 
 ## count_fields ()
+This is useful for diagnosing problems with functions that fail to parse correctly.
+
+```{r}
+count_fields(file_path, tokenizer, skip = 0, n_max = -1L)
+```
 
 ## date_names ()
+When parsing dates, you often need to know how weekdays of the week and months are represented as text. This pair of functions allows you to either create your own, or retrieve from a standard list.
+
+The standard list is derived from ICU (http://site.icu-project.org) via the stringi package.
+
+```{r}
+date_names(mon, mon_ab = mon, day, day_ab = day, am_pm = c("AM", "PM"))
+date_names_lang("en")
+date_names_langs()
+```
 
 ## format_delim ()
+These functions are equivalent to write_csv() etc., but instead of writing to disk, they return a string.
+
+```{r}
+format_delim(data, delim, na = "NA", append = FALSE, col_names = !append)
+format_csv(data, na = "NA", append = FALSE, col_names = !append)
+format_tsv(data, na = "NA", append = FALSE, col_names = !append)
+```
 
 ## guess_encoding ()
 
@@ -84,10 +126,22 @@ The goal of readr’s locales is to encapsulate common options that vary between
     - The decimal and grouping marks, used when reading numbers.
 
 ## parse_atomic ()
+Use `parse_*()` if you have a character vector you want to parse. Use `col_*()` in conjunction with a `read_*()` function to parse the values as they’re read in.
 
-## parse_datetime (), parse_date() and parse_time()
+```{r}
+parse_logical(data, na = c("", "NA"), locale = default_locale())
+parse_integer(data, na = c("", "NA"), locale = default_locale())
+parse_double(data, na = c("", "NA"), locale = default_locale())
+parse_character(data, na = c("", "NA"), locale = default_locale())
+col_logical()
+col_integer()
+col_double()
+col_character()
+```
 
-Allow to parse varoious date and time specifications.
+### parse_datetime (), parse_date() and parse_time()
+
+Allow to parse various date and time specifications.
 
 ```{r}
 str(parse_date(c("2018-05-01", "2018-04-30")))
@@ -97,7 +151,7 @@ str(parse_date(c("2018-05-01", "2018-04-30")))
 parse_time(c("6:43 pm"))
 ```
 
-## parse_factor ()
+### parse_factor ()
 
 Creates factors, the data structure that R uses to represent categorical variables with fixed and known values.
 
@@ -105,52 +159,182 @@ Creates factors, the data structure that R uses to represent categorical variabl
 parse_factor(c("a", "b", "c"), levels = c("a", "b"))
 ```
 
-## parse_logical(), parse_number(), parse_double() and parse_integer()
-
-Parse logicals, numbers, doubles and integers respectively.
+### parse_logical()
 
 ```{r}
 str(parse_logical(c("TRUE", "FALSE", "NA")))
 ```
+
+### parse_number()
 
 ```{r}
 parse_number("$112,33")
 parse_number("$12.33.21", locale = locale(grouping_mark = "."))
 ```
 
+### parse_double()
+
 ```{r}
 parse_double("12.33")
 parse_double("12,33", locale = locale(decimal_mark = ","))
 ```
 
+### parse_integer()
+
 ```{r}
 str(parse_integer(c("1", "2", "3")))
 ```
 
-## parse_character()
+### parse_character()
 
 ```{r}
 parse_character("Data analytics", locale = locale(encoding = "Latin1"))
 ```
 
-## parse_guess ()
+### parse_guess ()
+`parse_guess()` returns the parser vector; `guess_parser()` returns the name of the parser. These functions use a number of heuristics to determine which type of vector is "best". Generally they try to err of the side of safety, as it’s straightforward to override the parsing choice if needed.
+
+```{r}
+parse_guess(data, na = c("", "NA"), locale = default_locale())
+col_guess()
+guess_parser(data, locale = default_locale())
+```
 
 ## problems ()
+`Readr` functions will only throw an error if parsing fails in an unrecoverable way. However, there are lots of potential problems that you might want to know about - these are stored in the problems attribute of the output, which you can easily access with this function. `stop_for_problems()` will throw an error if there are any parsing problems: this is useful for automated scripts where you want to throw an error as soon as you encounter a problem.
+
+```{r}
+problems(data)
+stop_for_problems(data)
+```
 
 ## read_delim ()
+`read_csv()` and `read_tsv()` are special cases of the general `read_delim()`. They’re useful for reading the most common types of flat file data, comma separated values and tab separated values, respectively. `read_csv2()` uses ; for separators, instead of ,. This is common in European countries which use , as the decimal separator.
+
+```{r}
+read_delim(file_path, delim, quote = "\"", escape_backslash = FALSE,
+  escape_double = TRUE, col_names = TRUE, col_types = NULL,
+  locale = default_locale(), na = c("", "NA"), quoted_na = TRUE,
+  comment = "", trim_ws = FALSE, skip = 0, n_max = Inf,
+  guess_max = min(1000, n_max), progress = show_progress())
+
+read_csv(file_path, col_names = TRUE, col_types = NULL,
+  locale = default_locale(), na = c("", "NA"), quoted_na = TRUE,
+  quote = "\"", comment = "", trim_ws = TRUE, skip = 0, n_max = Inf,
+  guess_max = min(1000, n_max), progress = show_progress())
+
+read_csv2(file_path, col_names = TRUE, col_types = NULL,
+  locale = default_locale(), na = c("", "NA"), quoted_na = TRUE,
+  quote = "\"", comment = "", trim_ws = TRUE, skip = 0, n_max = Inf,
+  guess_max = min(1000, n_max), progress = show_progress())
+
+read_tsv(file_path, col_names = TRUE, col_types = NULL,
+  locale = default_locale(), na = c("", "NA"), quoted_na = TRUE,
+  quote = "\"", comment = "", trim_ws = TRUE, skip = 0, n_max = Inf,
+  guess_max = min(1000, n_max), progress = show_progress())
+```
 
 ## read_file ()
+`read_file()` reads a complete file into a single object: either a character vector of length one, or a raw vector. `write_file()` takes a single string, or a raw vector, and writes it exactly as is. Raw vectors are useful when dealing with binary data, or if you have text data with unknown encoding.
+
+```{r}
+read_file(file_path, locale = default_locale())
+read_file_raw(file_path)
+```
 
 ## read_fwf ()
+A fixed width file can be a very compact representation of numeric data. It’s also very fast to parse, because every field is in the same place in every line. Unfortunately, it’s painful to parse because you need to describe the length of every field. `Readr` aims to make it as easy as possible by providing a number of different ways to describe the field structure.
+
+```{r}
+read_fwf(file, col_positions, col_types = NULL, locale = default_locale(),
+  na = c("", "NA"), comment = "", skip = 0, n_max = Inf,
+  guess_max = min(n_max, 1000), progress = show_progress())
+
+fwf_empty(file_path, skip = 0, col_names = NULL, comment = "", n = 100L)
+
+fwf_widths(widths, col_names = NULL)
+
+fwf_positions(start, end = NULL, col_names = NULL)
+
+fwf_cols(...)
+```
 
 ## read_lines ()
+`read_lines()` reads up to n_max lines from a file. New lines are not included in the output. `read_lines_raw()` produces a list of raw vectors, and is useful for handling data with unknown encoding. write_lines() takes a character vector or list of raw vectors, appending a new line after each entry.
+
+```{r}
+read_lines(file_path, skip = 0, n_max = -1L, locale = default_locale(),
+  na = character(), progress = show_progress())
+
+read_lines_raw(file_path, skip = 0, n_max = -1L, progress = show_progress())
+```
 
 ## read_log ()
+This is a fairly standard format for log files - it uses both quotes and square brackets for quoting, and there may be literal quotes embedded in a quoted string. The dash, "-", is used for missing values.
+
+```{r}
+read_log(file_path, col_names = FALSE, col_types = NULL, skip = 0, n_max = Inf, progress = show_progress())
+```
 
 ## read_table ()
+`read_table()` and `read_table2()` are designed to read the type of textual data where each column is #’ separate by one (or more) columns of space.
+
+`read_table2()` is like `read.table()`, it allows any number of whitespace characters between columns, and the lines can be of different lengths.
+
+`read_table()` is more strict, each line must be the same length, and each field is in the same position in every line. It first finds empty columns and then parses like a fixed width file.
+
+`spec_table()` and `spec_table2()` return the column specifications rather than a data frame.
+
+```{r}
+read_table(file_path, col_names = TRUE, col_types = NULL,
+  locale = default_locale(), na = "NA", skip = 0, n_max = Inf,
+  guess_max = min(n_max, 1000), progress = show_progress(), comment = "")
+
+read_table2(file_path, col_names = TRUE, col_types = NULL,
+  locale = default_locale(), na = "NA", skip = 0, n_max = Inf,
+  guess_max = min(n_max, 1000), progress = show_progress(), comment = "")
+```
 
 ## spec_delim ()
+When printed, only the first 20 columns are printed by default. To override, set `options(readr.num_columns)` can be used to modify this (a value of 0 turns off printing).
+
+```{r}
+spec_delim(file_path, delim, quote = "\"", escape_backslash = FALSE,
+  escape_double = TRUE, col_names = TRUE, col_types = NULL,
+  locale = default_locale(), na = c("", "NA"), quoted_na = TRUE,
+  comment = "", trim_ws = FALSE, skip = 0, n_max = 0,
+  guess_max = 1000, progress = show_progress())
+
+spec_csv(file_path, col_names = TRUE, col_types = NULL,
+  locale = default_locale(), na = c("", "NA"), quoted_na = TRUE,
+  quote = "\"", comment = "", trim_ws = TRUE, skip = 0, n_max = 0,
+  guess_max = 1000, progress = show_progress())
+
+spec_csv2(file_path, col_names = TRUE, col_types = NULL,
+  locale = default_locale(), na = c("", "NA"), quoted_na = TRUE,
+  quote = "\"", comment = "", trim_ws = TRUE, skip = 0, n_max = 0,
+  guess_max = 1000, progress = show_progress())
+
+spec_tsv(file_path, col_names = TRUE, col_types = NULL,
+  locale = default_locale(), na = c("", "NA"), quoted_na = TRUE,
+  quote = "\"", comment = "", trim_ws = TRUE, skip = 0, n_max = 0,
+  guess_max = 1000, progress = show_progress())
+
+spec_table(file_path, col_names = TRUE, col_types = NULL,
+  locale = default_locale(), na = "NA", skip = 0, n_max = 0,
+  guess_max = 1000, progress = show_progress(), comment = "")
+```
 
 ## type_convert ()
+This is useful if you need to do some manual munging - you can read the columns in as character, clean it up with (e.g.) regular expressions and then let `readr` take another stab at parsing it. The name is a homage to the base `type.convert()`.
+
+```{r}
+type_convert(data, col_types = NULL, na = c("", "NA"), trim_ws = TRUE, locale = default_locale())
+```
 
 ## write_delim ()
+This is about twice as fast as `write.csv()`, and never writes row names. `output_column()` is a generic method used to coerce columns to suitable output.
+
+```{r}
+write_delim(data, path, delim = " ", na = "NA", append = FALSE, col_names = !append)
+```
