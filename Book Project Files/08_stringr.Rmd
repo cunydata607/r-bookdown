@@ -200,6 +200,28 @@ str_sub(numbers, text_loc[, "start"], text_loc[, "end"])
 
 ### str_c ()
 
+Join Multiple Strings Into A Single String.
+
+To understand how str_c works, you need to imagine that you are building up a matrix of strings. Each input argument forms a column, and is expanded to the length of the longest argument, using the usual recyling rules. The sep string is inserted between each column. If collapse is NULL each row is collapsed into a single string. If non-NULL that string is inserted at the end of each row, and the entire matrix collapsed to a single string.
+
+examples:
+
+```{r}
+str_c("Letter: ", letters)
+str_c("Letter", letters, sep = ": ")
+str_c(letters, " is for", "...")
+str_c(letters[-26], " comes before ", letters[-1])
+
+str_c(letters, collapse = "")
+str_c(letters, collapse = ", ")
+
+# Missing inputs give missing outputs
+str_c(c("a", NA, "b"), "-d")
+# Use str_replace_NA to display literal NAs:
+str_c(str_replace_na(c("a", NA, "b")), "-d")
+# }
+```
+
 ### str_conv ()
 str_conv(string, encoding)
 
