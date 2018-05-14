@@ -244,6 +244,35 @@ alc.spread %>% head() %>% kable()
 
 ## unite ()
 
+
+Description: joins multiple columns together by concatenation and seperates values by a seperator
+
+
+Usage:unite(data, col,..., sep = "_", remove = TRUE)
+
+
+data = Dataframe 
+
+col =  Desired name of new column can be an unquoted string 
+
+... =  A list of columns to Unite 
+
+sep =  How to seperate the united vlaues
+
+Example:  Use unite function to create Member index in Congress_age DF.
+Member will be a concatination of firstname and last name columns with a " " as a seperator
+
+```{r}
+library(tidyverse)
+library(tidyr)
+library(knitr)
+library(kableExtra)
+Congress_Age <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/congress-age/congress-terms.csv")
+  Congress_Age <- Congress_Age %>% 
+      unite(.,Member,c(firstname,lastname),sep=" ")
+## print for confirmation
+  kable(head(Congress_Age$Member),caption="New Member column")
+```
 ## unnest ()
 
 ## who ()
