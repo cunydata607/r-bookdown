@@ -219,6 +219,15 @@ Transmute does the same thing as mutate, but drops all the other columns not spe
 transmute(alcohol.data, country, total_servings = beer_servings + spirit_servings + wine_servings)
 ```
 
+Other example of transmute is following.
+
+```{r}
+transmute(my_data, 
+            sepal_by_petal_l = Sepal.Length/Petal.Length,
+            sepal_by_petal_w = Sepal.Width/Petal.Width
+            )
+```
+
 ## summarise()
 
 The summarise function returns a table of summary statistics that you specify by running functions on your data.  You name each statistic and then specify what function to use and separate additional statistics with commas like this:
