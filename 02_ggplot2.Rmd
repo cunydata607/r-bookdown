@@ -5,12 +5,21 @@
 ## aes ()
 #Data from the National Morbidity and Mortality Air Pollution Study (NMMAPS)
 rm(list=ls())
-library(ggplot2)
 
-library(tidyr)
-library(dplyr)
+```{r}
+library(ggplot2)
+library(ggthemes)
+library(grid)
 library(tidyverse)
+library(ggiraph)
+library(fueleconomy)
+library(dplyr)
+library(tidyr)
+```
+
+```{r}
 myurl<-("https://raw.githubusercontent.com/VioletaStoyanova/Untidy_data/master/chicago-nmmaps.csv")
+
 #limiting the data from 1997-2000
 data<-read.csv(myurl, as.is = TRUE)
 data$date<-as.Date(data$date)
@@ -18,11 +27,14 @@ data<-data[data$date>as.Date("1996-12-31"),]
 data$year<-substring(data$date,1,4)
 
 head(data)
+```
 
 #For reference: http://rpubs.com/violet/Data607-rbookdown
 
+```{r}
 g<- ggplot(data,aes(date, temp)) + geom_point(color="firebrick")
 g
+```
 
 ## aes_ ()
 
@@ -54,8 +66,10 @@ g
 
 ## coord_flip ()
 #A geom_violin + coord_flip()
-g+geom_violin(alpha=0.5,color="gray")+geom_jitter(alpha=0.5,aes(color=season),
-position=position_jitter(width=0.1))+coord_flip()
+
+```{r}
+g+geom_violin(alpha=0.5,color="gray")+geom_jitter(alpha=0.5,aes(color=season), position=position_jitter(width=0.1))+coord_flip()
+```
 
 ## coord_map ()
 
@@ -73,21 +87,21 @@ position=position_jitter(width=0.1))+coord_flip()
 
 ## facet_grid ()
 
-facet_grid forms a matrix of panels defined by row and column faceting variables. 
+facet_grid forms a matrix of panels defined by row and column faceting variables.
 It is most useful when you have two discrete variables and all combinations of the variables exist in the data.
 
 The data can be split up by one or two variables that vary on the horizontal and/or vertical direction.
 The form is vertical~horizontal.
 
 ```{r}
-ggplot(data, aes(year, temp)) + 
-  geom_boxplot() + 
+ggplot(data, aes(year, temp)) +
+  geom_boxplot() +
   facet_grid(season~.) #season in the vertical direction
 ```
 
 ```{r}
-ggplot(data, aes(year, temp)) + 
-  geom_boxplot() + 
+ggplot(data, aes(year, temp)) +
+  geom_boxplot() +
   facet_grid(~season) #season in the horizontal direction
 ```
 
@@ -97,28 +111,28 @@ facet_wrap warps a 1d sequence of panels into 2d.
 This is generally a better use of screen space than facet_grid because most displays are roughly rectangular.
 
 ```{r}
-ggplot(data, aes(year, temp)) + 
-  geom_boxplot() + 
+ggplot(data, aes(year, temp)) +
+  geom_boxplot() +
   facet_wrap(season~.)
 ```
 
 ```{r}
-ggplot(data, aes(year, temp)) + 
-  geom_boxplot() + 
+ggplot(data, aes(year, temp)) +
+  geom_boxplot() +
   facet_wrap(~season)
 ```
 
 ```{r}
-ggplot(data, aes(year, temp)) + 
-  geom_boxplot() + 
+ggplot(data, aes(year, temp)) +
+  geom_boxplot() +
   facet_wrap(~season)
 ```
 
 It is possible to modifty facet label appearance.
 
 ```{r}
-ggplot(data, aes(year, temp)) + 
-  geom_boxplot() + 
+ggplot(data, aes(year, temp)) +
+  geom_boxplot() +
   facet_wrap(~season) +
   theme(strip.text.x = element_text(size=8, angle=0),
         strip.text.y = element_text(size=12, face="bold"),
@@ -130,8 +144,8 @@ To change the label text, we can provide named vector that maps original names t
 ```{r}
 labels <- c(spring = "season: spring", summer = "season: summer", autumn = "season:autumn", winter = "season:winter")
 
-ggplot(data, aes(year, temp)) + 
-  geom_boxplot() + 
+ggplot(data, aes(year, temp)) +
+  geom_boxplot() +
   facet_wrap(~season,
              labeller = labeller(season = labels)) +
   theme(strip.text.x = element_text(size=8, angle=0),
@@ -182,16 +196,16 @@ ggplot(data, aes(year, temp)) +
 
 ## geom_point ()
 
-Allows one to create a scatterplot off of data.  The scatter plot can then have an aesthetics layer 
-to show color, shape, etc. of another variable. Multiple aesthetics can be combined in one graph, as shown below. 
+Allows one to create a scatterplot off of data.  The scatter plot can then have an aesthetics layer
+to show color, shape, etc. of another variable. Multiple aesthetics can be combined in one graph, as shown below.
 
 ```{r}
-ggplot(mtcars, aes(mpg, hp)) + 
+ggplot(mtcars, aes(mpg, hp)) +
          geom_point(aes(color = as.factor(cyl)))
 ```
 
 ```{r}
-ggplot(mtcars, aes(mpg, hp)) + 
+ggplot(mtcars, aes(mpg, hp)) +
   geom_point(aes(shape = as.factor(cyl), color =as.factor(cyl)))
 ```
 
@@ -214,8 +228,10 @@ ggplot(mtcars, aes(mpg, hp)) +
 ## geom_spoke ()
 
 ## geom_violin ()
-g+geom_violin(alpha=0.5,color="gray")+geom_jitter(alpha=0.5,aes(color=season),
-position=position_jitter(width=0.1))+coord_flip()
+
+```{r}
+g+geom_violin(alpha=0.5,color="gray")+geom_jitter(alpha=0.5,aes(color=season), position=position_jitter(width=0.1))+coord_flip()
+```
 
 ## ggplot ()
 
@@ -224,10 +240,12 @@ position=position_jitter(width=0.1))+coord_flip()
 ## ggsave ()
 
 ## ggtheme ()
-library(ggthemes)
+
+```{r}
 ggplot(data,aes(date,temp,color=factor(season)))+
-geom_point()+ggtitle("This plot looks amazing")+
-theme_economist()+scale_colour_economist()
+  geom_point()+ggtitle("This plot looks amazing")+
+  theme_economist()+scale_colour_economist()
+```
 
 ## guides ()
 
@@ -244,10 +262,14 @@ theme_economist()+scale_colour_economist()
 ## label_bquote ()
 
 ## labs ()
+
+```{r}
 g+labs(title='Temperature')
 g
+
 #or g<‐g+ggtitle('Temperature')
 #g
+```
 
 ## lims ()
 
@@ -311,9 +333,9 @@ http://rpubs.com/hmgeiger/384663
 
 This Github contains just the code for now, not including rendered plots.
 
-Read in a CSV file with survey data about Thanksgiving. 
+Read in a CSV file with survey data about Thanksgiving.
 
-More info available here: 
+More info available here:
 
 https://github.com/fivethirtyeight/data/tree/master/thanksgiving-2015
 
@@ -358,8 +380,8 @@ side_dish_frequency$Frequency <- as.numeric(side_dish_frequency$Frequency)
 Make a barplot of the frequency of different sides, minus "Other".
 
 ```{r}
-ggplot(side_dish_frequency,aes(Side,Frequency)) + 
-geom_bar(stat="identity") + 
+ggplot(side_dish_frequency,aes(Side,Frequency)) +
+geom_bar(stat="identity") +
 theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
@@ -372,8 +394,8 @@ Put in colors based on order sides appear in side_dish_frequency.
 Let's color fruit salad as red, since may have watermelon, strawberry, etc.
 
 ```{r}
-ggplot(side_dish_frequency,aes(Side,Frequency,fill=Side)) + 
-geom_bar(stat="identity") + 
+ggplot(side_dish_frequency,aes(Side,Frequency,fill=Side)) +
+geom_bar(stat="identity") +
 theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
 scale_fill_manual(values = c("darkgreen","darkorange","floralwhite","gold","gold","firebrick1","darkgreen","gold","floralwhite","floralwhite","darkorange","darkgreen","darkorange"))
 ```
@@ -388,8 +410,8 @@ side_dish_frequency$Side <- factor(side_dish_frequency$Side,
 levels=side_dish_frequency$Side[order(side_dish_frequency$Frequency)])
 
 ggplot(side_dish_frequency,
-aes(Side,Frequency,fill=Side)) + 
-geom_bar(stat="identity") + 
+aes(Side,Frequency,fill=Side)) +
+geom_bar(stat="identity") +
 theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
 scale_fill_manual(values = color_per_side)
 ```
@@ -401,7 +423,7 @@ What if we use shape_colour_manual instead, and specify color by side instead of
 ```{r}
 ggplot(side_dish_frequency,
 aes(Side,Frequency,colour=Side)) +
-geom_bar(stat="identity",fill="lightgrey") + 
+geom_bar(stat="identity",fill="lightgrey") +
 theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
 scale_colour_manual(values = color_per_side)
 ```
@@ -441,11 +463,13 @@ Using "colour" instead of "fill" probably isn't what we want for a barplot. But 
 ## txhousing ()
 
 ## textgrob()
-library(grid)
+
+```{r}
 my_grob=grobTree(textGrob("This text stays in place!",x=0.1, y=0.95,hjust=0,
 gp=gpar(col="blue",fontsize=15,fontface="italic")))
 ggplot(data,aes(temp,o3))+geom_point(color="firebrick")+
 annotation_custom(my_grob)
+```
 
 ## ggiraph
 
@@ -478,16 +502,9 @@ Tooltips Tooltips can be created using the following example:
 
 ```{r eval=FALSE}
 # Need to debug and get rid of eval=FALSE above once working
-library(tidyverse)
-library(ggiraph)
-library(fueleconomy)
-```
-
-```{r eval=FALSE}
-# Need to debug and get rid of eval=FALSE above once working
 ggexample <- ggplot(vehicles, aes(factor(vehicles$year), vehicles$hwy)) +
   geom_boxplot_interactive(aes(tooltip = year))
-  
+
 ggiraph(code = print(ggexample))
 ```
 
@@ -499,74 +516,74 @@ Hover effects can be created using the following example:
 # Need to debug and get rid of eval=FALSE above once working
 ggexample <- ggplot(vehicles, aes(factor(vehicles$year), vehicles$hwy, color = hwy)) +
   geom_boxplot_interactive(aes(tooltip = year, data_id = year))
-  
+
 ggiraph(code = print(ggexample))
 ```
 
 As you can see in the example above, the boxs change color on when the users mouse hovers over the item.
 
-More information can be found here: http://rpubs.com/nschettini/386363 
+More information can be found here: http://rpubs.com/nschettini/386363
 
 ## 2 GGPlots
 ### plot 1:point plot with interactive pointer  
 ### plot 2:horizontal bar plot  
 ```{r warning=FALSE, message=FALSE}
-library(ggplot2)
-library(ggiraph)
-library(dplyr)
-
 hate_crimes<-read.csv('https://raw.githubusercontent.com/WigodskyD/data-sets/45a5c4658398071a6064e6dbcb3d2b40ba0b2be3/hate_crimes.csv')
-
 ```  
 
-Begin with  basic ggplot scatterplot for two variables from our dataset
+* Begin with  basic ggplot scatterplot for two variables from our dataset
+
 ```{r warning=FALSE, message=FALSE}
 our.plot<-ggplot(x=hate_crimes$share_white_poverty,y=hate_crimes$hate_crimes_per_100k_splc,pointtip=hate_crimes$state)+geom_point(aes(x=hate_crimes$share_white_poverty,y=hate_crimes$hate_crimes_per_100k_splc))
 our.plot
 ```  
-  
-Now, change the labels to make sense and make the points look more visible
+
+* Now, change the labels to make sense and make the points look more visible
+
 ```{r warning=FALSE, message=FALSE}
 our.plot<-our.plot+labs(x='share of white poverty, 2015',y='hate crimes per 100,000',title='White Poverty vs. Hate Crimes', subtitle='a comparison')+geom_point(aes(x=hate_crimes$share_white_poverty,y=hate_crimes$hate_crimes_per_100k_splc),shape=21,size=3,fill='red',stroke=1.2)+theme(plot.title = element_text(colour='#962d2d', size=20,face="bold"),axis.title = element_text(colour='#962d2d', size=14,face="bold"))
 our.plot
 ```  
-  
-Align axis labels, change background color and remove background grid
+
+* Align axis labels, change background color and remove background grid
+
 ```{r warning=FALSE, message=FALSE}
-our.plot<-our.plot+ theme(panel.background = element_rect(fill = '#ffa3a3'),panel.grid.major = element_blank(),panel.grid.minor = element_blank()) + 
-   theme(axis.text.x=element_text(size=10, angle=70,hjust=0.55,vjust=.7))+ 
+our.plot<-our.plot+ theme(panel.background = element_rect(fill = '#ffa3a3'),panel.grid.major = element_blank(),panel.grid.minor = element_blank()) +
+   theme(axis.text.x=element_text(size=10, angle=70,hjust=0.55,vjust=.7))+
    theme(axis.title.x=element_text(hjust=.99,vjust=.2))+theme(axis.title.y=element_text(hjust=1,1,vjust=-.1))
 our.plot
 
 ```  
-  
-We add an interactive tip to show state when we hover with the mouse
+
+* We add an interactive tip to show state when we hover with the mouse
+
 ```{r warning=FALSE, message=FALSE}
 our.plot<-our.plot+geom_point_interactive(aes(x=hate_crimes$share_white_poverty,y=hate_crimes$hate_crimes_per_100k_splc,data_id=hate_crimes$state,tooltip=hate_crimes$state,label=hate_crimes$state))
 ggiraph(code = print(our.plot),hover_css = "fill:#FF4C3B;font-style:italic;" )
 
 ```  
-  
-  
-### Plot 2  
-  
-Create a plot that shows urban population by state.  Flip it to a horizontal bar plot.
 
-```{r warning=FALSE, message=FALSE} 
+
+### Plot 2  
+
+* Create a plot that shows urban population by state.  Flip it to a horizontal bar plot.
+
+```{r warning=FALSE, message=FALSE}
 ggplot(data=hate_crimes, aes(x=hate_crimes$state,y=hate_crimes$share_population_in_metro_areas)) + geom_bar(stat='identity',fill='#b5c6fc') +coord_flip()+ theme(panel.background = element_rect(fill = '#707996'))
 hate_crimes %>%
-                filter(hate_crimes$share_population_in_metro_areas>.87) %>% 
+                filter(hate_crimes$share_population_in_metro_areas>.87) %>%
             arrange(share_population_in_metro_areas)->hate_crimes_2
 ```  
-  
-Use dplyr to limit the number of states for a cleaner graph
-```{r warning=FALSE, message=FALSE} 
+
+* Use dplyr to limit the number of states for a cleaner graph
+
+```{r warning=FALSE, message=FALSE}
 plot.a<-ggplot(data=hate_crimes_2, aes(x=reorder(hate_crimes_2$state,hate_crimes_2$share_population_in_metro_areas),y=hate_crimes_2$share_population_in_metro_areas)) + geom_bar(stat='identity',fill='#b5c6fc') +coord_flip()+ theme(panel.background = element_rect(fill = '#707996'))
 plot.a
 ```  
-  
-Add a number representing another dimension of the data in white.  Labels are added
+
+* Add a number representing another dimension of the data in white.  Labels are added
+
 ```{r warning=FALSE, message=FALSE}
 plot.a + geom_text(aes(label=share_population_with_high_school_degree), vjust=0.3,hjust=1.3,color='white')+labs(title="States with most urban population",subtitle="Percent with diploma in white",y='urban population share' ,x='')+theme(plot.title = element_text(colour='#5eacd6', size=20,face="bold"),plot.subtitle = element_text(colour='#1a6c99', size=18,face="bold"),axis.title = element_text(colour='#1a6c99', size=14,face="bold"))
 ```  
-

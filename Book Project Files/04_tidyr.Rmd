@@ -2,6 +2,14 @@
 
 ## complete ()
 
+```{r}
+library(dplyr)
+library(tidyverse)
+library(tidyr)
+library(knitr)
+library(kableExtra)
+```
+
 Complete a data frame with missing combinations of data.
 
 Description:
@@ -14,17 +22,20 @@ Usage:
 
 Example:
 
-    library(dplyr, warn.conflicts = FALSE)
-    df <- tibble(
-      group = c(1:2, 1),
-      item_id = c(1:2, 2),
-      item_name = c("a", "b", "b"),
-      value1 = 1:3,
-      value2 = 4:6
-    )
-    df %>% complete(group, nesting(item_id, item_name))
-    # You can also choose to fill in missing values
-    df %>% complete(group, nesting(item_id, item_name), fill = list(value1 = 0))
+```{r}
+df <- tibble(
+  group = c(1:2, 1),
+  item_id = c(1:2, 2),
+  item_name = c("a", "b", "b"),
+  value1 = 1:3,
+  value2 = 4:6
+)
+
+df %>% complete(group, nesting(item_id, item_name))
+
+# You can also choose to fill in missing values
+df %>% complete(group, nesting(item_id, item_name), fill = list(value1 = 0))
+```
 
 ## drop_na ()
 
@@ -39,10 +50,12 @@ Usage:
     drop_na(data, ...)
 
 Example:
-    library(dplyr)
-    df <- tibble(x = c(1, 2, NA), y = c("a", NA, "b"))
-    df %>% drop_na()
-    df %>% drop_na(x)
+
+```{r}
+df <- tibble(x = c(1, 2, NA), y = c("a", NA, "b"))
+df %>% drop_na()
+df %>% drop_na(x)
+```
 
 ## expand ()
 
@@ -55,13 +68,14 @@ expand() is often useful in conjunction with left_join if you want to convert im
 Usage:
 
     expand(data, ...)
-    
+
 Example:
 
-    library(dplyr)
-    # All possible combinations of vs & cyl, even those that aren't
-    # present in the data
-    expand(mtcars, vs, cyl)
+```{r}
+# All possible combinations of vs & cyl, even those that aren't
+# present in the data
+expand(mtcars, vs, cyl)
+```
 
 ## extract ()
 
@@ -72,17 +86,18 @@ Description:
 Given a regular expression with capturing groups, extract() turns each group into a new column. If the groups don’t match, or the input is NA, the output will be NA.
 
 Usage:
-   
+
     extract(data, col, into, regex = "([[:alnum:]]+)", remove = TRUE,
       convert = FALSE, ...)
-      
+
 Example:
 
-    library(dplyr)
-    df <- data.frame(x = c(NA, "a-b", "a-d", "b-c", "d-e"))
-    df %>% extract(x, "A")
-    df %>% extract(x, c("A", "B"), "([[:alnum:]]+)-([[:alnum:]]+)")
-    
+```{r}
+df <- data.frame(x = c(NA, "a-b", "a-d", "b-c", "d-e"))
+df %>% extract(x, "A")
+df %>% extract(x, c("A", "B"), "([[:alnum:]]+)-([[:alnum:]]+)")
+```
+
 ## fill ()
 
 Fill in missing values.
@@ -94,11 +109,13 @@ Fills missing values in using the previous entry. This is useful in the common o
 Usage:
 
      fill(data, ..., .direction = c("down", "up"))
-     
+
 Example:
 
-    df <- data.frame(Month = 1:12, Year = c(2000, rep(NA, 11)))
-    df %>% fill(Year)  
+```{r}
+df <- data.frame(Month = 1:12, Year = c(2000, rep(NA, 11)))
+df %>% fill(Year)  
+```
 
 ## full_seq ()
 
@@ -117,15 +134,16 @@ Usage:
 
 Example:
 
-    library(dplyr)
-    # From http://stackoverflow.com/questions/1181060
-    stocks <- tibble(
-      time = as.Date('2009-01-01') + 0:9,
-      X = rnorm(10, 0, 1),
-      Y = rnorm(10, 0, 2),
-      Z = rnorm(10, 0, 4))
-    gather(stocks, stock, price, -time)
-    stocks %>% gather(stock, price, -time)
+```{r}
+# From http://stackoverflow.com/questions/1181060
+stocks <- tibble(
+  time = as.Date('2009-01-01') + 0:9,
+  X = rnorm(10, 0, 1),
+  Y = rnorm(10, 0, 2),
+  Z = rnorm(10, 0, 4))
+gather(stocks, stock, price, -time)
+stocks %>% gather(stock, price, -time)
+```
 
 ## nest ()
 
@@ -141,17 +159,17 @@ Usage:
 
 Example:
 
-    library(dplyr)
-        as_tibble(iris) %>% nest(-Species)
-        as_tibble(chickwts) %>% nest(weight)
-        if (require("gapminder")) {
-          gapminder %>%
-            group_by(country, continent) %>%
-            nest()
-          gapminder %>%
-            nest(-country, -continent)
-    }     
-
+```{r}
+as_tibble(iris) %>% nest(-Species)
+as_tibble(chickwts) %>% nest(weight)
+if (require("gapminder")) {
+  gapminder %>%
+    group_by(country, continent) %>%
+    nest()
+  gapminder %>%
+    nest(-country, -continent)
+}     
+```
 
 ## replace_na ()
 
@@ -167,13 +185,15 @@ Usage:
 
 Example:
 
-    library(dplyr)
-    df <- tibble(x = c(1, 2, NA), y = c("a", NA, "b"), z = list(1:5, NULL, 10:20))
-    df %>% replace_na(list(x = 0, y = "unknown"))
-    # NULL are the list-col equivalent of NAs
-    df %>% replace_na(list(z = list(5)))
-    df$x %>% replace_na(0)
-    df$y %>% replace_na("unknown")
+```{r}
+df <- tibble(x = c(1, 2, NA), y = c("a", NA, "b"), z = list(1:5, NULL, 10:20))
+df %>% replace_na(list(x = 0, y = "unknown"))
+
+# NULL are the list-col equivalent of NAs
+df %>% replace_na(list(z = list(5)))
+df$x %>% replace_na(0)
+df$y %>% replace_na("unknown")
+```
 
 ## separate ()
 
@@ -190,20 +210,25 @@ Usage:
 
 Example:
 
-    library(dplyr)
-    df <- data.frame(x = c(NA, "a.b", "a.d", "b.c"))
-    df %>% separate(x, c("A", "B"))
-    # If every row doesn't split into the same number of pieces, use
-    # the extra and file arguments to control what happens
-    df <- data.frame(x = c("a", "a b", "a b c", NA))
-    df %>% separate(x, c("a", "b"))
-    # The same behaviour but no warnings
-    df %>% separate(x, c("a", "b"), extra = "drop", fill = "right")
-    # Another option:
-    df %>% separate(x, c("a", "b"), extra = "merge", fill = "left")
-    # If only want to split specified number of times use extra = "merge"
-    df <- data.frame(x = c("x: 123", "y: error: 7"))
-    df %>% separate(x, c("key", "value"), ": ", extra = "merge")
+```{r}
+df <- data.frame(x = c(NA, "a.b", "a.d", "b.c"))
+df %>% separate(x, c("A", "B"))
+
+# If every row doesn't split into the same number of pieces, use
+# the extra and file arguments to control what happens
+df <- data.frame(x = c("a", "a b", "a b c", NA))
+df %>% separate(x, c("a", "b"))
+
+# The same behaviour but no warnings
+df %>% separate(x, c("a", "b"), extra = "drop", fill = "right")
+
+# Another option:
+df %>% separate(x, c("a", "b"), extra = "merge", fill = "left")
+
+# If only want to split specified number of times use extra = "merge"
+df <- data.frame(x = c("x: 123", "y: error: 7"))
+df %>% separate(x, c("key", "value"), ": ", extra = "merge")
+```
 
 ## separate_rows ()
 
@@ -224,9 +249,7 @@ Usage:
 Example:
 
 ```{r}
-library(tidyr)
-library(kableExtra)
-alcohol.data <- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv') 
+alcohol.data <- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv')
 
 alcohol.data %>% head() %>% kable()
 
@@ -251,11 +274,11 @@ Description: joins multiple columns together by concatenation and seperates valu
 Usage:unite(data, col,..., sep = "_", remove = TRUE)
 
 
-data = Dataframe 
+data = Dataframe
 
-col =  Desired name of new column can be an unquoted string 
+col =  Desired name of new column can be an unquoted string
 
-... =  A list of columns to Unite 
+... =  A list of columns to Unite
 
 sep =  How to seperate the united vlaues
 
@@ -263,13 +286,10 @@ Example:  Use unite function to create Member index in Congress_age DF.
 Member will be a concatination of firstname and last name columns with a " " as a seperator
 
 ```{r}
-library(tidyverse)
-library(tidyr)
-library(knitr)
-library(kableExtra)
 Congress_Age <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/congress-age/congress-terms.csv")
-  Congress_Age <- Congress_Age %>% 
+  Congress_Age <- Congress_Age %>%
       unite(.,Member,c(firstname,lastname),sep=" ")
+
 ## print for confirmation
   kable(head(Congress_Age$Member),caption="New Member column")
 ```

@@ -1,6 +1,6 @@
 # dplyr {#dplyr}
 
-dplyr provides a grammar of data manipulation, providing a consistent set of verbs that solve the most common data manipulation challenges. 
+dplyr provides a grammar of data manipulation, providing a consistent set of verbs that solve the most common data manipulation challenges.
 
 ## select()
 
@@ -10,7 +10,13 @@ The select function provides options for selecting only certain columns of data 
 library(tidyverse)
 library(knitr)
 library(kableExtra)
-alcohol.data <- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv') 
+library(ggplot2)
+library(dplyr)
+library(sparklyr)
+```
+
+```{r}
+alcohol.data <- read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv')
 alcohol.data %>% head() %>% kable()
 ```
 
@@ -55,7 +61,7 @@ alcohol.data %>%
   kable()
 ```
 
-The select function can also be used to rearrange the columns in a data frame. 
+The select function can also be used to rearrange the columns in a data frame.
 
 ```{r}
 alcohol.data %>%
@@ -88,7 +94,7 @@ The rename function is used to alter the names of columns. Any columns not speci
 
 ```{r}
 alcohol.data %>%
-  rename(beer=beer_servings, spirit=spirit_servings, wine=wine_servings) %>% 
+  rename(beer=beer_servings, spirit=spirit_servings, wine=wine_servings) %>%
   head() %>%
   kable()
 ```
@@ -122,12 +128,12 @@ avengers.data %>%
 ```
 
 There are numerous comparison options that can be used with filter. These include: ```==, >, >=, <, <=, !=```
-The use of a single ampersand ```&``` is used to indicate 'and' while a single pipe ```|``` is used to indicate 'or'. 
+The use of a single ampersand ```&``` is used to indicate 'and' while a single pipe ```|``` is used to indicate 'or'.
 The exclamation point ```!``` is used to indicate 'nor' (see next example) and ```xor()``` is the exclusive or.
 
 Filtering can also be based on whether an element is NA.
 
-This data set does not have any NAs, but rather has empty strings in cases where the variable does not apply. 
+This data set does not have any NAs, but rather has empty strings in cases where the variable does not apply.
 
 To demonstrate the technique of filtering out NAs, let's convert these empty strings to NAs.
 
@@ -222,7 +228,7 @@ transmute(alcohol.data, country, total_servings = beer_servings + spirit_serving
 Other example of transmute is following.
 
 ```{r}
-transmute(my_data, 
+transmute(my_data,
             sepal_by_petal_l = Sepal.Length/Petal.Length,
             sepal_by_petal_w = Sepal.Width/Petal.Width
             )
@@ -260,7 +266,7 @@ sample_n(mtcars, 5, replace = TRUE)
 sample_frac(mtcars, 0.25, replace = FALSE)
 ```
 
-## sparklyr 
+## sparklyr
 
 + Connect to Spark from R. The sparklyr package provides a complete dplyr backend.
 + Filter and aggregate Spark datasets then bring them into R for analysis and visualization.
@@ -284,7 +290,6 @@ devtools::install_github("rstudio/sparklyr")
 #### _Install a local version of Spark for development purposes_
 
 ```{r eval=FALSE}
-library(sparklyr)
 spark_install(version = '2.2.0')
 ```
 
@@ -306,8 +311,8 @@ sc <- spark_connect(master = "local")
 #### _Using dplyr and copy datasets from R into the local Spark Cluster_
 
 ```{r eval=FALSE}
-library(dplyr)
 #install.packages("nycflights13")
+
 iris_tbl <- copy_to(sc, iris)
 flights_tbl <- copy_to(sc, nycflights13::flights, "flights")
 src_tbls(sc)
@@ -322,14 +327,13 @@ flights_tbl %>% filter(dep_delay == 2)
 ### *group_by(), summarise() and collect()*
 
 ```{r eval=FALSE}
-delay <- flights_tbl %>% 
+delay <- flights_tbl %>%
   group_by(tailnum) %>%
   summarise(count = n(), dist = mean(distance), delay = mean(arr_delay)) %>%
   filter(count > 20, dist < 2000, !is.na(delay)) %>%
   collect
 
 # plot delays
-library(ggplot2)
 ggplot(delay, aes(dist, delay)) +
   geom_point(aes(size = count), alpha = 1/2) +
   geom_smooth() +
