@@ -228,7 +228,7 @@ transmute(alcohol.data, country, total_servings = beer_servings + spirit_serving
 Other example of transmute is following.
 
 ```{r}
-transmute(my_data,
+transmute(iris,
             sepal_by_petal_l = Sepal.Length/Petal.Length,
             sepal_by_petal_w = Sepal.Width/Petal.Width
             )
