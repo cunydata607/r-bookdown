@@ -293,6 +293,49 @@ Congress_Age <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data
 ## print for confirmation
   kable(head(Congress_Age$Member),caption="New Member column")
 ```
+<br>
+
 ## unnest ()
+
+**Description:** If you have a column with lists of items (a list-column), `unnest()` makes each list element its own row.
+
+**Usage:** `unnest (data, ..., .drop = NA, .id = NULL, .sep = NULL, .preserve = NULL)`
+
+* `data` --- a data frame.
+
+* `...` --- the columns to unnest; defaults to all list-columns
+
+* `.drop` --- whether additional list columns should be dropped
+
+* `.id` --- data frame identifier; creates a new column with the name `.id`, giving a unique identifier.
+
+* `.sep` --- identify a separator to use in the names of unnested data frame columns, which combine the name of the original list-col with the names from nest data frame
+
+* `.preserve` --- list-columns to preserve in the output
+
+```{r}
+
+# Read in the test dataframe and filter for movies with multiple directors listed
+directors <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/biopics/biopics.csv") %>% 
+             filter(str_detect(director, ".\\,.")) %>% 
+             select(title, country, director)
+
+# Examine the nested dataframe
+head(directors, 3) %>% 
+  kable("html")  %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+# Apply the unnest function, and identify on which character to split the strings in the column-list
+dir_unnest <- unnest(directors, director = strsplit(director, ","))
+
+# Examine the unnested dataframe
+head(dir_unnest, 7) %>% 
+  kable("html")  %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+
+```
+
+<br>
 
 ## who ()
