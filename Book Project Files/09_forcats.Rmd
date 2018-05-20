@@ -45,8 +45,26 @@ c(fr, fs, frs)
 fct_c(fr, fs, frs)
 
 ```
+
 ## fct_collapse ()
 
+Description: Collapse factor levels into manually defined groups.
+
+Usage:
+```{r}
+wc_data <- read.csv2("https://raw.githubusercontent.com/fivethirtyeight/data/master/world-cup-predictions/wc-20140609-140000.csv", quote = "",header = TRUE, sep = ",")
+
+
+wc_data <- mutate(wc_data, continent = fct_collapse(wc_data$country,
+    "Asia" = c("Iran","Japan","South Korea","Russia"),
+    "Africa" = c("Algeria", "Ivory Coast","Cameroon","Ghana","Nigeria"),
+    "Australia" = c("Australia"),
+    "Central America and the Antilles" = c("Costa Rica","Honduras"),
+    "North America" = c("Mexico", "USA"),
+    "South America" = c("Argentina","Brazil","Chile","Colombia","Ecuador"),
+    "Europe" = c("Belgium", "Bosnia and Herzegovina","Croatia","England","Spain","France","Germany","Greece","Italy","Netherlands","Portugal","Switzerland","Uraguay" )
+  ))
+```
 
 ## fct_count ()
 fct_count (): Count entries in a factor.
