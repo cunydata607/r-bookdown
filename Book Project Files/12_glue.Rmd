@@ -1,0 +1,63 @@
+---
+title: "GLUE"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ glue is designed to make it easy to interpolate (“glue”) your data into strings. Compared to equivalents like paste() and sprintf() it is easier to write and less time consuming to maintain. It also has no non-base dependencies so is easy to include in packages.
+glue is a very good and competitive alternative for Reporting Template packages like whisker and brew.
+ 
+```{r }
+install.packages("glue")
+```
+
+glue has three primary functions 
+
+1.glue()
+
+2.glue_data() 
+
+3.collapse()
+
+##### glue()
+
+```{r }
+library(glue)
+name <- "City university of newyork"
+Course <- 607
+Semester <- as.Date("2018-01-15")
+glue('
+  I have recently joined {name}
+  and course i took is data {Course}
+  and my  start is {format(Semester, "%A, %B %d, %Y")}
+')
+```
+Another example of a very minimal reporting template to output basic information about the given Dataset.
+
+```{r }
+df <- mtcars
+msg <- 'Dataframe Info: \n\n This dataset has {nrow(df)} rows and {ncol(df)} columns. \n There {ifelse(sum(is.na(df))>0,"is","are")} {sum(is.na(df))} Missing Value'
+glue(msg)
+```
+
+
+##### glue_data()
+glue_data() works like glue(), but instead of looking up its variables from the calling environment it looks them up from the first argument (usually a data frame or tibble). This makes glue_data() very useful within pipe chains.
+
+```{r }
+library(magrittr)
+mtcars$model <- rownames(mtcars)
+mtcars %>%
+  head %>%
+  glue_data("The {model} has {gear} gears, {cyl} cylinders, and {hp} horsepower.")
+```
+
+##### collapse()
+collapse() is used to combine multiple values into one. The last argument is used to change the separator for the last value.
+```{r }
+collapse(20:30,",",last = ",and ")
+```
+
