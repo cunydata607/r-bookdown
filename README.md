@@ -38,9 +38,9 @@ If you're already acquainted with the basics, [Github provides tons of training 
 
 ## Working with Bookdown Files
 
-The formatting and structure of the book are created in the index.Rmd file. The filename must remain exactly as index.Rmd or it will not be recognized by bookdown as the index file. The index file should contain setup code and a description of the project only.  Each chapter must be in a separate file in the same R Project in order to 'build' the book using bookdown.  I have already created a file for each chapter.  They must be numbered sequentially (or alphabetically) in order to build in the correct order.  
+The formatting and structure of the book are created in the `index.Rmd` file. The filename must remain exactly as `index.Rmd` or it will not be recognized by bookdown as the index file. The index file should contain setup code and a description of the project only.  Each chapter must be in a separate file in the same R Project in order to 'build' the book using bookdown.  I have already created a file for each chapter.  They must be numbered sequentially (or alphabetically) in order to build in the correct order.  
 
-I have also added code to create a biblilogrpahy in the index file that I copied out of a sample bookdown project.  
+I have also added code to create a bibliography in the index file that I copied out of a sample bookdown project.  
 
 To create an inline reference use square brackets and \@R- followed by the package name. The package name must also be added to the bibliography code in the index.Rmd file (if it isn't already there).
 
@@ -60,8 +60,8 @@ I have created a Kanban Board project on the "[Projects](https://github.com/cuny
 
 There are basically two ways to contribute to the repository.
 
-1. If you are an admin, you can make changes and commit them directly to the cunydata607/r-bookdown repo. 
-2. If you are not an admin, you can fork the repo, make changes to your forked version and submit a pull request that one of the admins will need to approve and merge with the master branch of the cunydata607/r-bookdown repo.  
+1. If you are an admin, you can make changes and commit them directly to the `cunydata607/r-bookdown` repo. 
+2. If you are not an admin, you can fork the repo, make changes to your forked version and submit a pull request that one of the admins will need to approve and merge with the master branch of the `cunydata607/r-bookdown` repo.  
 
 If you are not fimiliar with how to use GitHub please see the links above for lots of great tutorials and info.  I particularly recommend [this video](https://www.youtube.com/watch?v=yr6IzOGoMsQ) to understand a basic GitHub workflow.
 
